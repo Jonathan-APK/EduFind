@@ -5,4 +5,13 @@ package entity;
  */
 
 public class PolytechnicCourse {
+    int L1R4;
+
+    public int getL1R4() {
+        return L1R4;
+    }
+
+    public void setL1R4(int l1R4) {
+        L1R4 = l1R4;
+    }
 }
