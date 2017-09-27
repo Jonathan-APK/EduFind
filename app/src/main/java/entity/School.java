@@ -5,15 +5,15 @@ package entity;
  */
 
 public class School {
-    String school;
+    String institution;
     int schoolPostalCode;
 
-    public String getSchool() {
-        return school;
+    public String getInstitution() {
+        return institution;
     }
 
-    public void setSchool(String school) {
-        this.school = school;
+    public void setInstitution(String institution) {
+        this.institution = institution;
     }
 
     public int getSchoolPostalCode() {
