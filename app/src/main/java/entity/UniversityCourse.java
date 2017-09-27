@@ -5,4 +5,13 @@ package entity;
  */
 
 public class UniversityCourse {
+    double gradePointAverage;
+
+    public double getGradePointAverage() {
+        return gradePointAverage;
+    }
+
+    public void setGradePointAverage(double gradePointAverage) {
+        this.gradePointAverage = gradePointAverage;
+    }
 }
