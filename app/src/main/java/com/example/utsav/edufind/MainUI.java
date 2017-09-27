@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import controller.DistanceCalculation;
+
 public class MainUI extends AppCompatActivity {
 
     @Override
@@ -26,6 +28,9 @@ public class MainUI extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        DistanceCalculation d1 = new DistanceCalculation();
+        d1.execute("637658", "637659");
     }
 
     @Override

@@ -25,9 +25,10 @@ public class DistanceCalculation extends AsyncTask<String, Void, String>{
         String pincode_2 = strings[1];
 
         try{
-            final String key = Resources.getSystem().getString(R.string.google_maps_key);
+            String key = "AIzaSyA4weAen8iFGCIl_RxzGmFEodGV-YXPVFw";
             String s = String.format("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=%s&destinations=%s&key=%s",
                     pincode_1, pincode_2, key);
+            System.out.println(s);
             URL url = new URL(s);
             HttpURLConnection urlConnection= (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
@@ -58,7 +59,8 @@ public class DistanceCalculation extends AsyncTask<String, Void, String>{
                 Log.d("JSON", "object_duration:" + object_duration);
                 urlConnection.disconnect();
                 br.close();
-                return object_duration.getString("value") + "," + object_distance.getString("value");
+                System.out.println(object_distance.getString("value"));
+                return object_distance.getString("value");
             }
         }
         catch (Exception e){
