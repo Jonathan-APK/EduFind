@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,8 +30,15 @@ public class MainUI extends AppCompatActivity {
             }
         });
 
+        // This is just a sample usage of the function
         DistanceCalculation d1 = new DistanceCalculation();
         d1.execute("637658", "637659");
+        try {
+            double distance = d1.get();
+            Log.d("distance", String.valueOf(distance));
+        }catch (Exception e){
+            Log.d("distance_error", e.toString());
+        }
     }
 
     @Override
