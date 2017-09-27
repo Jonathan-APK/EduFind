@@ -1,18 +1,16 @@
 package entity;
 
-/**
- * Created by boonleng94 on 27/9/2017.
- */
-
 public class Course {
-    String courseName;
-    String interest;
-    String specialization;
-    String website;
-    String school;
-    String educationLevel;
-    String description;
-    int intake;
+    private String courseName;
+    private String interest;
+    private String specialization;
+    private String website;
+    private String school;
+    private String educationLevel;
+    private String description;
+    private int intake;
+
+
 
     public String getCourseName() {
         return courseName;
