@@ -22,4 +22,9 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="drawer">
+        <item name="android:textSize">18sp</item>
+        <item name="android:typeface">normal</item>
+    </style>
+
 </resources>

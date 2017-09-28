@@ -2,16 +2,13 @@
     <string name="app_name">EduFind</string>
     <string name="action_settings">Settings</string>
     <string name="New_Search">New Search</string>
-    <string name="Bookmarks">Bookmarks</string>
     <string name="EduFind">EduFind</string>
+    <string name="Home">Home</string>
+    <string name="Bookmarks">Bookmarks</string>
+    <string name="AboutUs">About Us</string>
     <string name="google_maps_key">
         AIzaSyA4weAen8iFGCIl_RxzGmFEodGV-YXPVFw
     </string>
-    <string-array name="drawer_string_array">
-        <item>Home</item>
-        <item>Bookmarks</item>
-        <item>About Us</item>
-    </string-array>
     <string name="drawer_open">Drawer open</string>
     <string name="drawer_close">Drawer close</string>
 </resources>
