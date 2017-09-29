@@ -40,12 +40,13 @@ public class CourseSearchController {
     public ArrayList<PolytechnicCourse> search(String interest, String specialization, int L1R4, int postalCode) {
         ArrayList<PolytechnicCourse> courseList = new ArrayList<PolytechnicCourse>();
         ArrayList<PolytechnicCourse> sortedCourseList = new ArrayList<PolytechnicCourse>();
+        PolytechnicCourse temp = new PolytechnicCourse();
 
         //Retrieve list of courses
         courseList = CourseController.retrieveListOfPolyCourses();
 
         for (int i = 0; i < courseList.size(); i++) {
-            PolytechnicCourse temp = courseList.get(i);
+            temp = courseList.get(i);
             //Filter by interests and specialization
             if (temp.getInterest().equals(interest) && temp.getSpecialization().equals(specialization)) {
                 //Filter by L1R4
@@ -56,7 +57,17 @@ public class CourseSearchController {
         }
 
         //Sort by distance
+        DistanceCalculation d1 = new DistanceCalculation();
 
-        return courseList;
+        for (int i = 0; i < sortedCourseList.size(); i++) {
+            d1.execute("637658", "637659");
+            try {
+                double distance = d1.get();
+                //Log.d("distance", String.valueOf(distance));
+            } catch (Exception e) {
+                //Log.d("distance_error", e.toString());
+            }
+        }
+        return sortedCourseList;
     }
 }
