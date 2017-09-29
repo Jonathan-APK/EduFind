@@ -14,15 +14,15 @@ public class Course {
     public Course() {
     }
 
-    public Course(String courseName, String interest, String specialization, Institution institution, String website, String school, String educationLevel, String courseDescription, int intake) {
+    public Course(String courseName, String interest, String specialization, String website, String school, String educationLevel, String courseDescription, Institution institution, int intake) {
         this.courseName = courseName;
         this.interest = interest;
         this.specialization = specialization;
-        this.institution = institution;
         this.website = website;
         this.school = school;
         this.educationLevel = educationLevel;
         this.courseDescription = courseDescription;
+        this.institution = institution;
         this.intake = intake;
     }
 
