@@ -6,10 +6,11 @@
     android:layout_height="match_parent">
 
 <!-- The main content view -->
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolBar"
@@ -18,7 +19,58 @@
             android:background="?attr/colorPrimary"
             android:elevation="4dp"
             android:theme="@style/appBarMainTheme" />
-    </FrameLayout>
+
+        <TextView
+            android:id="@+id/areaOfInterestTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="120dp"
+            android:text="@string/AreaOfInterest"
+            android:textColor="@color/colorAccent"
+            android:textAllCaps="true"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/areaOfInterestSpinner"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:dropDownWidth="match_parent"
+            android:minWidth="200dp"
+            android:spinnerMode="dialog" />
+
+        <TextView
+            android:id="@+id/specializationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/Specialization"
+            android:textColor="@color/colorAccent"
+            android:textAllCaps="true"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/specializationSpinner"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:dropDownWidth="match_parent"
+            android:minWidth="200dp"
+            android:spinnerMode="dropdown" />
+
+        <Button
+            android:id="@+id/nextSearchBtn"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:theme="@style/greenBtn"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Next" />
+    </LinearLayout>
 
     <!-- The navigation drawer -->
     <android.support.design.widget.NavigationView

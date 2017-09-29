@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dummyArray">
+        <item>Satu</item>
+        <item>Dua</item>
+        <item>Tiga</item>
+        <item>Empat</item>
+        <item>Lima</item>
+        <item>Enam</item>
+        <item>Tujuh</item>
+        <item>Lapan</item>
+        <item>Sembilan</item>
+        <item>Sepuluh</item>
+        <item>Satu</item>
+        <item>Dua</item>
+        <item>Tiga</item>
+        <item>Empat</item>
+        <item>Lima</item>
+        <item>Enam</item>
+        <item>Tujuh</item>
+        <item>Lapan</item>
+        <item>Sembilan</item>
+        <item>Sepuluh</item>
+        <item>Satu</item>
+        <item>Dua</item>
+        <item>Tiga</item>
+        <item>Empat</item>
+        <item>Lima</item>
+        <item>Enam</item>
+        <item>Tujuh</item>
+        <item>Lapan</item>
+        <item>Sembilan</item>
+        <item>Sepuluh</item>
+        <item>Satu</item>
+        <item>Dua</item>
+        <item>Tiga</item>
+        <item>Empat</item>
+        <item>Lima</item>
+        <item>Enam</item>
+        <item>Tujuh</item>
+        <item>Lapan</item>
+        <item>Sembilan</item>
+        <item>Sepuluh</item>
+    </string-array>
+</resources>

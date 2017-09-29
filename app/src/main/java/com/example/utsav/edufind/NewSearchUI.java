@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class NewSearchUI extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
@@ -89,6 +91,27 @@ public class NewSearchUI extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
         //calling sync state is necessay or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
+        //
+
+        //Populate areaOfInterestSpinner
+        Spinner areaOfInterest = (Spinner) findViewById(R.id.areaOfInterestSpinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        R.array.dummyArray, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        areaOfInterest.setAdapter(adapter);
+
+        //Populate specializationSpinner
+        Spinner specializationSpinner = (Spinner) findViewById(R.id.specializationSpinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.dummyArray, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        specializationSpinner.setAdapter(adapter);
     }
 
     @Override

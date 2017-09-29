@@ -55,18 +55,14 @@
 
     <Button
         android:id="@+id/button"
+        android:theme="@style/whiteBtn"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginTop="65dp"
-        android:backgroundTint="@color/white"
-        android:fontFamily="sans-serif"
-        android:onClick="goToSearchResultsUI"
-        android:text="Search results"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/colorAccent"
-        android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookmarksBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/bookmarksBtn"
+        android:text="Search results"
+        android:onClick="goToSearchResultsUI"
+        android:layout_marginTop="127dp"
+        app:layout_constraintHorizontal_bias="0.496" />
 </android.support.constraint.ConstraintLayout>
