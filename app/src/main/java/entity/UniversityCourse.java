@@ -4,8 +4,8 @@ package entity;
  * Created by boonleng94 on 27/9/2017.
  */
 
-public class UniversityCourse {
-    double gradePointAverage;
+public class UniversityCourse extends Course{
+    private double gradePointAverage;
 
     public double getGradePointAverage() {
         return gradePointAverage;

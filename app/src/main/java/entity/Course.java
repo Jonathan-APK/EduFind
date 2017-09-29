@@ -10,8 +10,6 @@ public class Course {
     private String description;
     private int intake;
 
-
-
     public String getCourseName() {
         return courseName;
     }

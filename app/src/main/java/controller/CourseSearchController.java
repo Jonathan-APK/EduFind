@@ -1,6 +1,8 @@
 package controller;
 
 import entity.Course;
+import entity.PolytechnicCourse;
+
 import java.util.ArrayList;
 
 /**
@@ -35,12 +37,24 @@ public class CourseSearchController {
         return valid;
     }
 
-    public ArrayList<Course> search(String interest, String specialization, int L1R4, int postalCode) {
-        ArrayList<Course> courseList = new ArrayList<Course>();
+    public ArrayList<PolytechnicCourse> search(String interest, String specialization, int L1R4, int postalCode) {
+        ArrayList<PolytechnicCourse> courseList = new ArrayList<PolytechnicCourse>();
+        ArrayList<PolytechnicCourse> sortedCourseList = new ArrayList<PolytechnicCourse>();
 
         //Retrieve list of courses
-        //Filter by L1R4
-        //Filter by interests and specialization
+        courseList = CourseController.retrieveListOfPolyCourses();
+
+        for (int i = 0; i < courseList.size(); i++) {
+            PolytechnicCourse temp = courseList.get(i);
+            //Filter by interests and specialization
+            if (temp.getInterest().equals(interest) && temp.getSpecialization().equals(specialization)) {
+                //Filter by L1R4
+                if (L1R4 <= temp.getL1R4()) {
+                    sortedCourseList.add(courseList.get(i));
+                }
+            }
+        }
+
         //Sort by distance
 
         return courseList;

@@ -5,8 +5,8 @@ package entity;
  */
 
 public class School {
-    String institution;
-    int schoolPostalCode;
+    private String institution;
+    private int schoolPostalCode;
 
     public String getInstitution() {
         return institution;

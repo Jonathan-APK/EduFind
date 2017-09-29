@@ -1,6 +1,6 @@
 package entity;
 
-public class PolytechnicCourse {
+public class PolytechnicCourse extends Course{
     private String polyCourseName;
     private int L1R4;
 

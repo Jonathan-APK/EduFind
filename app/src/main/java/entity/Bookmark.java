@@ -5,10 +5,10 @@ package entity;
  */
 
 public class Bookmark {
-    String interest;
-    String specialization;
-    int L1R4;
-    int postalCode;
+    private String interest;
+    private String specialization;
+    private int L1R4;
+    private int postalCode;
 
     public String getInterest() {
         return interest;
