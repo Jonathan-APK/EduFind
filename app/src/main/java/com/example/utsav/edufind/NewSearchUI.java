@@ -60,7 +60,9 @@ public class NewSearchUI extends AppCompatActivity {
                         return true;
 
                     case R.id.aboutus:
-
+                        intent = new Intent(NewSearchUI.super.getApplication(), AboutUs.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                         return true;
 
                     default:
