@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-public class NewSearchUI extends AppCompatActivity {
+public class NewSearchUIPage2 extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
@@ -21,7 +21,7 @@ public class NewSearchUI extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.new_search_ui);
+        setContentView(R.layout.new_search_uipage2);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(myToolbar);
@@ -48,13 +48,13 @@ public class NewSearchUI extends AppCompatActivity {
 
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
-                        intent = new Intent(NewSearchUI.super.getApplication(), NewSearchUI.class);
+                        intent = new Intent(NewSearchUIPage2.super.getApplication(), NewSearchUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
 
                     case R.id.bookmarks:
-                        intent = new Intent(NewSearchUI.super.getApplication(), BookmarksUI.class);
+                        intent = new Intent(NewSearchUIPage2.super.getApplication(), BookmarksUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
@@ -93,25 +93,15 @@ public class NewSearchUI extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
         //
 
-        //Populate areaOfInterestSpinner
-        Spinner areaOfInterestSpinner = (Spinner) findViewById(R.id.areaOfInterestSpinner);
+        //Populate L1R4Spinner
+        Spinner LIR4Spinner = (Spinner) findViewById(R.id.L1R4Spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-        R.array.dummyArray, android.R.layout.simple_spinner_item);
+                R.array.L1R4Values, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        areaOfInterestSpinner.setAdapter(adapter);
-
-        //Populate specializationSpinner
-        Spinner specializationSpinner = (Spinner) findViewById(R.id.specializationSpinner);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        adapter = ArrayAdapter.createFromResource(this,
-                R.array.dummyArray, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        specializationSpinner.setAdapter(adapter);
+        LIR4Spinner.setAdapter(adapter);
     }
 
     @Override
@@ -136,9 +126,8 @@ public class NewSearchUI extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void goToNewSearchUIPage2(View view) {
-        intent = new Intent(this, NewSearchUIPage2.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    public void submitSearchResults(View view) {
+        Intent intent = new Intent(this, SearchResultsUI.class);
         startActivity(intent);
     }
 }

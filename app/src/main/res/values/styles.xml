@@ -20,6 +20,7 @@
     <style name="appBarMainTheme" parent="@style/Widget.AppCompat.ActionBar">
         <item name="titleTextColor">@color/white</item>
         <item name="android:textSize">20sp</item>
+        <item name="colorControlNormal">@color/white</item>
     </style>
 
     <style name="drawer">

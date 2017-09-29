@@ -31,10 +31,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewSearchUI"></activity>
-        <activity android:name=".BookmarksUI"></activity>
-        <activity android:name=".SearchResultsUI"></activity>
-        <activity android:name=".AboutUs"></activity>
+        <activity android:name=".NewSearchUI" />
+        <activity android:name=".BookmarksUI" />
+        <activity android:name=".SearchResultsUI" />
+        <activity android:name=".AboutUs" />
+        <activity android:name=".NewSearchUIPage2"></activity>
     </application>
 
 </manifest>
