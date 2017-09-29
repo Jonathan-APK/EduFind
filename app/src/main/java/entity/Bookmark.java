@@ -10,6 +10,16 @@ public class Bookmark {
     private int L1R4;
     private int postalCode;
 
+    public Bookmark() {
+    }
+
+    public Bookmark(String interest, String specialization, int l1R4, int postalCode) {
+        this.interest = interest;
+        this.specialization = specialization;
+        L1R4 = l1R4;
+        this.postalCode = postalCode;
+    }
+
     public String getInterest() {
         return interest;
     }
