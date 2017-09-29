@@ -6,15 +6,17 @@ package entity;
 
 public class Institution {
     private String institution;
-    private int schoolPostalCode;
+    private String instiDescription;
+    private int postalCode;
 
     public Institution() {
 
     }
 
-    public Institution(String institution, int schoolPostalCode) {
+    public Institution(String institution, String instiDescription, int postalCode) {
         this.institution = institution;
-        this.schoolPostalCode = schoolPostalCode;
+        this.instiDescription = instiDescription;
+        this.postalCode = postalCode;
     }
 
     public String getInstitution() {
@@ -25,11 +27,19 @@ public class Institution {
         this.institution = institution;
     }
 
-    public int getSchoolPostalCode() {
-        return schoolPostalCode;
+    public String getInstiDescription() {
+        return instiDescription;
     }
 
-    public void setSchoolPostalCode(int schoolPostalCode) {
-        this.schoolPostalCode = schoolPostalCode;
+    public void setInstiDescription(String instiDescription) {
+        this.instiDescription = instiDescription;
+    }
+
+    public int getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(int postalCode) {
+        this.postalCode = postalCode;
     }
 }

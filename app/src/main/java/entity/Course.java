@@ -1,17 +1,30 @@
 package entity;
 
-import entity.Institution;
-
 public class Course {
     private String courseName;
     private String interest;
     private String specialization;
-    private Institution institution;
     private String website;
     private String school;
     private String educationLevel;
-    private String description;
+    private String courseDescription;
+    private Institution institution;
     private int intake;
+
+    public Course() {
+    }
+
+    public Course(String courseName, String interest, String specialization, Institution institution, String website, String school, String educationLevel, String courseDescription, int intake) {
+        this.courseName = courseName;
+        this.interest = interest;
+        this.specialization = specialization;
+        this.institution = institution;
+        this.website = website;
+        this.school = school;
+        this.educationLevel = educationLevel;
+        this.courseDescription = courseDescription;
+        this.intake = intake;
+    }
 
     public String getCourseName() {
         return courseName;
@@ -35,14 +48,6 @@ public class Course {
 
     public void setSpecialization(String specialization) {
         this.specialization = specialization;
-    }
-
-    public Instuition getInstitution() {
-        return institution;
-    }
-
-    public void setInstitution(Instuition institution) {
-        this.institution = institution;
     }
 
     public String getWebsite() {
@@ -69,12 +74,20 @@ public class Course {
         this.educationLevel = educationLevel;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCourseDescription() {
+        return courseDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCourseDescription(String courseDescription) {
+        this.courseDescription = courseDescription;
+    }
+
+    public Institution getInstitution() {
+        return institution;
+    }
+
+    public void setInstitution(Institution institution) {
+        this.institution = institution;
     }
 
     public int getIntake() {
