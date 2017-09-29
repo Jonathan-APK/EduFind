@@ -60,7 +60,8 @@ public class CourseSearchController {
         DistanceCalculation d1 = new DistanceCalculation();
 
         for (int i = 0; i < sortedCourseList.size(); i++) {
-            d1.execute("637658", "637659");
+            temp = sortedCourseList.get(i);
+            d1.execute(Integer.toString(postalCode), Integer.toString(temp.getInstitution());
             try {
                 double distance = d1.get();
                 //Log.d("distance", String.valueOf(distance));

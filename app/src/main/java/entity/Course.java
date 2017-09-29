@@ -1,9 +1,12 @@
 package entity;
 
+import entity.Institution;
+
 public class Course {
     private String courseName;
     private String interest;
     private String specialization;
+    private Institution institution;
     private String website;
     private String school;
     private String educationLevel;
@@ -32,6 +35,14 @@ public class Course {
 
     public void setSpecialization(String specialization) {
         this.specialization = specialization;
+    }
+
+    public Instuition getInstitution() {
+        return institution;
+    }
+
+    public void setInstitution(Instuition institution) {
+        this.institution = institution;
     }
 
     public String getWebsite() {

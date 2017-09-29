@@ -49,7 +49,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PolytechnicCourseV
 
     @Override
     public void onBindViewHolder(PolytechnicCourseViewHolder polytechnicCourseViewHolder, int i) {
-        polytechnicCourseViewHolder.polyCourseName.setText(polyCourses.get(i).getPolyCourseName());
+        //polytechnicCourseViewHolder.polyCourseName.setText(polyCourses.get(i).getPolyCourseName());
         polytechnicCourseViewHolder.polyCourseL1R4.setText(String.valueOf(polyCourses.get(i).getL1R4()));
     }
 
