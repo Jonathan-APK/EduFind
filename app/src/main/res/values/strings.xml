@@ -15,4 +15,6 @@
     <string name="drawer_close">Drawer close</string>
     <string name="L1R4">L1R4</string>
     <string name="PostalCode">Postal Code</string>
+    <string name="BookmarkSearchParameters">Bookmark Search Parameters</string>
+    <string name="Submit">Submit</string>
 </resources>

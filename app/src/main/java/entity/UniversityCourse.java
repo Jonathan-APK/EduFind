@@ -10,8 +10,8 @@ public class UniversityCourse extends Course{
     public UniversityCourse() {
     }
 
-    public UniversityCourse(String courseName, String interest, String specialization, Institution institution, String website, String school, String educationLevel, String description, int intake, double gradePointAverage) {
-        super(courseName, interest, specialization, institution, website, school, educationLevel, description, intake);
+    public UniversityCourse(String courseName, String interest, String specialization, String website, String school, String educationLevel, String courseDescription, Institution institution, int intake, double gradePointAverage) {
+        super(courseName, interest, specialization, website, school, educationLevel, courseDescription, institution, intake);
         this.gradePointAverage = gradePointAverage;
     }
 
