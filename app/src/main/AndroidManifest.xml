@@ -35,7 +35,11 @@
         <activity android:name=".BookmarksUI" />
         <activity android:name=".SearchResultsUI" />
         <activity android:name=".AboutUs" />
-        <activity android:name=".NewSearchUIPage2"></activity>
+        <activity android:name=".NewSearchUIPage2" />
+        <activity
+            android:name=".PolytechnicDetails"
+            android:label="@string/title_activity_polytechnic_details"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

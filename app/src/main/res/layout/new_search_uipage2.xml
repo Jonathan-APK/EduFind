@@ -63,6 +63,7 @@
             android:drawablePadding="10dp"
             android:inputType="number"
             android:maxLength="6"
+            android:digits="0123456789"
             android:minWidth="200dp" />
 
         <Button
