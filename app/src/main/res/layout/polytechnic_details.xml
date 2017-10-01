@@ -46,7 +46,6 @@
             android:theme="@style/AppTheme"
             android:textAllCaps ="false"
             textAllCaps = "false"/>
-
     </LinearLayout>
 
     <!-- The navigation drawer -->
@@ -57,7 +56,6 @@
     android:layout_gravity="start"
     app:headerLayout="@layout/header"
     app:menu="@menu/drawer"
-    app:theme="@style/drawer"
-        />
+    app:theme="@style/drawer" />
 
 </android.support.v4.widget.DrawerLayout>
