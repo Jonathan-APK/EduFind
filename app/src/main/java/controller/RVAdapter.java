@@ -36,10 +36,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
         }
     }
 
-    List<PolytechnicCourse> polyCourses;
+    List<PolytechnicCourse> courses;
 
-    public RVAdapter(List<PolytechnicCourse> polyCourses){
-        this.polyCourses = polyCourses;
+    public RVAdapter(List<PolytechnicCourse> courses){
+        this.courses = courses;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
 
     @Override
     public void onBindViewHolder(CourseViewHolder CourseViewHolder, int i) {
-        switch(polyCourses.get(i).getSchool()){
+        switch(courses.get(i).getSchool()){
 
             case "Singapore Polytechnic":
                 {
@@ -90,16 +90,16 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
 
             default:
         }
-        CourseViewHolder.SchoolName.setText(polyCourses.get(i).getSchool());
-        CourseViewHolder.CourseName.setText(polyCourses.get(i).getCourseName());
-        CourseViewHolder.CourseL1R4.setText(String.valueOf(polyCourses.get(i).getL1R4()));
-        CourseViewHolder.CourseIntake.setText(String.valueOf(polyCourses.get(i).getIntake()));
+        CourseViewHolder.SchoolName.setText(courses.get(i).getSchool());
+        CourseViewHolder.CourseName.setText(courses.get(i).getCourseName());
+        CourseViewHolder.CourseL1R4.setText(String.valueOf(courses.get(i).getL1R4()));
+        CourseViewHolder.CourseIntake.setText(String.valueOf(courses.get(i).getIntake()));
         CourseViewHolder.CourseWebsite.setImageResource(R.drawable.website);
 
     }
 
     @Override
     public int getItemCount() {
-        return polyCourses.size();
+        return courses.size();
     }
 }
