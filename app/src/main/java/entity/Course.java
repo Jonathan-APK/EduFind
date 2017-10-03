@@ -13,6 +13,12 @@ public class Course {
 
     public Course() {
     }
+    public Course(String courseName, String school, int intake, String website) {
+        this.courseName = courseName;
+        this.school = school;
+        this.intake = intake;
+        this.website = website;
+    }
 
     public Course(String courseName, String interest, String specialization, String website, String school, String educationLevel, String courseDescription, Institution institution, int intake) {
         this.courseName = courseName;

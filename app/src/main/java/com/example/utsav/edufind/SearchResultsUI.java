@@ -83,10 +83,10 @@ public class SearchResultsUI extends AppCompatActivity {
 
     private void initializeData(){
         polyCourses = new ArrayList<>();
-        polyCourses.add(new PolytechnicCourse());
 
-        //polyCourses.add(new PolytechnicCourse("Diploma in Business Management", 13));
-        //polyCourses.add(new PolytechnicCourse("Diploma in Digital Media", 11));
+        polyCourses.add(new PolytechnicCourse("Diploma in Business Management", "Nanyang Polytechnic",250, 13, "URL"));
+        polyCourses.add(new PolytechnicCourse("Diploma in Digital Media", "Singapore Polytechnic", 400, 11, "URL"));
+        polyCourses.add(new PolytechnicCourse("Diploma in Accountancy", "Singapore Polytechnic", 600, 19, "URL"));
     }
 
     private void initializeAdapter(){

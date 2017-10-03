@@ -10,35 +10,63 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        >
+        android:layout_height="143dp"
+        android:padding="2dp">
 
         <ImageView
+            android:id="@+id/School_Logo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/polyCourse_photo"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="16dp"
-            />
+            android:layout_height="wrap_content" />
+
 
         <TextView
+            android:id="@+id/School_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/polyCourse_name"
-            android:layout_toRightOf="@+id/polyCourse_photo"
             android:layout_alignParentTop="true"
-            android:textSize="30sp"
-            />
+            android:layout_toEndOf="@+id/School_Logo"
+            android:paddingLeft="10dp"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/Course_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/polyCourse_L1R4"
-            android:layout_toRightOf="@+id/polyCourse_photo"
-            android:layout_below="@+id/polyCourse_name"
-            />
+            android:layout_below="@+id/School_name"
+            android:layout_toRightOf="@+id/School_Logo"
+            android:paddingLeft="10dp"
+            android:textSize="10sp" />
+
+        <View
+            android:id="@+id/view"
+            style="@style/Divider"
+            android:layout_below="@+id/School_Logo" />
+
+        <TextView
+            android:id="@+id/Course_L1R4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="33dp"
+            android:text="GPA" />
+
+        <TextView
+            android:id="@+id/Course_Intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="33dp"
+            android:layout_marginLeft="50dp" />
+
+        <ImageView
+            android:id="@+id/Course_Website"
+            android:layout_width="49dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="33dp"
+            android:layout_marginLeft="100dp" />
+
 
     </RelativeLayout>
 
