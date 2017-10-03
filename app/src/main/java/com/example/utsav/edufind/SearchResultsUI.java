@@ -1,8 +1,6 @@
 package com.example.utsav.edufind;
 
 import android.content.Intent;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -27,6 +25,7 @@ public class SearchResultsUI extends AppCompatActivity {
     private NavigationView navigationView;
 
     private ArrayList<PolytechnicCourse> polyCourses;
+    private ArrayList<UniversityCourse> uniCourses;
     private RecyclerView rv;
 
     @Override
@@ -84,13 +83,20 @@ public class SearchResultsUI extends AppCompatActivity {
     private void initializeData(){
         polyCourses = new ArrayList<>();
 
+        //When integration only need these lines
+        //polyCourses = coursesearchcontroller.search();
+        //or
+        //uniCourses = ???;
+
         polyCourses.add(new PolytechnicCourse("Diploma in Business Management", "Nanyang Polytechnic",250, 13, "URL"));
         polyCourses.add(new PolytechnicCourse("Diploma in Digital Media", "Singapore Polytechnic", 400, 11, "URL"));
         polyCourses.add(new PolytechnicCourse("Diploma in Accountancy", "Singapore Polytechnic", 600, 19, "URL"));
+        polyCourses.add(new PolytechnicCourse("Diploma in Biological Sciences", "Temasek Polytechnic", 300, 12, "URL"));
     }
 
     private void initializeAdapter(){
         RVAdapter adapter = new RVAdapter(polyCourses);
+        // RVAdapter adapter = new RVAdapter(uniCourses);
         rv.setAdapter(adapter);
     }
 
@@ -163,7 +169,7 @@ public class SearchResultsUI extends AppCompatActivity {
 
         //Setting the actionbarToggle to drawer layout
             mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
-        //calling sync state is necessay or else your hamburger icon wont show up
+        //calling sync state is necessary or else your hamburger icon wont show up
             actionBarDrawerToggle.syncState();
     }
 }

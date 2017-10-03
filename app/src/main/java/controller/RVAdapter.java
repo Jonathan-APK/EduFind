@@ -1,6 +1,6 @@
 package controller;
 
-import android.content.Intent;
+
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,20 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.ImageView;
-
-import com.example.utsav.edufind.AboutUs;
-import com.example.utsav.edufind.BookmarksUI;
-import com.example.utsav.edufind.NewSearchUI;
 import com.example.utsav.edufind.R;
-import com.example.utsav.edufind.SearchResultsUI;
-
 import java.util.List;
-
 import entity.PolytechnicCourse;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PolytechnicCourseViewHolder> {
+public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> {
 
-    public static class PolytechnicCourseViewHolder extends RecyclerView.ViewHolder {
+    public static class CourseViewHolder extends RecyclerView.ViewHolder {
 
         CardView cv;
         TextView CourseName;
@@ -31,7 +24,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PolytechnicCourseV
         ImageView CourseWebsite;
         ImageView SchoolLogo;
 
-        PolytechnicCourseViewHolder(View itemView) {
+        CourseViewHolder(View itemView) {
             super(itemView);
             cv = itemView.findViewById(R.id.cv);
             CourseName = itemView.findViewById(R.id.Course_name);
@@ -55,53 +48,53 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PolytechnicCourseV
     }
 
     @Override
-    public PolytechnicCourseViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public CourseViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item, viewGroup, false);
-        PolytechnicCourseViewHolder pvh = new PolytechnicCourseViewHolder(v);
+        CourseViewHolder pvh = new CourseViewHolder(v);
         return pvh;
     }
 
     @Override
-    public void onBindViewHolder(PolytechnicCourseViewHolder polytechnicCourseViewHolder, int i) {
+    public void onBindViewHolder(CourseViewHolder CourseViewHolder, int i) {
         switch(polyCourses.get(i).getSchool()){
 
             case "Singapore Polytechnic":
                 {
-                polytechnicCourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sp);
+                CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sp);
                     break;
                 }
 
             case "Ngee Ann Polytechnic":
                 {
-                polytechnicCourseViewHolder.SchoolLogo.setImageResource(R.mipmap.np);
+                CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.np);
                     break;
                 }
 
             case "Republic Polytechnic":
                 {
-                polytechnicCourseViewHolder.SchoolLogo.setImageResource(R.mipmap.rp);
+                CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.rp);
                     break;
                 }
 
             case "Nanyang Polytechnic":
                 {
-                polytechnicCourseViewHolder.SchoolLogo.setImageResource(R.mipmap.nyp);
+                CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.nyp);
                     break;
                 }
 
             case "Temasek Polytechnic":
                 {
-                polytechnicCourseViewHolder.SchoolLogo.setImageResource(R.mipmap.tp);
+                CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.tp);
                     break;
                 }
 
             default:
         }
-        polytechnicCourseViewHolder.SchoolName.setText(polyCourses.get(i).getSchool());
-        polytechnicCourseViewHolder.CourseName.setText(polyCourses.get(i).getCourseName());
-        polytechnicCourseViewHolder.CourseL1R4.setText(String.valueOf(polyCourses.get(i).getL1R4()));
-        polytechnicCourseViewHolder.CourseIntake.setText(String.valueOf(polyCourses.get(i).getIntake()));
-        polytechnicCourseViewHolder.CourseWebsite.setImageResource(R.drawable.website);
+        CourseViewHolder.SchoolName.setText(polyCourses.get(i).getSchool());
+        CourseViewHolder.CourseName.setText(polyCourses.get(i).getCourseName());
+        CourseViewHolder.CourseL1R4.setText(String.valueOf(polyCourses.get(i).getL1R4()));
+        CourseViewHolder.CourseIntake.setText(String.valueOf(polyCourses.get(i).getIntake()));
+        CourseViewHolder.CourseWebsite.setImageResource(R.drawable.website);
 
     }
 
