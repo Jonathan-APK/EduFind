@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+
 import entity.PolytechnicCourse;
 import entity.UniversityCourse;
 import entity.Institution;
@@ -14,7 +15,6 @@ import entity.Institution;
  */
 
 public class CourseController {
-
     private static Institution institute;
     private static String csvFile;
     private static BufferedReader br = null;
@@ -25,13 +25,15 @@ public class CourseController {
     private static ArrayList<PolytechnicCourse> polyList;
     private static PolytechnicCourse poly;
     private static UniversityCourse uni;
+    private static String polyFile = "/Users/darks/Desktop/poly.csv";
+    private static String uniFile = "/Users/darks/Desktop/uni.csv";
 
     public static ArrayList<PolytechnicCourse> retrieveListOfPolyCourses() {
 
         polyList = new ArrayList<PolytechnicCourse>();
         poly = new PolytechnicCourse();
 
-        csvFile = "/Users/darks/Desktop/poly.csv";
+        csvFile = polyFile;
 
         try {
 
@@ -41,7 +43,7 @@ public class CourseController {
                 // use comma as separator
                 tempArray = line.split(delimiter);
 
-                institute  = new Institution(tempArray[0],tempArray[12],Integer.parseInt(tempArray[5]));
+                institute = new Institution(tempArray[0], tempArray[12], Integer.parseInt(tempArray[5]));
 
                 poly.setInstitution(institute);
                 poly.setSchool(tempArray[1]);
@@ -78,7 +80,7 @@ public class CourseController {
         uniList = new ArrayList<UniversityCourse>();
         uni = new UniversityCourse();
 
-        csvFile = "/Users/darks/Desktop/uni.csv";
+        csvFile = uniFile;
 
         try {
 
@@ -88,7 +90,7 @@ public class CourseController {
                 // use comma as separator
                 tempArray = line.split(delimiter);
 
-                institute  = new Institution(tempArray[0],tempArray[12],Integer.parseInt(tempArray[5]));
+                institute = new Institution(tempArray[0], tempArray[12], Integer.parseInt(tempArray[5]));
 
                 uni.setInstitution(institute);
                 uni.setSchool(tempArray[1]);
@@ -121,7 +123,6 @@ public class CourseController {
     }
 
     public static ArrayList<Institution> retrieveListOfInstitution() {
-
         ArrayList<Institution> schList = new ArrayList<Institution>();
         uniList = retrieveListOfUniCourses();
         polyList = retrieveListOfPolyCourses();
@@ -129,27 +130,23 @@ public class CourseController {
 
         for (int i = 0; i < uniList.size(); i++) {
 
-            if(schList.isEmpty()){
-
-                institute  = uniList.get(i).getInstitution();
+            if (schList.isEmpty()) {
+                institute = uniList.get(i).getInstitution();
                 schList.add(institute);
+            } else {
 
-            }
-            else{
+                for (int j = 0; j < schList.size(); j++) {
 
-                for(int j=0; j< schList.size();j++){
-
-                    if(uniList.get(i).getInstitution().getInstitution().equals(schList.get(j).getInstitution())){
+                    if (uniList.get(i).getInstitution().getInstitution().equals(schList.get(j).getInstitution())) {
                         alreadyAdded = true;
                         break;
                     }
 
                 }
 
-                if(alreadyAdded = false){
+                if (alreadyAdded = false) {
                     schList.add(institute);
-                }
-                else
+                } else
                     alreadyAdded = false;
 
             }
@@ -159,33 +156,30 @@ public class CourseController {
 
         for (int i = 0; i < polyList.size(); i++) {
 
-            if(schList.isEmpty()){
+            if (schList.isEmpty()) {
 
-                institute  = polyList.get(i).getInstitution();
+                institute = polyList.get(i).getInstitution();
                 schList.add(institute);
 
-            }
-            else{
+            } else {
 
-                for(int j=0; j< schList.size();j++){
+                for (int j = 0; j < schList.size(); j++) {
 
-                    if(polyList.get(i).getInstitution().getInstitution().equals(schList.get(j).getInstitution())){
+                    if (polyList.get(i).getInstitution().getInstitution().equals(schList.get(j).getInstitution())) {
                         alreadyAdded = true;
                         break;
                     }
 
                 }
 
-                if(alreadyAdded = false){
+                if (alreadyAdded = false) {
                     schList.add(institute);
-                }
-                else
+                } else
                     alreadyAdded = false;
 
             }
 
         }
-
         return schList;
     }
 }

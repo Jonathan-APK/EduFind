@@ -20,14 +20,14 @@ public class BookmarkController {
     private static Bookmark bookmark;
     private static ArrayList<Bookmark> bookmarkList;
     private static boolean rt = false;
+    private static String bookmarkFile = "/Users/darks/Desktop/bookmark.csv";
 
 
     public static ArrayList<Bookmark> retrieveListOfBookmark() {
-
         bookmarkList = new ArrayList<Bookmark>();
         bookmark = new Bookmark();
 
-        csvFile = "/Users/darks/Desktop/bookmark.csv";
+        csvFile = bookmarkFile;
 
         try {
 
@@ -63,13 +63,14 @@ public class BookmarkController {
 
 
     public static boolean updateBookmark(ArrayList<Bookmark> newList) {
+        csvFile = bookmarkFile;
 
         if(newList.size() <=0)
             return rt;
         else{
             try{
 
-                bw = new BufferedWriter(new FileWriter("/Users/darks/Desktop/bookmark.csv"));
+                bw = new BufferedWriter(new FileWriter(csvFile));
 
                 for(int i=0; i<newList.size(); i++) {
 
