@@ -10,6 +10,7 @@
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F7F6F6"
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
@@ -37,11 +38,13 @@
             android:id="@+id/L1R4Spinner"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="50dp"
-            android:background="@android:drawable/btn_dropdown"
+            android:gravity='center'
+            android:background="@drawable/spinner_bg"
             android:dropDownWidth="match_parent"
             android:minWidth="200dp"
-            android:spinnerMode="dialog" />
+            android:spinnerMode="dropdown" />
 
         <TextView
             android:id="@+id/postalCodeTextView"
@@ -60,11 +63,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:drawableStart="@drawable/pindrop"
+            android:background="#ffffff"
             android:drawablePadding="10dp"
             android:inputType="number"
             android:maxLength="6"
             android:digits="0123456789"
-            android:minWidth="200dp" />
+            android:minWidth="200dp"
+            android:height="32dp"
+            android:layout_marginTop="10dp"
+            android:text="764426"/>
 
         <Button
             android:id="@+id/submitBtn"
