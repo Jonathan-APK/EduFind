@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import java.util.ArrayList;
+
+import controller.CourseSearchController;
 import controller.RVAdapter;
 import entity.PolytechnicCourse;
 import entity.UniversityCourse;
@@ -28,8 +30,21 @@ public class SearchResultsUI extends AppCompatActivity {
     private ArrayList<UniversityCourse> uniCourses;
     private RecyclerView rv;
 
+    //Store user inputs from previous activity
+    private String interest;
+    private String specialization;
+    private int L1R4;
+    private int postalCode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Get data from previous activity
+        /*Intent i = getIntent();
+        interest = i.getExtras().getString("interest", "No interest found");
+        specialization = i.getExtras().getString("specialization", "No specialization found");
+        L1R4 = i.getExtras().getInt("L1R4", 20);
+        postalCode = i.getExtras().getInt("postalCode", 000000);*/
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_results_ui);
 
@@ -81,17 +96,14 @@ public class SearchResultsUI extends AppCompatActivity {
     }
 
     private void initializeData(){
+        CourseSearchController c1 = new CourseSearchController();
         polyCourses = new ArrayList<>();
+        polyCourses = c1.search(interest, specialization, L1R4, postalCode);
 
-        //When integration only need these lines
-        //polyCourses = coursesearchcontroller.search();
-        //or
-        //uniCourses = ???;
-
-        polyCourses.add(new PolytechnicCourse("Diploma in Business Management", "Nanyang Polytechnic",250, 13, "URL"));
+        /*polyCourses.add(new PolytechnicCourse("Diploma in Business Management", "Nanyang Polytechnic",250, 13, "URL"));
         polyCourses.add(new PolytechnicCourse("Diploma in Digital Media", "Singapore Polytechnic", 400, 11, "URL"));
         polyCourses.add(new PolytechnicCourse("Diploma in Accountancy", "Singapore Polytechnic", 600, 19, "URL"));
-        polyCourses.add(new PolytechnicCourse("Diploma in Biological Sciences", "Temasek Polytechnic", 300, 12, "URL"));
+        polyCourses.add(new PolytechnicCourse("Diploma in Biological Sciences", "Temasek Polytechnic", 300, 12, "URL"));*/
     }
 
     private void initializeAdapter(){

@@ -72,6 +72,10 @@ public class NewSearchUI extends AppCompatActivity {
     public void goToNewSearchUIPage2(View view) {
         intent = new Intent(this, NewSearchUIPage2.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //Passing data to next activity
+        /*intent.putExtra("interest", interest);
+        intent.putExtra("specialization", specialization);
+        intent.putExtra("L1R4", L1R4);*/
         startActivity(intent);
     }
 

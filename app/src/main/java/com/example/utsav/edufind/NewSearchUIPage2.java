@@ -24,8 +24,17 @@ public class NewSearchUIPage2 extends AppCompatActivity {
     private Intent intent;
     private NavigationView navigationView;
 
+    //Store user inputs from previous activity
+    private String interest;
+    private String specialization;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Get data from previous activity
+        /*Intent i = getIntent();
+        interest = i.getExtras().getString("interest", "No interest found");
+        specialization = i.getExtras().getString("specialization", "No specialization found");*/
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_search_uipage2);
 
@@ -98,6 +107,11 @@ public class NewSearchUIPage2 extends AppCompatActivity {
 
     public void submitSearchResults(View view) {
         Intent intent = new Intent(this, SearchResultsUI.class);
+        //Passing data to next activity
+        /*intent.putExtra("interest", interest);
+        intent.putExtra("specialization", specialization);
+        intent.putExtra("L1R4", L1R4);
+        intent.putExtra("postalCode", postalCode);*/
         startActivity(intent);
     }
 
