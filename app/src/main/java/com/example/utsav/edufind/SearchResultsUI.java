@@ -18,9 +18,9 @@ import java.util.ArrayList;
 
 import controller.CourseSearchController;
 import controller.RVAdapter;
+import entity.Course;
 import entity.PolytechnicCourse;
 import entity.UniversityCourse;
-import entity.Course;
 
 public class SearchResultsUI extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
@@ -99,20 +99,18 @@ public class SearchResultsUI extends AppCompatActivity {
         CourseSearchController c1 = new CourseSearchController();
         courseList = new ArrayList<>();
        // courseList = c1.search(interest, specialization, L1R4, postalCode);
-/*
-Test Code for Polytechnic UI
+
+
         courseList.add(new PolytechnicCourse("Diploma in Business Management", "Nanyang Polytechnic",250, 13, "URL"));
         courseList.add(new PolytechnicCourse("Diploma in Digital Media", "Singapore Polytechnic", 400, 11, "URL"));
         courseList.add(new PolytechnicCourse("Diploma in Accountancy", "Singapore Polytechnic", 600, 19, "URL"));
         courseList.add(new PolytechnicCourse("Diploma in Biological Sciences", "Temasek Polytechnic", 300, 12, "URL"));
-*/
 /*
-Test Code for University UI
         courseList.add(new UniversityCourse("Diploma in Business Management", "National University of Singapore",10, 1, "URL"));
         courseList.add(new UniversityCourse("Diploma in Digital Media", "National Institute of Education", 40, 12, "URL"));
         courseList.add(new UniversityCourse("Diploma in Accountancy", "Nanyang Technological University", 60, 15, "URL"));
         courseList.add(new UniversityCourse("Diploma in Biological Sciences", "Digipen Institute of Technology Singapore", 30, 11, "URL"));
-*/
+        */
     }
 
     private void initializeAdapter(){
