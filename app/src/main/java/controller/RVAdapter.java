@@ -8,9 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.ImageView;
+
+import com.example.utsav.edufind.PolytechnicDetails;
 import com.example.utsav.edufind.R;
 import java.util.List;
 import entity.PolytechnicCourse;
+import entity.UniversityCourse;
+import entity.Course;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> {
 
@@ -18,7 +22,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
 
         CardView cv;
         TextView CourseName;
-        TextView CourseL1R4;
+        TextView CourseGrade;
         TextView SchoolName;
         TextView CourseIntake;
         ImageView CourseWebsite;
@@ -28,7 +32,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             super(itemView);
             cv = itemView.findViewById(R.id.cv);
             CourseName = itemView.findViewById(R.id.Course_name);
-            CourseL1R4 = itemView.findViewById(R.id.Course_L1R4);
+            CourseGrade= itemView.findViewById(R.id.Course_Grade);
             SchoolName = itemView.findViewById(R.id.School_name);
             CourseIntake = itemView.findViewById(R.id.Course_Intake);
             CourseWebsite = itemView.findViewById(R.id.Course_Website);
@@ -36,9 +40,9 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
         }
     }
 
-    List<PolytechnicCourse> courses;
+    List<Course> courses;
 
-    public RVAdapter(List<PolytechnicCourse> courses){
+    public RVAdapter(List<Course> courses){
         this.courses = courses;
     }
 
@@ -56,46 +60,74 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
 
     @Override
     public void onBindViewHolder(CourseViewHolder CourseViewHolder, int i) {
-        switch(courses.get(i).getSchool()){
+        if(courses.get(i) instanceof PolytechnicCourse) {
+            switch (courses.get(i).getSchool()) {
 
-            case "Singapore Polytechnic":
-                {
-                CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sp);
+                case "Singapore Polytechnic": {
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sp);
                     break;
                 }
 
-            case "Ngee Ann Polytechnic":
-                {
-                CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.np);
+                case "Ngee Ann Polytechnic": {
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.np);
                     break;
                 }
 
-            case "Republic Polytechnic":
-                {
-                CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.rp);
+                case "Republic Polytechnic": {
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.rp);
                     break;
                 }
 
-            case "Nanyang Polytechnic":
-                {
-                CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.nyp);
+                case "Nanyang Polytechnic": {
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.nyp);
                     break;
                 }
 
-            case "Temasek Polytechnic":
-                {
-                CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.tp);
+                case "Temasek Polytechnic": {
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.tp);
                     break;
                 }
 
-            default:
+                default:
+            }
+            CourseViewHolder.SchoolName.setText(courses.get(i).getSchool());
+            CourseViewHolder.CourseName.setText(courses.get(i).getCourseName());
+            CourseViewHolder.CourseGrade.setText(String.valueOf(((PolytechnicCourse) courses.get(i)).getL1R4()));
+            CourseViewHolder.CourseIntake.setText(String.valueOf(courses.get(i).getIntake()));
+            CourseViewHolder.CourseWebsite.setImageResource(R.drawable.website);
         }
-        CourseViewHolder.SchoolName.setText(courses.get(i).getSchool());
-        CourseViewHolder.CourseName.setText(courses.get(i).getCourseName());
-        CourseViewHolder.CourseL1R4.setText(String.valueOf(courses.get(i).getL1R4()));
-        CourseViewHolder.CourseIntake.setText(String.valueOf(courses.get(i).getIntake()));
-        CourseViewHolder.CourseWebsite.setImageResource(R.drawable.website);
 
+        //Replace Logo when Ze Hao finds correct logo
+        else if(courses.get(i) instanceof UniversityCourse) {
+            switch (courses.get(i).getSchool()) {
+
+                case "Digipen Institute of Technology Singapore": {
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sp);
+                    break;
+                }
+
+                case "Nanyang Technological University": {
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sp);
+                    break;
+                }
+
+                case "National Institute of Education": {
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sp);
+                    break;
+                }
+
+                case "National University of Singapore": {
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sp);
+                    break;
+                }
+                default:
+            }
+            CourseViewHolder.SchoolName.setText(courses.get(i).getSchool());
+            CourseViewHolder.CourseName.setText(courses.get(i).getCourseName());
+            CourseViewHolder.CourseGrade.setText(String.valueOf(((UniversityCourse) courses.get(i)).getGradePointAverage()));
+            CourseViewHolder.CourseIntake.setText(String.valueOf(courses.get(i).getIntake()));
+            CourseViewHolder.CourseWebsite.setImageResource(R.drawable.website);
+        }
     }
 
     @Override

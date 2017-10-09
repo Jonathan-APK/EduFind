@@ -44,7 +44,7 @@
             android:layout_below="@+id/School_Logo" />
 
         <TextView
-            android:id="@+id/Course_L1R4"
+            android:id="@+id/Course_Grade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
