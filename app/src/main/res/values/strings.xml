@@ -13,10 +13,24 @@
     </string>
     <string name="drawer_open">Drawer open</string>
     <string name="drawer_close">Drawer close</string>
-    <string name="L1R4">L1R4</string>
     <string name="PostalCode">Postal Code</string>
     <string name="BookmarkSearchParameters">Bookmark Search Parameters</string>
     <string name="Submit">Submit</string>
     <string name="title_activity_polytechnic_details">PolytechnicDetails</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="L1R4">L1R4</string>
+    <string name="GPA">GPA</string>
+    <string name="intake">Intake</string>
+    <string name="website">Website</string>
+
+    <string name="team">Team</string>
+    <string name="pk">Ang Poh Keong</string>
+    <string name="gu">Garg Utsav</string>
+    <string name="bl">Lim Boon Leng</string>
+    <string name="zh">Heng Ze Hao</string>
+    <string name="dl">Lim Dong Li Tony</string>
+    <string name="jh">Derrick Peh Jia Hao</string>
+    <string name="mission">Mission</string>
+    <string name="missiondetails">To provide secondary school students guidance for planning their future education based on their areas of interest.</string>
 </resources>

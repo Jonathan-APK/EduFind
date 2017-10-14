@@ -1,6 +1,6 @@
 package controller;
 
-
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.example.utsav.edufind.PolytechnicDetails;
 import com.example.utsav.edufind.R;
 import java.util.List;
+
 import entity.PolytechnicCourse;
 import entity.UniversityCourse;
 import entity.Course;
@@ -22,8 +23,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
 
         CardView cv;
         TextView CourseName;
-        TextView CourseGrade;
         TextView SchoolName;
+        TextView CourseGrade;
         TextView CourseIntake;
         ImageView CourseWebsite;
         ImageView SchoolLogo;
@@ -101,23 +102,28 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
         else if(courses.get(i) instanceof UniversityCourse) {
             switch (courses.get(i).getSchool()) {
 
-                case "Digipen Institute of Technology Singapore": {
-                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sp);
+                case "Singapore University of Technology and Design": {
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sutd);
                     break;
                 }
 
                 case "Nanyang Technological University": {
-                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sp);
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.ntu);
                     break;
                 }
 
-                case "National Institute of Education": {
-                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sp);
+                case "Singapore Management University": {
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.smu);
                     break;
                 }
 
                 case "National University of Singapore": {
-                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sp);
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.nus);
+                    break;
+                }
+
+                case "Singapore Institute of Technology": {
+                    CourseViewHolder.SchoolLogo.setImageResource(R.mipmap.sit);
                     break;
                 }
                 default:

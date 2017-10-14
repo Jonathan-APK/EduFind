@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- The main content view -->
     <LinearLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
@@ -20,6 +19,190 @@
             android:elevation="4dp"
             android:theme="@style/appBarMainTheme" />
 
+        <!-- The main content view -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="20dp"
+            android:gravity="center"
+            android:layout_margin="16dp"
+            android:elevation="3dp">
+
+            <ImageView
+                android:id="@+id/School_Logo"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:srcCompat="@drawable/logo"
+                android:contentDescription="School Logo"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="0dp"
+            android:background="#ffffff"
+            android:elevation="3dp">
+
+            <ImageView
+                android:id="@+id/mission_Logo"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="10dp"
+                app:srcCompat="@drawable/missionlogo"
+                android:tint="@color/darkgray"
+                android:contentDescription="Mission Logo"/>
+
+            <TextView
+                android:id="@+id/Course_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/mission_Logo"
+                android:text="@string/mission"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp" />
+
+            <View
+                android:id="@+id/view"
+                style="@style/Divider"
+                android:layout_below="@+id/mission_Logo" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/mission_Details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:padding="15dp"
+                    android:text="@string/missiondetails"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="0dp"
+            android:background="#ffffff"
+            android:elevation="3dp">
+
+            <ImageView
+                android:id="@+id/team_Logo"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="10dp"
+                app:srcCompat="@drawable/ic_people_black_24dp"
+                android:tint="@color/darkgray"
+                android:contentDescription="Team Logo"/>
+
+            <TextView
+                android:id="@+id/team_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/team_Logo"
+                android:text="@string/team"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp" />
+
+            <View
+                android:id="@+id/view2"
+                style="@style/Divider"
+                android:layout_below="@+id/team_Logo" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view2"
+                android:background="@color/white"
+                android:padding="15dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/a"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pk"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/b"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bl"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/a"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:id="@+id/c"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dl"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:id="@+id/d"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/c"
+                    android:layout_marginStart="45dp"
+                    android:text="@string/gu"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/e"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zh"
+                    android:layout_marginStart="45dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/a" />
+
+                <TextView
+                    android:id="@+id/f"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jh"
+                    android:layout_marginStart="45dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:layout_below="@+id/c"
+                    android:layout_toEndOf="@+id/b" />
+
+            </RelativeLayout>
+        </RelativeLayout>
     </LinearLayout>
 
     <!-- The navigation drawer -->

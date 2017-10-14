@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!-- The main content view -->
     <LinearLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
@@ -21,6 +20,7 @@
             android:elevation="4dp"
             android:theme="@style/appBarMainTheme" />
 
+        <!-- The main content view -->
         <TextView
             android:id="@+id/areaOfInterestTextView"
             android:layout_width="wrap_content"

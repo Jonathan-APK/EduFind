@@ -101,9 +101,9 @@ public class SearchResultsUI extends AppCompatActivity {
        // courseList = c1.search(interest, specialization, L1R4, postalCode);
 
 
-        courseList.add(new PolytechnicCourse("Diploma in Business Management", "Nanyang Polytechnic",250, 13, "URL"));
+        courseList.add(new PolytechnicCourse("Diploma in Business Management", "Nanyang Polytechnic",25, 13, "URL"));
         courseList.add(new PolytechnicCourse("Diploma in Digital Media", "Singapore Polytechnic", 400, 11, "URL"));
-        courseList.add(new PolytechnicCourse("Diploma in Accountancy", "Singapore Polytechnic", 600, 19, "URL"));
+        courseList.add(new PolytechnicCourse("Diploma in Accountancy", "Singapore Polytechnic", 6700, 19, "URL"));
         courseList.add(new PolytechnicCourse("Diploma in Biological Sciences", "Temasek Polytechnic", 300, 12, "URL"));
 /*
         courseList.add(new UniversityCourse("Diploma in Business Management", "National University of Singapore",10, 1, "URL"));
