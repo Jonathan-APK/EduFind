@@ -1,6 +1,8 @@
 package controller;
 
-import android.graphics.Color;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.ImageView;
 
-import com.example.utsav.edufind.PolytechnicDetails;
+
 import com.example.utsav.edufind.R;
 import java.util.List;
 
@@ -63,7 +65,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(CourseViewHolder CourseViewHolder, int i) {
+    public void onBindViewHolder(CourseViewHolder CourseViewHolder, final int i) {
         if(courses.get(i) instanceof PolytechnicCourse) {
             switch (courses.get(i).getSchool()) {
 
@@ -99,8 +101,14 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             CourseViewHolder.CourseGrade.setText(String.valueOf(((PolytechnicCourse) courses.get(i)).getL1R4()));
             CourseViewHolder.CourseIntake.setText(String.valueOf(courses.get(i).getIntake()));
             CourseViewHolder.CourseWebsite.setImageResource(R.drawable.website);
+            CourseViewHolder.CourseWebsite.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(courses.get(i).getWebsite())));
+                    (v.getContext()).startActivity(browserIntent);
+                }
+            });
             CourseViewHolder.gradeTitle.setText("L1R4");
-
         }
 
         //Replace Logo when Ze Hao finds correct logo
@@ -138,6 +146,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             CourseViewHolder.CourseGrade.setText(String.valueOf(((UniversityCourse) courses.get(i)).getGradePointAverage()));
             CourseViewHolder.CourseIntake.setText(String.valueOf(courses.get(i).getIntake()));
             CourseViewHolder.CourseWebsite.setImageResource(R.drawable.website);
+            CourseViewHolder.CourseWebsite.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(courses.get(i).getWebsite())));
+                    (v.getContext()).startActivity(browserIntent);
+                }
+            });
             CourseViewHolder.gradeTitle.setText("GPA");
             CourseViewHolder.CourseGrade.setTextSize(20);
 

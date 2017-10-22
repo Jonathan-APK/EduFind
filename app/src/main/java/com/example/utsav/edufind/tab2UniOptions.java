@@ -39,7 +39,7 @@ public class tab2UniOptions extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab2_uni_options, container, false);
 
-        rv= (RecyclerView) rootView.findViewById(R.id.unirv);
+        rv= rootView.findViewById(R.id.unirv);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
@@ -52,21 +52,21 @@ public class tab2UniOptions extends Fragment {
     }
 
     private void initializeData(){
-        CourseSearchController c1 = new CourseSearchController();
-        courseList = new ArrayList<>();
+        // CourseSearchController c1 = new CourseSearchController();
         // courseList = c1.search(interest, specialization, L1R4, postalCode);
+        courseList = new ArrayList<>();
 
-
-        courseList.add(new UniversityCourse("Degree In Aerospace Engineering", "Singapore University of Technology and Design",25, 13, "URL"));
-        courseList.add(new UniversityCourse("Degree In Computer Science", "Nanyang Technological University", 400, 11, "URL"));
-        courseList.add(new UniversityCourse("Degree In Biomedical Science", "Singapore Management University", 6700, 19, "URL"));
-        courseList.add(new UniversityCourse("Degree In Computer Engineering", "National University of Singapore", 300, 12, "URL"));
+        courseList.add(new UniversityCourse("Degree in Business Management", "National University of Singapore",10, 1, "http://www.nus.edu.sg/"));
+        courseList.add(new UniversityCourse("Degree in Digital Media", "National Institute of Education", 40, 12, "http://www.nie.edu.sg/"));
+        courseList.add(new UniversityCourse("Degree in Accountancy", "Nanyang Technological University", 60, 15, "http://www.ntu.edu.sg/Pages/home.aspx"));
+        courseList.add(new UniversityCourse("Degree in Biological Sciences", "Singapore Management University", 30, 11, "https://www.smu.edu.sg/"));
 
     }
 
     private void initializeAdapter(){
-        RVAdapter adapter = new RVAdapter(courseList);
+        RVAdapter adapter= new RVAdapter(courseList);
         rv.setAdapter(adapter);
     }
+
 }
 
