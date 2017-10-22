@@ -28,6 +28,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
         TextView CourseIntake;
         ImageView CourseWebsite;
         ImageView SchoolLogo;
+        TextView gradeTitle;
 
         CourseViewHolder(View itemView) {
             super(itemView);
@@ -38,6 +39,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             CourseIntake = itemView.findViewById(R.id.Course_Intake);
             CourseWebsite = itemView.findViewById(R.id.Course_Website);
             SchoolLogo = itemView.findViewById(R.id.School_Logo);
+            gradeTitle = itemView.findViewById(R.id.Course_Grade_Title);
+
         }
     }
 
@@ -96,6 +99,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             CourseViewHolder.CourseGrade.setText(String.valueOf(((PolytechnicCourse) courses.get(i)).getL1R4()));
             CourseViewHolder.CourseIntake.setText(String.valueOf(courses.get(i).getIntake()));
             CourseViewHolder.CourseWebsite.setImageResource(R.drawable.website);
+            CourseViewHolder.gradeTitle.setText("L1R4");
+
         }
 
         //Replace Logo when Ze Hao finds correct logo
@@ -133,6 +138,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             CourseViewHolder.CourseGrade.setText(String.valueOf(((UniversityCourse) courses.get(i)).getGradePointAverage()));
             CourseViewHolder.CourseIntake.setText(String.valueOf(courses.get(i).getIntake()));
             CourseViewHolder.CourseWebsite.setImageResource(R.drawable.website);
+            CourseViewHolder.gradeTitle.setText("GPA");
+            CourseViewHolder.CourseGrade.setTextSize(20);
+
+
         }
     }
 
