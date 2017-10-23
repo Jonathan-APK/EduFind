@@ -1,6 +1,5 @@
 package controller;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.CardView;
@@ -10,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.ImageView;
+import android.util.TypedValue;
+import android.util.DisplayMetrics;
 
 
 import com.example.utsav.edufind.PolytechnicDetails;
@@ -19,7 +20,6 @@ import java.util.List;
 import entity.PolytechnicCourse;
 import entity.UniversityCourse;
 import entity.Course;
-import com.example.utsav.edufind.PolytechnicDetails;
 import com.example.utsav.edufind.UniversityCourseDetailsUI;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> {
@@ -48,6 +48,14 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             SchoolLogo = itemView.findViewById(R.id.School_Logo);
             gradeTitle = itemView.findViewById(R.id.Course_Grade_Title);
 
+            //GIVE SHADOW AROUND CARD
+            cv.setCardElevation(10);
+            CardView.LayoutParams lp = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);
+            DisplayMetrics dm = cv.getResources().getDisplayMetrics();
+            lp.setMargins(convertDpToPx(5, dm), convertDpToPx(5, dm), convertDpToPx(5, dm), convertDpToPx(5, dm));
+            //lp.setMargins(5, 5, 5, 5);
+            cv.setLayoutParams(lp);
+            cv.setContentPadding(0, 0, 0, 0);
         }
     }
 
@@ -71,6 +79,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
 
     @Override
     public void onBindViewHolder(CourseViewHolder CourseViewHolder, final int i) {
+
         if(courses.get(i) instanceof PolytechnicCourse) {
             switch (courses.get(i).getSchool()) {
 
@@ -129,7 +138,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             });
         }
 
-        //Replace Logo when Ze Hao finds correct logo
         else if(courses.get(i) instanceof UniversityCourse) {
             switch (courses.get(i).getSchool()) {
 
@@ -187,10 +195,16 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                 }
             });
         }
+
     }
 
     @Override
     public int getItemCount() {
         return courses.size();
+    }
+
+    private static int convertDpToPx(int dp, DisplayMetrics displayMetrics) {
+        float pixels = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, displayMetrics);
+        return Math.round(pixels);
     }
 }

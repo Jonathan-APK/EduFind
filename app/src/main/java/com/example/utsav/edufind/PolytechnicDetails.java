@@ -64,10 +64,10 @@ public class PolytechnicDetails extends AppCompatActivity {
         String cName = in.getStringExtra("courseName");
         String sName = in.getStringExtra("schoolName");
 
-        TextView tv = (TextView) findViewById(R.id.textView);
-        tv.setText(cName);
-        TextView tv2 = (TextView) findViewById(R.id.textView2);
-        tv2.setText(sName);
+//        TextView tv = (TextView) findViewById(R.id.textView);
+//        tv.setText(cName);
+//        TextView tv2 = (TextView) findViewById(R.id.textView2);
+//        tv2.setText(sName);
 
     }
 
