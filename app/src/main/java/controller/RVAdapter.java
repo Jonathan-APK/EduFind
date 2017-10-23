@@ -12,14 +12,19 @@ import android.widget.TextView;
 import android.widget.ImageView;
 
 
+import com.example.utsav.edufind.PolytechnicDetails;
 import com.example.utsav.edufind.R;
 import java.util.List;
 
 import entity.PolytechnicCourse;
 import entity.UniversityCourse;
 import entity.Course;
+import com.example.utsav.edufind.PolytechnicDetails;
+import com.example.utsav.edufind.UniversityCourseDetailsUI;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> {
+
+    //private Context context;
 
     public static class CourseViewHolder extends RecyclerView.ViewHolder {
 
@@ -109,6 +114,19 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                 }
             });
             CourseViewHolder.gradeTitle.setText("L1R4");
+
+            final String courseName = courses.get(i).getCourseName();
+            final String schoolName = courses.get(i).getSchool();
+            CourseViewHolder.cv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent in = new Intent(v.getContext(), PolytechnicDetails.class);
+
+                    in.putExtra("courseName", courseName);
+                    in.putExtra("schoolName", schoolName);
+                    v.getContext().startActivity(in);
+                }
+            });
         }
 
         //Replace Logo when Ze Hao finds correct logo
@@ -156,7 +174,18 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             CourseViewHolder.gradeTitle.setText("GPA");
             CourseViewHolder.CourseGrade.setTextSize(20);
 
+            final String courseName = courses.get(i).getCourseName();
+            final String schoolName = courses.get(i).getSchool();
+            CourseViewHolder.cv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent in = new Intent(v.getContext(), UniversityCourseDetailsUI.class);
 
+                    in.putExtra("courseName", courseName);
+                    in.putExtra("schoolName", schoolName);
+                    v.getContext().startActivity(in);
+                }
+            });
         }
     }
 

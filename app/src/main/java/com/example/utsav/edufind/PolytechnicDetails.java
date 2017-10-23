@@ -1,6 +1,7 @@
 package com.example.utsav.edufind;
 
 import android.content.Intent;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -19,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class PolytechnicDetails extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
@@ -57,6 +59,16 @@ public class PolytechnicDetails extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+
+        Intent in = getIntent();
+        String cName = in.getStringExtra("courseName");
+        String sName = in.getStringExtra("schoolName");
+
+        TextView tv = (TextView) findViewById(R.id.textView);
+        tv.setText(cName);
+        TextView tv2 = (TextView) findViewById(R.id.textView2);
+        tv2.setText(sName);
+
     }
 
 
@@ -158,7 +170,7 @@ public class PolytechnicDetails extends AppCompatActivity {
 
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
-                        intent = new Intent(PolytechnicDetails.this, NewSearchUI.class);
+                        intent = new Intent(PolytechnicDetails.this, MainUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;

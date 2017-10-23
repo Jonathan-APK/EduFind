@@ -73,7 +73,7 @@ public class BookmarksUI extends AppCompatActivity {
 
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
-                        intent = new Intent(BookmarksUI.super.getApplication(), NewSearchUI.class);
+                        intent = new Intent(BookmarksUI.super.getApplication(), MainUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;

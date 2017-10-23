@@ -141,7 +141,7 @@ public class NewSearchUIPage2 extends AppCompatActivity {
 
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
-                        intent = new Intent(NewSearchUIPage2.this, NewSearchUI.class);
+                        intent = new Intent(NewSearchUIPage2.this, MainUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;

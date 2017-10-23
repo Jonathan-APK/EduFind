@@ -68,6 +68,15 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
         courseDescription.setPaintFlags(courseDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         direction.setPaintFlags(direction.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         career.setPaintFlags(career.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        Intent in = getIntent();
+        String cName = in.getStringExtra("courseName");
+        String sName = in.getStringExtra("schoolName");
+
+        TextView tv = (TextView) findViewById(R.id.textView3);
+        tv.setText(cName);
+        TextView tv2 = (TextView) findViewById(R.id.textView4);
+        tv2.setText(sName);
     }
 
 
