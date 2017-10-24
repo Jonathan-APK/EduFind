@@ -9,7 +9,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -18,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class NewSearchUIPage2 extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
@@ -53,29 +51,29 @@ public class NewSearchUIPage2 extends AppCompatActivity {
         L1R4TextView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                final int DRAWABLE_LEFT = 0;
-                final int DRAWABLE_TOP = 1;
-                final int DRAWABLE_RIGHT = 2;
-                final int DRAWABLE_BOTTOM = 3;
+            final int DRAWABLE_LEFT = 0;
+            final int DRAWABLE_TOP = 1;
+            final int DRAWABLE_RIGHT = 2;
+            final int DRAWABLE_BOTTOM = 3;
 
-                //ACTION_UP not detected
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
-                    if(event.getRawX() >= (L1R4TextView.getRight() - L1R4TextView.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-                        // Show help via Builder Design Pattern
-                        AlertDialog.Builder builder= new AlertDialog.Builder(NewSearchUIPage2.this);
-                        builder.setMessage("L1 stands for 1 First Language, which must be either English/Higher Mother Tongue.\n\n" +
-                                "R4 stands for 4 Relevant Subjects.\n2 subjects must be either Humanities / Higher Art / Higher Music / Mathematics / Science / MSP / CSP / Bahasa Indonesia.\n" +
-                                "The other 2 subjects can be any GCE O Level subjects or CCAs, excluding Religious Knowledge.");
-                        builder.setTitle("What is L1R4?");
-                        builder.setPositiveButton("OK", null);
+            //ACTION_UP not detected
+            if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                if(event.getRawX() >= (L1R4TextView.getRight() - L1R4TextView.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                    // Show help via Builder Design Pattern
+                    AlertDialog.Builder builder= new AlertDialog.Builder(NewSearchUIPage2.this);
+                    builder.setMessage("L1 stands for 1 First Language, which must be either English/Higher Mother Tongue.\n\n" +
+                            "R4 stands for 4 Relevant Subjects.\n2 subjects must be either Humanities / Higher Art / Higher Music / Mathematics / Science / MSP / CSP / Bahasa Indonesia.\n" +
+                            "The other 2 subjects can be any GCE O Level subjects or CCAs, excluding Religious Knowledge.");
+                    builder.setTitle("What is L1R4?");
+                    builder.setPositiveButton("OK", null);
 
-                        AlertDialog alert = builder.create();
-                        alert.show();
+                    AlertDialog alert = builder.create();
+                    alert.show();
 
-                        return true;
-                    }
+                    return true;
                 }
-                return false;
+            }
+            return false;
             }
         });
     }
@@ -93,11 +91,6 @@ public class NewSearchUIPage2 extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -130,39 +123,39 @@ public class NewSearchUIPage2 extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                //Checking if the item is in checked state or not, if not make it in checked state
-                if(menuItem.isChecked()) menuItem.setChecked(false);
-                else menuItem.setChecked(true);
+            //Checking if the item is in checked state or not, if not make it in checked state
+            if(menuItem.isChecked()) menuItem.setChecked(false);
+            else menuItem.setChecked(true);
 
-                //Closing drawer on item click
-                mDrawerLayout.closeDrawers();
+            //Closing drawer on item click
+            mDrawerLayout.closeDrawers();
 
-                //Check to see which item was being clicked and perform appropriate action
-                switch (menuItem.getItemId()){
+            //Check to see which item was being clicked and perform appropriate action
+            switch (menuItem.getItemId()){
 
-                    //Replacing the main content with ContentFragment Which is our Inbox View;
-                    case R.id.home:
-                        intent = new Intent(NewSearchUIPage2.this, MainUI.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        return true;
+                //Replacing the main content with ContentFragment Which is our Inbox View;
+                case R.id.home:
+                    intent = new Intent(NewSearchUIPage2.this, MainUI.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    return true;
 
-                    case R.id.bookmarks:
-                        intent = new Intent(NewSearchUIPage2.this, BookmarksUI.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        return true;
+                case R.id.bookmarks:
+                    intent = new Intent(NewSearchUIPage2.this, BookmarksUI.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    return true;
 
-                    case R.id.aboutus:
-                        intent = new Intent(NewSearchUIPage2.this, AboutUs.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        return true;
+                case R.id.aboutus:
+                    intent = new Intent(NewSearchUIPage2.this, AboutUs.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    return true;
 
-                    default:
+                default:
 
-                        return true;
-                }
+                    return true;
+            }
             }
         });
 

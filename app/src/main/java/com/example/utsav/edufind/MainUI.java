@@ -2,29 +2,35 @@ package com.example.utsav.edufind;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
 
-import controller.DistanceCalculation;
-
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
-
+/**
+ * Initialize and display Main Home page
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
+ */
 public class MainUI extends AppCompatActivity{
 
+    /**
+     * Initialize layout
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
+    /**
+     * Instantiate menu XML files into Menu objects when menu options are created
+     * @param menu The menu in the side pane
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -32,6 +38,11 @@ public class MainUI extends AppCompatActivity{
         return true;
     }
 
+    /**
+     * Handles event when a menu option is selected
+     * @param item An item button in the menu of the side pane
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -39,20 +50,22 @@ public class MainUI extends AppCompatActivity{
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-
         return super.onOptionsItemSelected(item);
     }
 
-    /** Called when the user taps newSearchButton */
+    /**
+     * Direct to New Search view
+     * @param view The current view
+     */
     public void goToSearchUI(View view) {
         Intent intent = new Intent(this, NewSearchUI.class);
         startActivity(intent);
     }
 
+    /**
+     * Direct to Saved Bookmarks view
+     * @param view The current view
+     */
     public void goToBookmarksUI(View view) {
         Intent intent = new Intent(this, BookmarksUI.class);
         startActivity(intent);
