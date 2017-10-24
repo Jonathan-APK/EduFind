@@ -18,6 +18,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+/**
+ * Initializes and display page 2 of the New Search UI for the user to enter his L1R4 and residential postal code
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
+ */
 public class NewSearchUIPage2 extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
@@ -27,6 +34,10 @@ public class NewSearchUIPage2 extends AppCompatActivity {
     private String interest;
     private String specialization;
 
+    /**
+     * Initialize layout
+     * @param savedInstanceState Current state of application
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Get data from previous activity
@@ -95,6 +106,10 @@ public class NewSearchUIPage2 extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * This method passes the search parameters and directs the user to the results of his search
+     * @param view The current view
+     */
     public void submitSearchResults(View view) {
         Intent intent = new Intent(this, SearchResultsUI.class);
         //Passing data to next activity
@@ -109,6 +124,10 @@ public class NewSearchUIPage2 extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Initialize and implements toolbar, drawer, and side panel UI and functions
+     * @param toolbarTitle Title of the page
+     */
     public void initializeToolbar(@NonNull String toolbarTitle){
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(myToolbar);

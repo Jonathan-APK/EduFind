@@ -2,6 +2,7 @@ package com.example.utsav.edufind;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -33,10 +34,12 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
     TextView InstitutionName;
     ImageView InstitutionLogo;
     ImageView CourseWebsite;
-    TextView schDescription;
+    TextView institutionDescription;
     TextView courseDescription;
     TextView career;
     TextView direction;
+    TextView CourseDescription;
+    TextView InstitutionDescription;
 
     /**
      * Sets data and display details of the Course dynamically
@@ -55,19 +58,62 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
         InstitutionName = (TextView)findViewById(R.id.uni_Institution_name);
         InstitutionLogo = (ImageView) findViewById(R.id.uni_Institution_Logo);
         CourseWebsite = (ImageView) findViewById(R.id.uni_Course_Website);
-        schDescription = (TextView) findViewById(R.id.uni_institution_desc_text);
+        institutionDescription = (TextView) findViewById(R.id.uni_institution_desc_text);
         courseDescription = (TextView) findViewById(R.id.uni_course_desc_text);
         direction = (TextView) findViewById(R.id.uni_direction);
         career = (TextView) findViewById(R.id.uni_career_prospect_text);
+        CourseDescription = (TextView) findViewById(R.id.uni_course_desc_detail_text);
+        InstitutionDescription = (TextView) findViewById(R.id.uni_institution_desc_detail_text);
 
-        CourseGrade.setText("1");
-        CourseIntake.setText("1000");
-        CourseName.setText("Diploma In Information Security");
-        InstitutionName.setText("Singapore Polytechnic");
-        InstitutionLogo.setImageResource(R.mipmap.sp);
+        Intent i = getIntent();
+        String courseName = i.getExtras().getString("courseName", "No courseName found");
+        final String courseWebsite = i.getExtras().getString("courseWebsite", "No courseWebsite found");
+        String institutionDesc = i.getExtras().getString("institutionDescription", "No institutionDescription found");
+        String courseDesc = i.getExtras().getString("courseDescription", "No courseDescription found");
+        String institutionName = i.getExtras().getString("institutionName", "No institutionName found");
+        String courseGrade = String.valueOf(i.getExtras().getDouble("courseGrade", 0));
+        String courseIntake = String.valueOf(i.getExtras().getInt("courseIntake", 0));
+
+        CourseGrade.setText(courseGrade);
+        CourseIntake.setText(courseIntake);
+        CourseName.setText(courseName);
+        InstitutionName.setText(institutionName);
+        CourseDescription.setText(courseDesc);
+        InstitutionDescription.setText(institutionDesc);
+
+        switch (institutionName) {
+            case "Singapore University of Technology and Design": {
+                InstitutionLogo.setImageResource(R.mipmap.sutd);
+                break;
+            }
+            case "Nanyang Technological University": {
+                InstitutionLogo.setImageResource(R.mipmap.ntu);
+                break;
+            }
+            case "Singapore Management University": {
+                InstitutionLogo.setImageResource(R.mipmap.smu);
+                break;
+            }
+            case "National University of Singapore": {
+                InstitutionLogo.setImageResource(R.mipmap.nus);
+                break;
+            }
+            case "Singapore Institute of Technology": {
+                InstitutionLogo.setImageResource(R.mipmap.sit);
+                break;
+            }
+            default:
+        }
+
         CourseWebsite.setImageResource(R.drawable.website);
-
-        schDescription.setPaintFlags(schDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        CourseWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(courseWebsite)));
+                (v.getContext()).startActivity(browserIntent);
+            }
+        });
+        institutionDescription.setPaintFlags(institutionDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         courseDescription.setPaintFlags(courseDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         direction.setPaintFlags(direction.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         career.setPaintFlags(career.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);

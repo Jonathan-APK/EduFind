@@ -64,11 +64,16 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
     }
 
     List<Course> courses;
+    String interest;
+    String specialization;
+    int postalCode;
 
-    public RVAdapter(List<Course> courses){
+    public RVAdapter(List<Course> courses, String interest, String specialization, int postalCode){
         this.courses = courses;
+        this.interest = interest;
+        this.specialization = specialization;
+        this.postalCode = postalCode;
     }
-
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
@@ -146,10 +151,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                     in.putExtra("courseName", courseName);
                     in.putExtra("institutionName", institutionName);
                     in.putExtra("courseWebsite", courseWebsite);
-                    in.putExtra("schDescription", schDescription);
+                    in.putExtra("institutionDescription", schDescription);
                     in.putExtra("courseDescription", courseDescription);
                     in.putExtra("courseGrade", courseGrade);
                     in.putExtra("courseIntake", courseIntake);
+                    in.putExtra("interest", interest);
+                    in.putExtra("specialization", specialization);
+                    in.putExtra("postalCode", postalCode);
                     v.getContext().startActivity(in);
                 }
             });
@@ -207,7 +215,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                     in.putExtra("courseName", courseName);
                     in.putExtra("institutionName", institutionName);
                     in.putExtra("courseWebsite", courseWebsite);
-                    in.putExtra("schDescription", schDescription);
+                    in.putExtra("institutionDescription", schDescription);
                     in.putExtra("courseDescription", courseDescription);
                     in.putExtra("courseGrade", courseGrade);
                     in.putExtra("courseIntake", courseIntake);

@@ -111,7 +111,7 @@ public class SearchResultsUI extends AppCompatActivity {
 
         for (int i = 0; i < courseList.size(); i++) {
             if (courseList.get(i) instanceof UniversityCourse) {
-                courseList.remove(i);
+                courseList.remove(i--);
             }
         }
     }
@@ -121,7 +121,7 @@ public class SearchResultsUI extends AppCompatActivity {
      * and puts them in an ArrayList of Course objects consisting of only university courses.
      */
     private void initializeAdapter(){
-        RVAdapter adapter = new RVAdapter(courseList);
+        RVAdapter adapter = new RVAdapter(courseList, interest, specialization, postalCode);
         rv.setAdapter(adapter);
     }
 

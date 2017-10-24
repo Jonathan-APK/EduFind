@@ -23,14 +23,14 @@ public class tab1PolyDetails extends Fragment{
     TextView CourseIntake;
     TextView CourseName;
     TextView InstitutionName;
-    ImageView SchoolName;
+    ImageView InstitutionLogo;
     ImageView CourseWebsite;
-    TextView instiDescLabel;
-    TextView courseDescLabel;
+    TextView institutionDescription;
+    TextView courseDescription;
     TextView career;
     TextView direction;
     TextView CourseDescription;
-    TextView instiDescription;
+    TextView InstitutionDescription;
 
     /**
      * Sets data and display details of the Course dynamically
@@ -46,19 +46,19 @@ public class tab1PolyDetails extends Fragment{
         CourseIntake = (TextView) rootView.findViewById(R.id.tab1_Course_Intake);
         CourseName = (TextView) rootView.findViewById(R.id.tab1_Course_name);
         InstitutionName = (TextView) rootView.findViewById(R.id.tab1_Institution_name);
-        SchoolName = (ImageView) rootView.findViewById(R.id.tab1_Institution_Logo);
+        InstitutionLogo = (ImageView) rootView.findViewById(R.id.tab1_Institution_Logo);
         CourseWebsite = (ImageView) rootView.findViewById(R.id.tab1_Course_Website);
-        instiDescLabel = (TextView) rootView.findViewById(R.id.institution_desc_text);
-        courseDescLabel = (TextView) rootView.findViewById(R.id.course_desc_text);
+        institutionDescription = (TextView) rootView.findViewById(R.id.institution_desc_text);
+        courseDescription = (TextView) rootView.findViewById(R.id.course_desc_text);
         direction = (TextView) rootView.findViewById(R.id.direction);
         career = (TextView) rootView.findViewById(R.id.career_prospect_text);
         CourseDescription = (TextView) rootView.findViewById(R.id.course_desc_detail_text);
-        instiDescription = (TextView) rootView.findViewById(R.id.institution_desc_detail_text);
+        InstitutionDescription = (TextView) rootView.findViewById(R.id.institution_desc_detail_text);
 
         Intent i = getActivity().getIntent();
         String courseName = i.getExtras().getString("courseName", "No courseName found");
         final String courseWebsite = i.getExtras().getString("courseWebsite", "No courseWebsite found");
-        String schoolDesc = i.getExtras().getString("schDescription", "No schDescription found");
+        String institutionDesc = i.getExtras().getString("institutionDescription", "No institutionDescription found");
         String courseDesc = i.getExtras().getString("courseDescription", "No courseDescription found");
         String institutionName = i.getExtras().getString("institutionName", "No institutionName found");
         String courseGrade = String.valueOf(i.getExtras().getInt("courseGrade", 0));
@@ -69,26 +69,26 @@ public class tab1PolyDetails extends Fragment{
         CourseName.setText(courseName);
         InstitutionName.setText(institutionName);
         CourseDescription.setText(courseDesc);
-        instiDescription.setText(schoolDesc);
+        InstitutionDescription.setText(institutionDesc);
         switch (institutionName) {
             case "Singapore Polytechnic": {
-                SchoolName.setImageResource(R.mipmap.sp);
+                InstitutionLogo.setImageResource(R.mipmap.sp);
                 break;
             }
             case "Ngee Ann Polytechnic": {
-                SchoolName.setImageResource(R.mipmap.np);
+                InstitutionLogo.setImageResource(R.mipmap.np);
                 break;
             }
             case "Republic Polytechnic": {
-                SchoolName.setImageResource(R.mipmap.rp);
+                InstitutionLogo.setImageResource(R.mipmap.rp);
                 break;
             }
             case "Nanyang Polytechnic": {
-                SchoolName.setImageResource(R.mipmap.nyp);
+                InstitutionLogo.setImageResource(R.mipmap.nyp);
                 break;
             }
             case "Temasek Polytechnic": {
-                SchoolName.setImageResource(R.mipmap.tp);
+                InstitutionLogo.setImageResource(R.mipmap.tp);
                 break;
             }
             default:
@@ -102,8 +102,8 @@ public class tab1PolyDetails extends Fragment{
             }
         });
         CourseWebsite.setImageResource(R.drawable.website);
-        instiDescLabel.setPaintFlags(instiDescLabel.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        courseDescLabel.setPaintFlags(courseDescLabel.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        institutionDescription.setPaintFlags(institutionDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        courseDescription.setPaintFlags(courseDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         direction.setPaintFlags(direction.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         career.setPaintFlags(career.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
