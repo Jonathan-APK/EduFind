@@ -1,9 +1,14 @@
 package entity;
 
 /**
- * Created by boonleng94 on 27/9/2017.
+ * Specifies a Institution entity class that
+ * stores the values of an institution as an
+ * Institution object for data manipulation
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
  */
-
 public class Institution {
     private String institution;
     private String instiDescription;
