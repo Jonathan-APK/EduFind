@@ -38,10 +38,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             cv = itemView.findViewById(R.id.cv);
             CourseName = itemView.findViewById(R.id.Course_name);
             CourseGrade= itemView.findViewById(R.id.Course_Grade);
-            InstitutionName = itemView.findViewById(R.id.School_name);
+            InstitutionName = itemView.findViewById(R.id.Institution_name);
             CourseIntake = itemView.findViewById(R.id.Course_Intake);
             CourseWebsite = itemView.findViewById(R.id.Course_Website);
-            InstitutionLogo = itemView.findViewById(R.id.School_Logo);
+            InstitutionLogo = itemView.findViewById(R.id.Institution_Logo);
             gradeTitle = itemView.findViewById(R.id.Course_Grade_Title);
 
             //GIVE SHADOW AROUND CARD

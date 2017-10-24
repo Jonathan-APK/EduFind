@@ -57,7 +57,7 @@ public class tab2UniOptions extends Fragment {
         courseList = new ArrayList<>();
 
         courseList.add(new UniversityCourse("Degree in Business Management", "National University of Singapore",10, 1, "http://www.nus.edu.sg/"));
-        courseList.add(new UniversityCourse("Degree in Digital Media", "National Institute of Education", 40, 12, "http://www.nie.edu.sg/"));
+        courseList.add(new UniversityCourse("Degree in Digital Media", "National University of Singapore", 40, 12, "http://www.nie.edu.sg/"));
         courseList.add(new UniversityCourse("Degree in Accountancy", "Nanyang Technological University", 60, 15, "http://www.ntu.edu.sg/Pages/home.aspx"));
         courseList.add(new UniversityCourse("Degree in Biological Sciences", "Singapore Management University", 30, 11, "https://www.smu.edu.sg/"));
 
