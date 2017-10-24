@@ -17,7 +17,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
-public class NewSearchUI extends AppCompatActivity implements OnItemSelectedListener {
+public class NewSearchUI extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
@@ -34,7 +34,7 @@ public class NewSearchUI extends AppCompatActivity implements OnItemSelectedList
         Spinner areaOfInterestSpinner = (Spinner) findViewById(R.id.areaOfInterestSpinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-        R.array.areaOFInterestData, android.R.layout.simple_spinner_item);
+                R.array.areaOFInterestData, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner

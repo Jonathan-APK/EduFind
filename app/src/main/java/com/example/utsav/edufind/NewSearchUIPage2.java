@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class NewSearchUIPage2 extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
@@ -31,20 +32,17 @@ public class NewSearchUIPage2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Get data from previous activity
-        /*Intent i = getIntent();
+        Intent i = getIntent();
         interest = i.getExtras().getString("interest", "No interest found");
-        specialization = i.getExtras().getString("specialization", "No specialization found");*/
-
+        specialization = i.getExtras().getString("specialization", "No specialization found");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_search_uipage2);
-
         initializeToolbar("New Search");
 
         //Populate L1R4Spinner
         Spinner LIR4Spinner = (Spinner) findViewById(R.id.L1R4Spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.L1R4Values, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.L1R4Values, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -53,7 +51,6 @@ public class NewSearchUIPage2 extends AppCompatActivity {
         // Set Help drawable of Postal Code to show help
         final TextView L1R4TextView = (TextView) findViewById(R.id.L1R4TextView);
         L1R4TextView.setOnTouchListener(new View.OnTouchListener() {
-
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 final int DRAWABLE_LEFT = 0;
@@ -108,10 +105,14 @@ public class NewSearchUIPage2 extends AppCompatActivity {
     public void submitSearchResults(View view) {
         Intent intent = new Intent(this, SearchResultsUI.class);
         //Passing data to next activity
-        /*intent.putExtra("interest", interest);
+        Spinner L1R4Spinner = (Spinner) findViewById(R.id.L1R4Spinner);
+        int L1R4 = Integer.parseInt(L1R4Spinner.getSelectedItem().toString());
+        EditText postalCodeTextInput = (EditText) findViewById(R.id.postalCodeTextInput);
+        int postalCode = Integer.parseInt(postalCodeTextInput.getText().toString());
+        intent.putExtra("interest", interest);
         intent.putExtra("specialization", specialization);
         intent.putExtra("L1R4", L1R4);
-        intent.putExtra("postalCode", postalCode);*/
+        intent.putExtra("postalCode", postalCode);
         startActivity(intent);
     }
 

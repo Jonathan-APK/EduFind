@@ -42,11 +42,11 @@ public class SearchResultsUI extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Get data from previous activity
-        /*Intent i = getIntent();
+        Intent i = getIntent();
         interest = i.getExtras().getString("interest", "No interest found");
         specialization = i.getExtras().getString("specialization", "No specialization found");
         L1R4 = i.getExtras().getInt("L1R4", 20);
-        postalCode = i.getExtras().getInt("postalCode", 000000);*/
+        postalCode = i.getExtras().getInt("postalCode", 000000);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_results_ui);
@@ -98,14 +98,15 @@ public class SearchResultsUI extends AppCompatActivity {
     }
 
     private void initializeData(){
-       // CourseSearchController c1 = new CourseSearchController();
-       // courseList = c1.search(interest, specialization, L1R4, postalCode);
-        courseList = new ArrayList<>();
+        CourseSearchController c1 = new CourseSearchController();
+        courseList = c1.search(interest, specialization, L1R4, postalCode);
+        /*courseList = new ArrayList<>();
 
         courseList.add(new PolytechnicCourse("Diploma in Business Management", "Nanyang Polytechnic",25, 13, "http://www.sp.edu.sg/wps/portal/vp-spws/pace.courses.part.list.details?WCM_GLOBAL_CONTEXT=/lib-pace/internet/part-time+courses/diploma+in+business+practice+%28business+management%29"));
         courseList.add(new PolytechnicCourse("Diploma in Digital Media", "Singapore Polytechnic", 400, 11, "http://www.sp.edu.sg/wps/portal/vp-spws/schdmit.cse.cert.digitalmediacreation"));
         courseList.add(new PolytechnicCourse("Diploma in Accountancy", "Ngee Ann Polytechnic", 6700, 19, "http://www.np.edu.sg/ba/courses/acc/Pages/acc.aspx"));
         courseList.add(new PolytechnicCourse("Diploma in Biological Sciences", "Temasek Polytechnic", 300, 12, "http://www.tp.edu.sg/schools/asc/biomedical-science-t27"));
+    */
     }
 
     private void initializeAdapter(){

@@ -7,6 +7,8 @@ import entity.Institution;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import android.widget.Toast;
+
 /**
  * Created by boonleng94 on 27/9/2017.
  */
@@ -26,7 +28,6 @@ public class CourseSearchController {
 
     public boolean validatePostalCode(int postalCode) {
         boolean valid = false;
-
         //Check field is not empty
         if (postalCode != 0) {
             //Check field contains 6 digits
@@ -125,7 +126,17 @@ public class CourseSearchController {
         DistanceCalculation d1 = new DistanceCalculation();
 
         //Retrieve full list of polytechnic courses
-        courseList = CourseController.retrieveListOfPolyCourses();
+        //courseList = CourseController.retrieveListOfPolyCourses();
+
+        Institution int1 = new Institution("NYP", "POlyDESC", 123456);
+        PolytechnicCourse pc1 = new PolytechnicCourse("Course 1", "APPLIED SCIENCES", "Food Science", "website1", "Nanyang Poly", "Diploma", "Desc", int1, 10, 17);
+        PolytechnicCourse pc2 = new PolytechnicCourse("Course 2", "APPLIED SCIENCES", "Food Science", "website1", "Nanyang Poly", "Diploma", "Desc", int1, 10, 17);
+        PolytechnicCourse pc3 = new PolytechnicCourse("Course 3", "APPLIED SCIENCES", "Food Science", "website1", "Nanyang Poly", "Diploma", "Desc", int1, 10, 17);
+        PolytechnicCourse pc4 = new PolytechnicCourse("Course 4", "APPLIED", "Food Science", "website1", "Nanyang Poly", "Diploma", "Desc", int1, 10, 17);
+        courseList.add(pc1);
+        courseList.add(pc2);
+        courseList.add(pc3);
+        courseList.add(pc4);
 
         //Filter list according to inputs
         for (int i = 0; i < courseList.size(); i++) {
