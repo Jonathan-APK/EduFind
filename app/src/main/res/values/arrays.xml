@@ -1,46 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="dummyArray">
-        <item>Satu</item>
-        <item>Dua</item>
-        <item>Tiga</item>
-        <item>Empat</item>
-        <item>Lima</item>
-        <item>Enam</item>
-        <item>Tujuh</item>
-        <item>Lapan</item>
-        <item>Sembilan</item>
-        <item>Sepuluh</item>
-        <item>Satu</item>
-        <item>Dua</item>
-        <item>Tiga</item>
-        <item>Empat</item>
-        <item>Lima</item>
-        <item>Enam</item>
-        <item>Tujuh</item>
-        <item>Lapan</item>
-        <item>Sembilan</item>
-        <item>Sepuluh</item>
-        <item>Satu</item>
-        <item>Dua</item>
-        <item>Tiga</item>
-        <item>Empat</item>
-        <item>Lima</item>
-        <item>Enam</item>
-        <item>Tujuh</item>
-        <item>Lapan</item>
-        <item>Sembilan</item>
-        <item>Sepuluh</item>
-        <item>Satu</item>
-        <item>Dua</item>
-        <item>Tiga</item>
-        <item>Empat</item>
-        <item>Lima</item>
-        <item>Enam</item>
-        <item>Tujuh</item>
-        <item>Lapan</item>
-        <item>Sembilan</item>
-        <item>Sepuluh</item>
+    <string-array name="areaOFInterestData">
+    <item>APPLIED SCIENCES</item>
+    <item>BUILT ENVIRONMENT</item>
+    <item>BUSINESS \u0026 MANAGEMENT</item>
+    <item>ENGINEERING</item>
+    <item>HEALTH SCIENCES</item>
+    <item>HUMANITIES</item>
+    <item>INFORMATION \u0026 DIGITAL TECHNOLOGIES</item>
+    <item>MARITIME STUDIES</item>
+    <item>MEDIA \u0026 DESIGN</item>
+
+</string-array>
+
+    <string-array name="appliedScience">
+        <item>Biomedical</item>
+        <item>Food Science</item>
+        <item>Biotechnology</item>
+
+    </string-array>
+
+    <string-array name="builtEnvironment">
+        <item>Green Building</item>
+        <item>Civil Engineering</item>
+        <item>Architectural Design</item>
+
+    </string-array>
+
+    <string-array name="business">
+        <item>Accountancy</item>
+        <item>Banking</item>
+        <item>Business Management</item>
+
+    </string-array>
+
+    <string-array name="engineering">
+        <item>Aerospace</item>
+        <item>Electrical and Electronic Engineering</item>
+        <item>Mechanical Engineering</item>
+
+    </string-array>
+
+    <string-array name="healthScience">
+        <item>Health Services</item>
+        <item>Optometry</item>
+        <item>Sports Sciences</item>
+
+    </string-array>
+
+    <string-array name="humanities">
+        <item>Early Childhood Studies</item>
+        <item>Psychology Studies</item>
+
+    </string-array>
+
+    <string-array name="informationTech">
+        <item>Security</item>
+        <item>Business IT</item>
+        <item>Mobile Software Development</item>
+
+    </string-array>
+
+    <string-array name="maritime">
+        <item>Maritime Business</item>
+        <item>Marine \u0026 Offshore Technology</item>
+        <item>Marine Engineering</item>
+
+    </string-array>
+
+    <string-array name="media">
+        <item>Game Design</item>
+        <item>Animation</item>
+        <item>Film, Arts and theatre</item>
+
     </string-array>
 
     <string-array name="L1R4Values">
