@@ -14,8 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import controller.CourseSearchController;
-import entity.UniversityCourse;
+import java.util.ArrayList;
+
+import entity.Bookmark;
 
 /**
  * Initialize and display Saved Bookmarks page
@@ -28,7 +29,7 @@ public class BookmarksUI extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
-
+    private ArrayList<Bookmark> bookmarkList;
     private RecyclerView rv;
 
     /**
@@ -50,6 +51,8 @@ public class BookmarksUI extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
+        initializeData();
+        initializeAdapter();
     }
 
     /**
@@ -62,6 +65,29 @@ public class BookmarksUI extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    /**
+     * This method retrieves all the search results from the course search controller class
+     * and puts them in an ArrayList of Course objects consisting of only polytechnic courses.
+     */
+    private void initializeData(){
+        bookmarkList = new ArrayList<>();
+        bookmarkList.add(new Bookmark("interest1", "specialization1", 5, 120354, "date1", "time1"));
+        bookmarkList.add(new Bookmark("interest2", "specialization2", 6, 120345, "date2", "time2"));
+        bookmarkList.add(new Bookmark("interest3", "specialization3", 7, 120354, "date3", "time3"));
+        bookmarkList.add(new Bookmark("interest4", "specialization4", 3, 120354, "date4", "time4"));
+
+
+    }
+
+    /**
+     * This method retrieves all the search results from the course search controller class
+     * and puts them in an ArrayList of Course objects consisting of only university courses.
+     */
+    private void initializeAdapter(){
+        RVAdapterBookmarks adapter = new RVAdapterBookmarks(bookmarkList);
+        rv.setAdapter(adapter);
     }
 
 //    /**
