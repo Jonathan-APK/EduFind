@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/cv2"
@@ -11,8 +12,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="0dp"
-        android:paddingTop="15dp"
         android:background="@drawable/relative_background_with_shadow"
         >
 
@@ -20,7 +19,11 @@
             android:id="@+id/date_createdlabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
             android:text="Date Created:"
             android:textColor="@color/colorAccent"/>
 
@@ -28,133 +31,155 @@
             android:id="@+id/date_createdTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/date_createdlabel"
-            android:textSize="16sp"
-            android:layout_marginTop="3dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
             android:text="17/05/2016"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent"
+            android:layout_toEndOf="@+id/date_createdlabel"
+            />
 
         <TextView
             android:id="@+id/time_createdlabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Date Created:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="Time Created:"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="15dp"
+            android:layout_below="@+id/date_createdlabel"
             android:textColor="@color/colorAccent"/>
 
         <TextView
             android:id="@+id/time_createdTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/date_createdlabel"
-            android:textSize="16sp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:text="17/05/2016"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent"
+            android:layout_toEndOf="@+id/time_createdlabel"
+            android:layout_below="@+id/date_createdTV" />
+
+        <ImageView
+            android:id="@+id/deleteBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="-10dip"
+            android:layout_marginRight="-10dip"
+            app:srcCompat="@drawable/ic_cancel_black_24dp"
+            android:tint="@color/darkgray"
+            android:contentDescription="Delete"/>
+
 
         <View
             android:id="@+id/view"
             style="@style/Divider"
-            android:layout_below="@+id/date_createdlabel"/>
+            android:layout_below="@+id/time_createdlabel"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/view"
             android:orientation="horizontal"
-            android:paddingBottom="10dp"
             android:background="@drawable/linear_background_with_shadow"
-            android:gravity="center">
+            android:layout_below="@+id/view"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start">
+
+                    <TextView
+                        android:id="@+id/aoiLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/AreaOfInterest"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/aoiTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/aoiLabel"
+                        android:text="Media"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/specLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/aoiTV"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/Specialization"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/specTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/specLabel"
+                        android:text="Digital Media"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end">
 
                 <TextView
-                    android:id="@+id/aoiLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:width="80dp"
-                    android:textSize="22sp"
-                    android:textAlignment="center"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:paddingStart="9dp"
-                    android:paddingEnd="20dp"/>
-                <TextView
-                    android:id="@+id/aoiTV"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/Course_Grade_Circle"
-                    android:textSize="16sp"
-                    android:layout_marginTop="7dp"
-                    android:text="@string/L1R4"
-                    android:textAlignment="center"
-                    android:layout_marginStart="4dp"/>
-
-                <TextView
-                    android:id="@+id/specLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:minWidth="80dp"
-                    android:maxWidth="200dp"
-                    android:layout_marginStart="0dp"
-                    android:textSize="22sp"
-                    android:textAlignment="center"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:id="@+id/specTV"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/Course_Intake_Circle"
-                    android:textSize="16sp"
-                    android:layout_marginTop="7dp"
-                    android:text="@string/intake"
-                    android:textAlignment="center"
-                    android:layout_marginStart="8dp"/>
-
-                <TextView
-                    android:id="@+id/postalLabel"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/Course_Website"
-                    android:textSize="16sp"
-                    android:text="@string/website"
-                    android:layout_marginTop="7dp"
-                    android:textAlignment="center"
-                    android:layout_marginStart="6dp"/>
+                        android:id="@+id/postalLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/PostalCode"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/postalTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/postalLabel"
+                    android:text="530637"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/L1R4Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/postalTV"
+                    android:text="@string/L1R4"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/L1R4TV"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/Course_Website"
-                    android:textSize="16sp"
-                    android:text="@string/website"
-                    android:layout_marginTop="7dp"
-                    android:textAlignment="center"
-                    android:layout_marginStart="6dp"/>
-
-            <TextView
-                android:id="@+id/L1R4Label"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/Course_Website"
-                android:textSize="16sp"
-                android:text="@string/website"
-                android:layout_marginTop="7dp"
-                android:textAlignment="center"
-                android:layout_marginStart="6dp"/>
-
-            <TextView
-                android:id="@+id/L1R4TV"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/Course_Website"
-                android:textSize="16sp"
-                android:text="@string/website"
-                android:layout_marginTop="7dp"
-                android:textAlignment="center"
-                android:layout_marginStart="6dp"/>
+                    android:layout_below="@+id/L1R4Label"
+                    android:text="22"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+            </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
 </android.support.v7.widget.CardView>
