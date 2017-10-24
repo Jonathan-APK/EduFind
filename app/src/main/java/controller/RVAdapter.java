@@ -115,38 +115,44 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
 
             final String courseName = courses.get(i).getCourseName();
             final String institutionName = courses.get(i).getInstitution().getInstitution();
+            final String courseWebsite = courses.get(i).getWebsite();
+            final String schDescription = courses.get(i).getInstitution().getInstiDescription();
+            final String courseDescription = courses.get(i).getCourseDescription();
+            final int courseGrade = ((PolytechnicCourse) courses.get(i)).getL1R4();
+            final int courseIntake = courses.get(i).getIntake();
             CourseViewHolder.cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent in = new Intent(v.getContext(), PolytechnicDetails.class);
                     in.putExtra("courseName", courseName);
                     in.putExtra("institutionName", institutionName);
+                    in.putExtra("courseWebsite", courseWebsite);
+                    in.putExtra("schDescription", schDescription);
+                    in.putExtra("courseDescription", courseDescription);
+                    in.putExtra("courseGrade", courseGrade);
+                    in.putExtra("courseIntake", courseIntake);
                     v.getContext().startActivity(in);
                 }
             });
         }
-        else if(courses.get(i) instanceof UniversityCourse) {
+        else if (courses.get(i) instanceof UniversityCourse) {
             switch (courses.get(i).getInstitution().getInstitution()) {
                 case "Singapore University of Technology and Design": {
                     CourseViewHolder.InstitutionLogo.setImageResource(R.mipmap.sutd);
                     break;
                 }
-
                 case "Nanyang Technological University": {
                     CourseViewHolder.InstitutionLogo.setImageResource(R.mipmap.ntu);
                     break;
                 }
-
                 case "Singapore Management University": {
                     CourseViewHolder.InstitutionLogo.setImageResource(R.mipmap.smu);
                     break;
                 }
-
                 case "National University of Singapore": {
                     CourseViewHolder.InstitutionLogo.setImageResource(R.mipmap.nus);
                     break;
                 }
-
                 case "Singapore Institute of Technology": {
                     CourseViewHolder.InstitutionLogo.setImageResource(R.mipmap.sit);
                     break;
@@ -170,17 +176,26 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
 
             final String courseName = courses.get(i).getCourseName();
             final String institutionName = courses.get(i).getInstitution().getInstitution();
+            final String courseWebsite = courses.get(i).getWebsite();
+            final String schDescription = courses.get(i).getInstitution().getInstiDescription();
+            final String courseDescription = courses.get(i).getCourseDescription();
+            final double courseGrade = ((UniversityCourse) courses.get(i)).getGradePointAverage();
+            final int courseIntake = courses.get(i).getIntake();
             CourseViewHolder.cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent in = new Intent(v.getContext(), UniversityCourseDetailsUI.class);
                     in.putExtra("courseName", courseName);
                     in.putExtra("institutionName", institutionName);
+                    in.putExtra("courseWebsite", courseWebsite);
+                    in.putExtra("schDescription", schDescription);
+                    in.putExtra("courseDescription", courseDescription);
+                    in.putExtra("courseGrade", courseGrade);
+                    in.putExtra("courseIntake", courseIntake);
                     v.getContext().startActivity(in);
                 }
             });
         }
-
     }
 
     @Override

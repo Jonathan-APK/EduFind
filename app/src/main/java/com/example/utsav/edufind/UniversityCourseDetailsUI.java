@@ -37,15 +37,12 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
         setContentView(R.layout.university_course_details_ui);
         //INIT TOOLBAR
         initializeToolbar("University Details");
-        //
-
         CourseGrade = (TextView) findViewById(R.id.uni_Course_Grade);
         CourseIntake = (TextView) findViewById(R.id.uni_Course_Intake);
         CourseName = (TextView) findViewById(R.id.uni_Course_name);
         InstitutionName = (TextView)findViewById(R.id.uni_Institution_name);
         InstitutionLogo = (ImageView) findViewById(R.id.uni_Institution_Logo);
         CourseWebsite = (ImageView) findViewById(R.id.uni_Course_Website);
-
         schDescription = (TextView) findViewById(R.id.uni_institution_desc_text);
         courseDescription = (TextView) findViewById(R.id.uni_course_desc_text);
         direction = (TextView) findViewById(R.id.uni_direction);
@@ -62,10 +59,6 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
         courseDescription.setPaintFlags(courseDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         direction.setPaintFlags(direction.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         career.setPaintFlags(career.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-
-        Intent in = getIntent();
-        String cName = in.getStringExtra("courseName");
-        String sName = in.getStringExtra("institutionName");
     }
 
     @Override

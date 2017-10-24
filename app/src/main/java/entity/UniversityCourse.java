@@ -15,11 +15,6 @@ public class UniversityCourse extends Course{
         this.gradePointAverage = gradePointAverage;
     }
 
-    public UniversityCourse(String courseName, String school, int intake, int gradePointAverage, String website) {
-        super(courseName, school, intake, website);
-        this.gradePointAverage = gradePointAverage;
-    }
-
     public double getGradePointAverage() {
         return gradePointAverage;
     }

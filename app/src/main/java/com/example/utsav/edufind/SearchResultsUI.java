@@ -38,7 +38,6 @@ public class SearchResultsUI extends AppCompatActivity {
     private int L1R4;
     private int postalCode;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Get data from previous activity
@@ -100,6 +99,12 @@ public class SearchResultsUI extends AppCompatActivity {
     private void initializeData(){
         CourseSearchController c1 = new CourseSearchController();
         courseList = c1.search(interest, specialization, L1R4, postalCode);
+
+        for (int i = 0; i < courseList.size(); i++) {
+            if (courseList.get(i) instanceof UniversityCourse) {
+                courseList.remove(i);
+            }
+        }
     }
 
     private void initializeAdapter(){
@@ -120,7 +125,6 @@ public class SearchResultsUI extends AppCompatActivity {
             // This method will trigger on item Click of navigation menu
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
                 //Checking if the item is in checked state or not, if not make it in checked state
                 if(menuItem.isChecked()) menuItem.setChecked(false);
                 else menuItem.setChecked(true);

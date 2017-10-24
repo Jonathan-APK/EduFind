@@ -57,14 +57,4 @@ public class MainUI extends AppCompatActivity{
         Intent intent = new Intent(this, BookmarksUI.class);
         startActivity(intent);
     }
-
-    public void goToSearchResultsUI(View view) {
-        Intent intent = new Intent(this, SearchResultsUI.class);
-        startActivity(intent);
-    }
-
-    public void goToPolytechnicDetails(View view) {
-        Intent intent = new Intent(this, PolytechnicDetails.class);
-        startActivity(intent);
-    }
 }

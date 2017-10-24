@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:contentDescription="Institution Logo"/>
+            android:contentDescription="School Logo"/>
 
         <TextView
             android:id="@+id/Course_name"
@@ -65,19 +65,19 @@
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginStart="3dp"
+                    android:layout_marginLeft="3dp"
                     android:background="@drawable/greencircle"/>
                 <TextView
                     android:id="@+id/Course_Grade"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="27dp"
+                    android:layout_marginTop="30dp"
                     android:width="80dp"
                     android:textSize="22sp"
                     android:textAlignment="center"
                     android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:paddingStart="10dp"
+                    android:paddingStart="9dp"
                     android:paddingEnd="20dp"/>
                 <TextView
                     android:id="@+id/Course_Grade_Title"
@@ -99,14 +99,14 @@
                     android:id="@+id/Course_Intake_Circle"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
-                    android:layout_marginStart="7dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/greencircle"/>
                 <TextView
                     android:id="@+id/Course_Intake"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="27dp"
+                    android:layout_marginTop="28dp"
                     android:minWidth="80dp"
                     android:maxWidth="200dp"
                     android:layout_marginStart="0dp"

@@ -59,18 +59,7 @@ public class PolytechnicDetails extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
-        Intent in = getIntent();
-        String cName = in.getStringExtra("courseName");
-        String sName = in.getStringExtra("institutionName");
-
-//        TextView tv = (TextView) findViewById(R.id.textView);
-//        tv.setText(cName);
-//        TextView tv2 = (TextView) findViewById(R.id.textView2);
-//        tv2.setText(sName);
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

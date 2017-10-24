@@ -17,8 +17,6 @@ import controller.CourseSearchController;
 import controller.RVAdapter;
 import entity.Course;
 import entity.PolytechnicCourse;
-import entity.UniversityCourse;
-
 
 public class tab2UniOptions extends Fragment {
     private DrawerLayout mDrawerLayout;
@@ -31,7 +29,6 @@ public class tab2UniOptions extends Fragment {
     //Store user inputs from previous activity
     private String interest;
     private String specialization;
-    private int L1R4;
     private int postalCode;
 
     @Override
@@ -52,15 +49,14 @@ public class tab2UniOptions extends Fragment {
     }
 
     private void initializeData(){
-        // CourseSearchController c1 = new CourseSearchController();
-        // courseList = c1.search(interest, specialization, L1R4, postalCode);
-        courseList = new ArrayList<>();
+        CourseSearchController c1 = new CourseSearchController();
+        courseList = c1.search(interest, specialization, 0, postalCode);
 
-        courseList.add(new UniversityCourse("Degree in Business Management", "National University of Singapore",10, 1, "http://www.nus.edu.sg/"));
-        courseList.add(new UniversityCourse("Degree in Digital Media", "National University of Singapore", 40, 12, "http://www.nie.edu.sg/"));
-        courseList.add(new UniversityCourse("Degree in Accountancy", "Nanyang Technological University", 60, 15, "http://www.ntu.edu.sg/Pages/home.aspx"));
-        courseList.add(new UniversityCourse("Degree in Biological Sciences", "Singapore Management University", 30, 11, "https://www.smu.edu.sg/"));
-
+        for (int i = 0; i < courseList.size(); i++) {
+            if (courseList.get(i) instanceof PolytechnicCourse) {
+                courseList.remove(i);
+            }
+        }
     }
 
     private void initializeAdapter(){

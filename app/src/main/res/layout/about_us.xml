@@ -39,7 +39,7 @@
                     android:elevation="3dp">
 
                     <ImageView
-                        android:id="@+id/School_Logo"
+                        android:id="@+id/Institution_Logo"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         app:srcCompat="@drawable/logo"

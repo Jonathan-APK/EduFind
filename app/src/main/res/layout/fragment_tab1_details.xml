@@ -185,7 +185,6 @@
                         android:text="Course Description"
                         android:textSize="16sp"
                         android:textColor="@color/colorAccent"
-
                         tools:layout_editor_absoluteX="8dp"
                         tools:layout_editor_absoluteY="225dp" />
 
@@ -194,9 +193,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/colorAccent"
-                        android:text="The Diploma in Food Science and Nutrition course aims to develop competent professionals with the skills"
-                        />
+                        android:textColor="@color/colorAccent" />
 
                     <TextView
                         android:id="@+id/career_prospect_text"
@@ -258,8 +255,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="15dp"
-                        android:textColor="@color/colorAccent"
-                        android:text="We provide quality education and training to prepare students and adult learners for work and life, equipping them to be lifelong learners and to contribute to the technological, economic and social development of Singapore."/>
+                        android:textColor="@color/colorAccent" />
 
                 </LinearLayout>
             </RelativeLayout>

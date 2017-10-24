@@ -53,29 +53,4 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newSearchBtn" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:onClick="goToPolytechnicDetails"
-        android:text="Poly Details"
-        android:theme="@style/whiteBtn"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookmarksBtn" />
-
-    <Button
-        android:id="@+id/button"
-        android:theme="@style/whiteBtn"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookmarksBtn"
-        android:text="Search results"
-        android:onClick="goToSearchResultsUI"
-        android:layout_marginTop="70dp"
-        app:layout_constraintHorizontal_bias="0.496" />
 </android.support.constraint.ConstraintLayout>
