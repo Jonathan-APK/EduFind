@@ -14,10 +14,17 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import controller.CourseSearchController;
-import controller.RVAdapter;
 import entity.Course;
 import entity.PolytechnicCourse;
 
+/**
+ * This class displays the search results of university courses based on the user's
+ * polytechnic course selection in the form of a recycler and card view
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
+ */
 public class tab2UniOptions extends Fragment {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
@@ -48,6 +55,10 @@ public class tab2UniOptions extends Fragment {
         return rootView;
     }
 
+    /**
+     * This method retrieves all the search results from the course search controller class
+     * and puts them in an ArrayList of Course objects consisting of only university courses.
+     */
     private void initializeData(){
         CourseSearchController c1 = new CourseSearchController();
         courseList = c1.search(interest, specialization, 0, postalCode);
@@ -59,6 +70,10 @@ public class tab2UniOptions extends Fragment {
         }
     }
 
+    /**
+     * This method puts all the the Array List Course items in the Recycler View. The Recycler View
+     * populates the respective course items in a card view.
+     */
     private void initializeAdapter(){
         RVAdapter adapter= new RVAdapter(courseList);
         rv.setAdapter(adapter);

@@ -1,4 +1,4 @@
-package controller;
+package com.example.utsav.edufind;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,17 +12,25 @@ import android.widget.ImageView;
 import android.util.TypedValue;
 import android.util.DisplayMetrics;
 
-import com.example.utsav.edufind.PolytechnicDetails;
-import com.example.utsav.edufind.R;
 import java.util.List;
 
 import entity.PolytechnicCourse;
 import entity.UniversityCourse;
 import entity.Course;
-import com.example.utsav.edufind.UniversityCourseDetailsUI;
 
+/**
+ * This class sets the course information in their respective View elements and populates the card view
+ * of each course dynamically based on the size of the Course objects
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
+ */
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> {
-    //private Context context;
+
+    /**
+     * This class references the respective View widgets inside the layout through its id
+     */
     public static class CourseViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         TextView CourseName;
@@ -61,6 +69,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
         this.courses = courses;
     }
 
+
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
@@ -73,6 +82,16 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
         return pvh;
     }
 
+    /**
+     * This method checks the name of the polytechnic or university and sets the respective institution image
+     * to its CourseViewHolder widget.
+     * This method also dynamically sets the external link(URL) on the clickable website icon which redirects the user
+     * to an external browser when clicked on.
+     * This method also dynamically sets the course details on the clickable card view which redirects the user
+     * to the respective course information page.
+     * @param CourseViewHolder Holds all the View widgets in the SearchResultsUI page
+     * @param i Allows accessibility from it inner onClick method to retrieve the correct course URL
+     */
     @Override
     public void onBindViewHolder(CourseViewHolder CourseViewHolder, final int i) {
         if(courses.get(i) instanceof PolytechnicCourse) {

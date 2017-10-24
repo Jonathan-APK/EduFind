@@ -14,16 +14,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 
 import controller.CourseSearchController;
-import controller.RVAdapter;
 import entity.Course;
-import entity.PolytechnicCourse;
 import entity.UniversityCourse;
 
+/**
+ * This class displays the search results of polytechnic courses based on the user's
+ * input in the form of a recycler and card view
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
+ */
 public class SearchResultsUI extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
@@ -96,6 +101,10 @@ public class SearchResultsUI extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * This method retrieves all the search results from the course search controller class
+     * and puts them in an ArrayList of Course objects consisting of only polytechnic courses.
+     */
     private void initializeData(){
         CourseSearchController c1 = new CourseSearchController();
         courseList = c1.search(interest, specialization, L1R4, postalCode);
@@ -107,6 +116,10 @@ public class SearchResultsUI extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method retrieves all the search results from the course search controller class
+     * and puts them in an ArrayList of Course objects consisting of only university courses.
+     */
     private void initializeAdapter(){
         RVAdapter adapter = new RVAdapter(courseList);
         rv.setAdapter(adapter);
