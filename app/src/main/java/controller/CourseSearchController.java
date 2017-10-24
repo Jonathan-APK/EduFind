@@ -58,12 +58,12 @@ public class CourseSearchController {
         courseList.add(pc3);
         courseList.add(pc4);
 
-        Institution int3 = new Institution("National University of Singapore", "NUS Desc", 569830);
-        Institution int4 = new Institution("Nanyang Technological University", "NTU Desc", 139651);
-        UniversityCourse pc5 = new UniversityCourse("Degree in Food Science", "APPLIED SCIENCES", "Food Science", "website1", "School of Health Science", "Degree", "This is a very long description to fill up the space bug in the layout in poly details tab", int1, 10, 3.8);
-        UniversityCourse pc6 = new UniversityCourse("Degree in Culinary", "APPLIED SCIENCES", "Food Science", "website1", "School of Arts", "Degree", "This is a very long description to fill up the space bug in the layout in poly details tab", int2, 10, 3.7);
-        UniversityCourse pc7 = new UniversityCourse("Degree in Culinary Arts", "APPLIED SCIENCES", "Food Science", "website1", "School of Health Science", "Degree", "This is a very long description to fill up the space bug in the layout in poly details tab", int1, 10, 3.6);
-        UniversityCourse pc8 = new UniversityCourse("Degree in Biomedical Science", "APPLIED SCIENCES", "Biomedical", "website1", "School of Science", "Degree", "This is a very long description to fill up the space bug in the layout in poly details tab", int1, 10, 3.7);
+        Institution int3 = new Institution("National University of Singapore", "NUS Desc", 117543);
+        Institution int4 = new Institution("Nanyang Technological University", "NTU Desc", 639798 );
+        UniversityCourse pc5 = new UniversityCourse("Degree in Food Science", "APPLIED SCIENCES", "Food Science", "website1", "School of Health Science", "Degree", "This is a very long description to fill up the space bug in the layout in poly details tab", int3, 10, 3.8);
+        UniversityCourse pc6 = new UniversityCourse("Degree in Culinary", "APPLIED SCIENCES", "Food Science", "website1", "School of Arts", "Degree", "This is a very long description to fill up the space bug in the layout in poly details tab", int4, 10, 3.7);
+        UniversityCourse pc7 = new UniversityCourse("Degree in Culinary Arts", "APPLIED SCIENCES", "Food Science", "website1", "School of Health Science", "Degree", "This is a very long description to fill up the space bug in the layout in poly details tab", int3, 10, 3.6);
+        UniversityCourse pc8 = new UniversityCourse("Degree in Biomedical Science", "APPLIED SCIENCES", "Biomedical", "website1", "School of Science", "Degree", "This is a very long description to fill up the space bug in the layout in poly details tab", int4, 10, 3.7);
         courseList.add(pc5);
         courseList.add(pc6);
         courseList.add(pc7);
