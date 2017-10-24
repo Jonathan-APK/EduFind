@@ -13,17 +13,23 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by utsav on 27/9/17.
+ * This class used the Google Maps API to calculate the distance by car between two post codes.
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-09-27
  */
 
 public class DistanceCalculation extends AsyncTask<String, Void, Double>{
+    /**
+     * Takes a string array of pin-codes and asynchronously calculates the distance between them
+     */
     @Override
     protected Double doInBackground(String... strings){
         String pincode_1 = strings[0];
         String pincode_2 = strings[1];
 
         try{
-            // To Do: find way to secure the key
             String key = "AIzaSyA4weAen8iFGCIl_RxzGmFEodGV-YXPVFw";
             String s = String.format("https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=%s&destinations=%s&key=%s",
                     pincode_1, pincode_2, key);
