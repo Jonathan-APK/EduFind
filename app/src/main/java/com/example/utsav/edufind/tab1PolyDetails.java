@@ -10,10 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-/**
- * Last edited by faceb on 01-Oct-17.
- */
 
+/**
+ * Initializes and display the actual details of for the selected Polytechnic Course
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
+ */
 public class tab1PolyDetails extends Fragment{
     TextView CourseGrade;
     TextView CourseIntake;
@@ -28,6 +32,13 @@ public class tab1PolyDetails extends Fragment{
     TextView CourseDescription;
     TextView SchoolDescription;
 
+    /**
+     * Sets data and display details of the Course dynamically
+     * @param inflater Instantiates a layout XML
+     * @param container Main view containing all other views
+     * @param savedInstanceState Current state of application
+     * @return View Polytechnic Course Details view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab1_details, container, false);

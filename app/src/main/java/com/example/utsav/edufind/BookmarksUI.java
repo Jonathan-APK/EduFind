@@ -12,11 +12,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+/**
+ * Initialize and display Saved Bookmarks page
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
+ */
 public class BookmarksUI extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
 
+    /**
+     * Initialize layout
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +36,11 @@ public class BookmarksUI extends AppCompatActivity {
         initializeToolbar("Bookmarks");
     }
 
+    /**
+     * Instantiate menu XML files into Menu objects when menu options are created
+     * @param menu The menu in the side pane
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -32,6 +48,11 @@ public class BookmarksUI extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Handles event when a menu option is selected
+     * @param item An item button in the menu of the side pane
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -39,14 +60,13 @@ public class BookmarksUI extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Initialize and implements toolbar, drawer, and side panel UI and functions
+     * @param toolbarTitle Title of the page
+     */
     public void initializeToolbar(@NonNull String toolbarTitle){
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(myToolbar);
@@ -119,15 +139,4 @@ public class BookmarksUI extends AppCompatActivity {
         //calling sync state is necessay or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
     }
-
-//    @Override
-//    public void onBackPressed() {
-//        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-//
-//        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-//            mDrawerLayout.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
 }

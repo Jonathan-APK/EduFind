@@ -1,6 +1,7 @@
 package com.example.utsav.edufind;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,29 +12,75 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+/**
+ * Initialize and display About Us page
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
+ */
 public class AboutUs extends AppCompatActivity {
+
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
 
+    /**
+     * Initialize layout
+     * @param savedInstanceState Current state of application
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_us);
 
+        initializeToolbar("About Us");
+    }
+
+    /**
+     * Instantiate menu XML files into Menu objects when menu options are created
+     * @param menu The menu in the side pane
+     * @return true
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    /**
+     * Handles event when a menu option is selected
+     * @param item An item button in the menu of the side pane
+     * @return boolean
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Initialize and implements toolbar, drawer, and side panel UI and functions
+     * @param toolbarTitle Title of the page
+     */
+    public void initializeToolbar(@NonNull String toolbarTitle){
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setTitle("About Us");
+        getSupportActionBar().setTitle(toolbarTitle);
 
         //Initializing NavigationView
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             // This method will trigger on item Click of navigation menu
             @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
                 //Checking if the item is in checked state or not, if not make it in checked state
                 if(menuItem.isChecked()) menuItem.setChecked(false);
@@ -47,19 +94,19 @@ public class AboutUs extends AppCompatActivity {
 
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
-                        intent = new Intent(AboutUs.super.getApplication(), MainUI.class);
+                        intent = new Intent(getApplication(), MainUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
 
                     case R.id.bookmarks:
-                        intent = new Intent(AboutUs.super.getApplication(), BookmarksUI.class);
+                        intent = new Intent(getApplication(), BookmarksUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
 
                     case R.id.aboutus:
-                        intent = new Intent(AboutUs.super.getApplication(), AboutUs.class);
+                        intent = new Intent(getApplication(), AboutUs.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
@@ -90,31 +137,7 @@ public class AboutUs extends AppCompatActivity {
 
         //Setting the actionbarToggle to drawer layout
         mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
-        //calling sync state is necessay or else your hamburger icon wont show up
+        //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
-        //
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

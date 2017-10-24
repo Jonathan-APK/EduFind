@@ -1,7 +1,6 @@
 package com.example.utsav.edufind;
 
 import android.content.Intent;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -9,39 +8,35 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
+/**
+ * Initializes and display Polytechnic Course Details view for the selected University Course
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
+ */
 public class PolytechnicDetails extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
 
+    /**
+     * Initialize SectionsPagerAdapter to implement tabbing function in the main view
+     * @param savedInstanceState Current state of application
+     * @return View Polytechnic Course Details view
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +56,11 @@ public class PolytechnicDetails extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
     }
 
+    /**
+     * Instantiate menu XML files into Menu objects when menu options are created
+     * @param menu The menu in the side pane
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -68,6 +68,11 @@ public class PolytechnicDetails extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Handles event when a menu option is selected
+     * @param item An item button in the menu of the side pane
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -75,28 +80,23 @@ public class PolytechnicDetails extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-
         return super.onOptionsItemSelected(item);
     }
 
-    // Deleted PlaceholderFragment class from here
-
     /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
+     * This is a FragmentPagerAdapter that returns a fragment corresponding to the selected tab.
      */
-    // public class SectionsPagerAdapter extends FragmentPagerAdapter
     private class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        // public SectionsPagerAdapter(FragmentManager fm) {
         SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
+        /**
+         * Displays the appropriate view based on the selected tab
+         * @param position Selected tab in integer form
+         * @return Fragment Sub-pane view
+         */
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page. DELETED
@@ -115,12 +115,20 @@ public class PolytechnicDetails extends AppCompatActivity {
             }
         }
 
+        /**
+         * Returns number of tabs
+         * @return 2 Number of tabs
+         */
         @Override
         public int getCount() {
-            // Show 3 total pages.
             return 2;
         }
 
+        /**
+         * Returns the title of the current Sub-pane view
+         * @param position Current tab position
+         * @return CharSequence Title of the current Sub-pane view
+         */
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
@@ -133,6 +141,10 @@ public class PolytechnicDetails extends AppCompatActivity {
         }
     }
 
+    /**
+     * Initialize and implements toolbar, drawer, and side panel UI and functions
+     * @param toolbarTitle Title of the page
+     */
     public void initializeToolbar(@NonNull String toolbarTitle){
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(myToolbar);
@@ -204,6 +216,5 @@ public class PolytechnicDetails extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
         //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
-
     }
 }

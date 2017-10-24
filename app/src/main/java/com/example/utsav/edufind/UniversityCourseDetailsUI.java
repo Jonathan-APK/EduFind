@@ -15,6 +15,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Initializes and display University Course Details view for the selected University Course
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
+ */
 public class UniversityCourseDetailsUI extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
@@ -31,6 +38,11 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
     TextView career;
     TextView direction;
 
+    /**
+     * Sets data and display details of the Course dynamically
+     * @param savedInstanceState Current state of application
+     * @return View Polytechnic Course Details view
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +73,11 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
         career.setPaintFlags(career.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
     }
 
+    /**
+     * Instantiate menu XML files into Menu objects when menu options are created
+     * @param menu The menu in the side pane
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -68,6 +85,11 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Handles event when a menu option is selected
+     * @param item An item button in the menu of the side pane
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -75,14 +97,13 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Initialize and implements toolbar, drawer, and side panel UI and functions
+     * @param toolbarTitle Title of the page
+     */
     public void initializeToolbar(@NonNull String toolbarTitle){
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(myToolbar);
@@ -97,39 +118,39 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                //Checking if the item is in checked state or not, if not make it in checked state
-                if(menuItem.isChecked()) menuItem.setChecked(false);
-                else menuItem.setChecked(true);
+            //Checking if the item is in checked state or not, if not make it in checked state
+            if(menuItem.isChecked()) menuItem.setChecked(false);
+            else menuItem.setChecked(true);
 
-                //Closing drawer on item click
-                mDrawerLayout.closeDrawers();
+            //Closing drawer on item click
+            mDrawerLayout.closeDrawers();
 
-                //Check to see which item was being clicked and perform appropriate action
-                switch (menuItem.getItemId()){
+            //Check to see which item was being clicked and perform appropriate action
+            switch (menuItem.getItemId()){
 
-                    //Replacing the main content with ContentFragment Which is our Inbox View;
-                    case R.id.home:
-                        intent = new Intent(UniversityCourseDetailsUI.this, MainUI.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        return true;
+                //Replacing the main content with ContentFragment Which is our Inbox View;
+                case R.id.home:
+                    intent = new Intent(UniversityCourseDetailsUI.this, MainUI.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    return true;
 
-                    case R.id.bookmarks:
-                        intent = new Intent(UniversityCourseDetailsUI.this, BookmarksUI.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        return true;
+                case R.id.bookmarks:
+                    intent = new Intent(UniversityCourseDetailsUI.this, BookmarksUI.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    return true;
 
-                    case R.id.aboutus:
-                        intent = new Intent(UniversityCourseDetailsUI.this, AboutUs.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        return true;
+                case R.id.aboutus:
+                    intent = new Intent(UniversityCourseDetailsUI.this, AboutUs.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    return true;
 
-                    default:
+                default:
 
-                        return true;
-                }
+                    return true;
+            }
             }
         });
 
@@ -154,6 +175,5 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
         //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
-
     }
 }

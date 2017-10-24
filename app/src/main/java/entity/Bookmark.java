@@ -1,9 +1,13 @@
 package entity;
 
 /**
- * Created by boonleng94 on 27/9/2017.
+ * Specifies a Bookmark entity class that allow
+ * users to save search parameters as a Bookmark object.
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
  */
-
 public class Bookmark {
     private String interest;
     private String specialization;

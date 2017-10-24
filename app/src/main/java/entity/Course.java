@@ -1,5 +1,14 @@
 package entity;
 
+/**
+ * Specifies a Course entity class that stores
+ * the values of a course as a Course object for
+ * data manipulation
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
+ */
 public class Course {
     private String courseName;
     private String interest;
