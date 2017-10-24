@@ -10,7 +10,6 @@ import java.util.ArrayList;
  */
 
 public class BookmarkController {
-
     private static String csvFile;
     private static BufferedReader br = null;
     private static BufferedWriter bw = null;
@@ -20,13 +19,11 @@ public class BookmarkController {
     private static Bookmark bookmark;
     private static ArrayList<Bookmark> bookmarkList;
     private static boolean rt = false;
-    private static String bookmarkFile = "/Users/darks/Desktop/bookmark.csv";
-
+    private static String bookmarkFile = "app/src/data/Bookmark.csv";
 
     public static ArrayList<Bookmark> retrieveListOfBookmark() {
         bookmarkList = new ArrayList<Bookmark>();
         bookmark = new Bookmark();
-
         csvFile = bookmarkFile;
 
         try {

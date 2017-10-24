@@ -1,5 +1,6 @@
 package controller;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -25,11 +26,10 @@ public class CourseController {
     private static ArrayList<PolytechnicCourse> polyList;
     private static PolytechnicCourse poly;
     private static UniversityCourse uni;
-    private static String polyFile = "/Users/darks/Desktop/poly.csv";
-    private static String uniFile = "/Users/darks/Desktop/uni.csv";
+    private static String polyFile = "C:/Users/boonleng94/AndroidStudioProjects/EduFind/app/src/main/data/Polytechnic.csv";
+    private static String uniFile = "C:/Users/boonleng94/AndroidStudioProjects/EduFind/app/src/main/data/University.csv";
 
     public static ArrayList<PolytechnicCourse> retrieveListOfPolyCourses() {
-
         polyList = new ArrayList<PolytechnicCourse>();
         poly = new PolytechnicCourse();
 
@@ -39,7 +39,6 @@ public class CourseController {
 
             br = new BufferedReader(new FileReader(csvFile));
             while ((line = br.readLine()) != null) {
-
                 // use comma as separator
                 tempArray = line.split(delimiter);
 

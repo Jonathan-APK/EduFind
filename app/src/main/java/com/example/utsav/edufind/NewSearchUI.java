@@ -30,7 +30,7 @@ public class NewSearchUI extends AppCompatActivity {
         Spinner areaOfInterestSpinner = (Spinner) findViewById(R.id.areaOfInterestSpinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-        R.array.dummyArray, android.R.layout.simple_spinner_item);
+        R.array.interestArray, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -39,8 +39,7 @@ public class NewSearchUI extends AppCompatActivity {
         //Populate specializationSpinner
         Spinner specializationSpinner = (Spinner) findViewById(R.id.specializationSpinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
-        adapter = ArrayAdapter.createFromResource(this,
-                R.array.dummyArray, android.R.layout.simple_spinner_item);
+        adapter = ArrayAdapter.createFromResource(this, R.array.specializationArray, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -73,9 +72,12 @@ public class NewSearchUI extends AppCompatActivity {
         intent = new Intent(this, NewSearchUIPage2.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         //Passing data to next activity
-        /*intent.putExtra("interest", interest);
+        Spinner areaOfInterestSpinner = (Spinner) findViewById(R.id.areaOfInterestSpinner);
+        String interest = areaOfInterestSpinner.getSelectedItem().toString();
+        Spinner specializationSpinner = (Spinner) findViewById(R.id.specializationSpinner);
+        String specialization = specializationSpinner.getSelectedItem().toString();
+        intent.putExtra("interest", interest);
         intent.putExtra("specialization", specialization);
-        intent.putExtra("L1R4", L1R4);*/
         startActivity(intent);
     }
 
