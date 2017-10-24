@@ -7,10 +7,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import controller.CourseSearchController;
+import entity.UniversityCourse;
 
 /**
  * Initialize and display Saved Bookmarks page
@@ -24,16 +29,27 @@ public class BookmarksUI extends AppCompatActivity {
     private Intent intent;
     private NavigationView navigationView;
 
+    private RecyclerView rv;
+
     /**
      * Initialize layout
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Get data from previous activity
+        Intent i = getIntent();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bookmarks_ui);
 
         initializeToolbar("Bookmarks");
+
+        rv= (RecyclerView) findViewById(R.id.rv);
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true);
     }
 
     /**
@@ -48,20 +64,20 @@ public class BookmarksUI extends AppCompatActivity {
         return true;
     }
 
-    /**
-     * Handles event when a menu option is selected
-     * @param item An item button in the menu of the side pane
-     * @return boolean
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        return super.onOptionsItemSelected(item);
-    }
+//    /**
+//     * Handles event when an option is selected
+//     * @param item An item button in the menu of the side pane
+//     * @return boolean
+//     */
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     /**
      * Initialize and implements toolbar, drawer, and side panel UI and functions
@@ -81,39 +97,39 @@ public class BookmarksUI extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                //Checking if the item is in checked state or not, if not make it in checked state
-                if(menuItem.isChecked()) menuItem.setChecked(false);
-                else menuItem.setChecked(true);
+            //Checking if the item is in checked state or not, if not make it in checked state
+            if(menuItem.isChecked()) menuItem.setChecked(false);
+            else menuItem.setChecked(true);
 
-                //Closing drawer on item click
-                mDrawerLayout.closeDrawers();
+            //Closing drawer on item click
+            mDrawerLayout.closeDrawers();
 
-                //Check to see which item was being clicked and perform appropriate action
-                switch (menuItem.getItemId()){
+            //Check to see which item was being clicked and perform appropriate action
+            switch (menuItem.getItemId()){
 
-                    //Replacing the main content with ContentFragment Which is our Inbox View;
-                    case R.id.home:
-                        intent = new Intent(BookmarksUI.super.getApplication(), MainUI.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        return true;
+                //Replacing the main content with ContentFragment Which is our Inbox View;
+                case R.id.home:
+                    intent = new Intent(BookmarksUI.super.getApplication(), MainUI.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    return true;
 
-                    case R.id.bookmarks:
-                        intent = new Intent(BookmarksUI.super.getApplication(), BookmarksUI.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        return true;
+                case R.id.bookmarks:
+                    intent = new Intent(BookmarksUI.super.getApplication(), BookmarksUI.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    return true;
 
-                    case R.id.aboutus:
-                        intent = new Intent(BookmarksUI.super.getApplication(), AboutUs.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        return true;
+                case R.id.aboutus:
+                    intent = new Intent(BookmarksUI.super.getApplication(), AboutUs.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    return true;
 
-                    default:
+                default:
 
-                        return true;
-                }
+                    return true;
+            }
             }
         });
 
