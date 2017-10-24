@@ -19,7 +19,7 @@ import entity.PolytechnicCourse;
 
 /**
  * This class displays the search results of university courses based on the user's
- * polytechnic course selection in the form of a recycler and card view
+ * polytechnic course selection in the form of a recycler and card view.
  *
  * @author  Minions
  * @version 1.0

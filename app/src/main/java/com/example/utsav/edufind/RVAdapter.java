@@ -20,7 +20,7 @@ import entity.Course;
 
 /**
  * This class sets the course information in their respective View elements and populates the card view
- * of each course dynamically based on the size of the Course objects
+ * of each course dynamically based on the size of the Course objects.
  *
  * @author  Minions
  * @version 1.0
@@ -29,7 +29,7 @@ import entity.Course;
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> {
 
     /**
-     * This class references the respective View widgets inside the layout through its id
+     * This class references the respective View widgets inside the layout through its id.
      */
     public static class CourseViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
