@@ -62,7 +62,7 @@ public class PolytechnicDetails extends AppCompatActivity {
 
         Intent in = getIntent();
         String cName = in.getStringExtra("courseName");
-        String sName = in.getStringExtra("schoolName");
+        String sName = in.getStringExtra("institutionName");
 
 //        TextView tv = (TextView) findViewById(R.id.textView);
 //        tv.setText(cName);

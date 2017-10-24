@@ -12,11 +12,6 @@ public class PolytechnicCourse extends Course{
         L1R4 = l1R4;
     }
 
-    public PolytechnicCourse(String courseName, String school, int intake, int l1R4, String website) {
-        super(courseName, school, intake, website);
-        this.L1R4 = l1R4;
-    }
-
     public int getL1R4() {
         return L1R4;
     }

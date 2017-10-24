@@ -23,16 +23,6 @@ public class MainUI extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // This is just a sample usage of the function
-        DistanceCalculation d1 = new DistanceCalculation();
-        d1.execute("637658", "637659");
-        try {
-            double distance = d1.get();
-            Log.d("distance", String.valueOf(distance));
-        }catch (Exception e){
-            Log.d("distance_error", e.toString());
-        }
     }
 
     @Override

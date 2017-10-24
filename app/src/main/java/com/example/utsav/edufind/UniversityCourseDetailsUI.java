@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class UniversityCourseDetailsUI extends AppCompatActivity {
-
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
@@ -24,8 +23,8 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
     TextView CourseGrade;
     TextView CourseIntake;
     TextView CourseName;
-    TextView SchoolName;
-    ImageView SchoolLogo;
+    TextView InstitutionName;
+    ImageView InstitutionLogo;
     ImageView CourseWebsite;
     TextView schDescription;
     TextView courseDescription;
@@ -34,10 +33,8 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.university_course_details_ui);
-
         //INIT TOOLBAR
         initializeToolbar("University Details");
         //
@@ -45,11 +42,11 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
         CourseGrade = (TextView) findViewById(R.id.uni_Course_Grade);
         CourseIntake = (TextView) findViewById(R.id.uni_Course_Intake);
         CourseName = (TextView) findViewById(R.id.uni_Course_name);
-        SchoolName = (TextView)findViewById(R.id.uni_School_name);
-        SchoolLogo = (ImageView) findViewById(R.id.uni_School_Logo);
+        InstitutionName = (TextView)findViewById(R.id.uni_Institution_name);
+        InstitutionLogo = (ImageView) findViewById(R.id.uni_Institution_Logo);
         CourseWebsite = (ImageView) findViewById(R.id.uni_Course_Website);
 
-        schDescription = (TextView) findViewById(R.id.uni_school_desc_text);
+        schDescription = (TextView) findViewById(R.id.uni_institution_desc_text);
         courseDescription = (TextView) findViewById(R.id.uni_course_desc_text);
         direction = (TextView) findViewById(R.id.uni_direction);
         career = (TextView) findViewById(R.id.uni_career_prospect_text);
@@ -57,8 +54,8 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
         CourseGrade.setText("1");
         CourseIntake.setText("1000");
         CourseName.setText("Diploma In Information Security");
-        SchoolName.setText("Singapore Polytechnic");
-        SchoolLogo.setImageResource(R.mipmap.sp);
+        InstitutionName.setText("Singapore Polytechnic");
+        InstitutionLogo.setImageResource(R.mipmap.sp);
         CourseWebsite.setImageResource(R.drawable.website);
 
         schDescription.setPaintFlags(schDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -68,12 +65,7 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
 
         Intent in = getIntent();
         String cName = in.getStringExtra("courseName");
-        String sName = in.getStringExtra("schoolName");
-
-//        TextView tv = (TextView) findViewById(R.id.textView3);
-//        tv.setText(cName);
-//        TextView tv2 = (TextView) findViewById(R.id.textView4);
-//        tv2.setText(sName);
+        String sName = in.getStringExtra("institutionName");
     }
 
     @Override
