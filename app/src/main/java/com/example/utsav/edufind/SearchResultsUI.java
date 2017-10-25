@@ -1,5 +1,6 @@
 package com.example.utsav.edufind;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -86,18 +87,15 @@ public class SearchResultsUI extends AppCompatActivity {
 
         if (id == R.id.bookmarkSearchParametersBtn) {
             // BOOKMARK SEARCH PARAMETERS HERE
-
             // Show confirmation via Builder Design Pattern
             AlertDialog.Builder builder= new AlertDialog.Builder(SearchResultsUI.this);
             builder.setMessage("Search parameters are bookmarked!");
             builder.setPositiveButton("OK", null);
-
             AlertDialog alert = builder.create();
             alert.show();
 
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -123,6 +121,19 @@ public class SearchResultsUI extends AppCompatActivity {
     private void initializeAdapter(){
         RVAdapter adapter = new RVAdapter(courseList, interest, specialization, postalCode);
         rv.setAdapter(adapter);
+
+        if (adapter.getItemCount() == 0) {
+            // Show no results
+            AlertDialog.Builder builder = new AlertDialog.Builder(SearchResultsUI.this); //alert for confirm to delete
+            builder.setMessage("Your search returned no results!");    //set message
+            builder.setPositiveButton("Return", new DialogInterface.OnClickListener() { //when click on DELETE
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                    return;
+                }
+            }).show();  //show alert dialog
+        }
     }
 
     public void initializeToolbar(@NonNull String toolbarTitle){
@@ -164,7 +175,6 @@ public class SearchResultsUI extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     default:
-
                         return true;
                 }
             }

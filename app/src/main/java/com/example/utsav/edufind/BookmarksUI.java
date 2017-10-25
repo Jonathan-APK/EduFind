@@ -69,7 +69,6 @@ public class BookmarksUI extends AppCompatActivity {
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 final int position = viewHolder.getAdapterPosition();
 
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(BookmarksUI.this); //alert for confirm to delete
                 builder.setMessage("Are you sure to delete?");    //set message
                 builder.setPositiveButton("REMOVE", new DialogInterface.OnClickListener() { //when click on DELETE
