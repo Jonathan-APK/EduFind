@@ -146,7 +146,7 @@ public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
             m1.execute(postalCode);
             double[] location = m1.get();
             LatLng HOME = new LatLng(location[0], location[1]);
-            mGoogleMap.addMarker(new MarkerOptions().position(HOME).title("Home"));
+            mGoogleMap.addMarker(new MarkerOptions().position(HOME).title("Your Location"));
             m2.execute(insCode);
             location = m2.get();
             LatLng INST = new LatLng(location[0], location[1]);
