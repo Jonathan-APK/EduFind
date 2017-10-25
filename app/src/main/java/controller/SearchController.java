@@ -16,7 +16,7 @@ import java.util.Collections;
  * @version 1.0
  * @since   2017-10-24
  */
-public class CourseSearchController {
+public class SearchController {
 
     /**
      * This method checks that the postalCode passed is valid (6 digits only)
