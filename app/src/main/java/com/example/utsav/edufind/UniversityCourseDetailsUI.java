@@ -118,6 +118,10 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
                 InstitutionLogo.setImageResource(R.mipmap.sit);
                 break;
             }
+            case "Digipen Institute of Technology Singapore": {
+                InstitutionLogo.setImageResource(R.mipmap.digipen);
+                break;
+            }
             default:
         }
 

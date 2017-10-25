@@ -104,7 +104,7 @@ public class SearchResultsUI extends AppCompatActivity {
      * and puts them in an ArrayList of Course objects consisting of only polytechnic courses.
      */
     private void initializeData(){
-        SearchController c1 = new SearchController();
+        SearchController c1 = new SearchController(this);
         courseList = c1.search(interest, specialization, L1R4, postalCode);
 
         for (int i = 0; i < courseList.size(); i++) {

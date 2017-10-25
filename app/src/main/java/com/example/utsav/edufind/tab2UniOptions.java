@@ -64,7 +64,7 @@ public class tab2UniOptions extends Fragment {
      * and puts them in an ArrayList of Course objects consisting of only university courses.
      */
     private void initializeData(){
-        SearchController c1 = new SearchController();
+        SearchController c1 = new SearchController(getActivity());
         courseList = c1.search(interest, specialization, 0, postalCode);
 
         for (int i = 0; i < courseList.size(); i++) {

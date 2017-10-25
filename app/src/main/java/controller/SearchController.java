@@ -1,5 +1,7 @@
 package controller;
 
+import android.content.Context;
+
 import entity.Course;
 import entity.PolytechnicCourse;
 import entity.Institution;
@@ -17,6 +19,11 @@ import java.util.Collections;
  * @since   2017-10-24
  */
 public class SearchController {
+    private Context current;
+
+    public SearchController(Context current) {
+        this.current = current;
+    }
 
     /**
      * This method checks that the postalCode passed is valid (6 digits only)
@@ -51,35 +58,15 @@ public class SearchController {
         Course temp = new Course();
 
         //Retrieve full list of polytechnic courses and university courses
-        //courseList = CourseController.retrieveListOfPolyCourses();
-        //courseList = CourseController.retrieveListOfUniCourses();
-        Institution int1 = new Institution("Nanyang Polytechnic", "NYP Desc", 569830);
-        Institution int2 = new Institution("Singapore Polytechnic", "SP Desc", 139651);
-        PolytechnicCourse pc1 = new PolytechnicCourse("Diploma in Food Science", "APPLIED SCIENCES", "Food Science", "website1", "School of Health Science", "Diploma", "This is a very long description to fill up the space bug in the layout in poly details tab", int1, 10, 14);
-        PolytechnicCourse pc2 = new PolytechnicCourse("Diploma in Culinary", "APPLIED SCIENCES", "Food Science", "website1", "School of Arts", "Diploma", "This is a very long description to fill up the space bug in the layout in poly details tab", int2, 10, 12);
-        PolytechnicCourse pc3 = new PolytechnicCourse("Diploma in Culinary Arts", "APPLIED SCIENCES", "Food Science", "website1", "School of Health Science", "Diploma", "This is a very long description to fill up the space bug in the layout in poly details tab", int1, 10, 20);
-        PolytechnicCourse pc4 = new PolytechnicCourse("Diploma in Biomedical Science", "APPLIED SCIENCES", "Biomedical", "website1", "Singapore Polytechnic", "Diploma", "This is a very long description to fill up the space bug in the layout in poly details tab", int1, 10, 16);
-        courseList.add(pc1);
-        courseList.add(pc2);
-        courseList.add(pc3);
-        courseList.add(pc4);
-
-        Institution int3 = new Institution("National University of Singapore", "NUS Desc", 117543);
-        Institution int4 = new Institution("Nanyang Technological University", "NTU Desc", 639798 );
-        UniversityCourse pc5 = new UniversityCourse("Degree in Food Science", "APPLIED SCIENCES", "Food Science", "website1", "School of Health Science", "Degree", "This is a very long description to fill up the space bug in the layout in poly details tab", int3, 10, 3.8);
-        UniversityCourse pc6 = new UniversityCourse("Degree in Culinary", "APPLIED SCIENCES", "Food Science", "website1", "School of Arts", "Degree", "This is a very long description to fill up the space bug in the layout in poly details tab", int4, 10, 3.7);
-        UniversityCourse pc7 = new UniversityCourse("Degree in Culinary Arts", "APPLIED SCIENCES", "Food Science", "website1", "School of Health Science", "Degree", "This is a very long description to fill up the space bug in the layout in poly details tab", int3, 10, 3.6);
-        UniversityCourse pc8 = new UniversityCourse("Degree in Biomedical Science", "APPLIED SCIENCES", "Biomedical", "website1", "School of Science", "Degree", "This is a very long description to fill up the space bug in the layout in poly details tab", int4, 10, 3.7);
-        courseList.add(pc5);
-        courseList.add(pc6);
-        courseList.add(pc7);
-        courseList.add(pc8);
+        CourseController cc = new CourseController(current);
+        courseList = cc.retrieveListOfPolyCourses();
+        courseList.addAll(cc.retrieveListOfUniCourses());
 
         //Filter list according to inputs
         for (int i = 0; i < courseList.size(); i++) {
             temp = courseList.get(i);
             //Filter by interests and specialization
-            if (temp.getInterest().equals(interest) && temp.getSpecialization().equals(specialization)) {
+            if (temp.getInterest().toLowerCase().equals(interest.toLowerCase()) && temp.getSpecialization().toLowerCase().contains(specialization.toLowerCase())) {
                 //Filter by L1R4
                 if (temp instanceof PolytechnicCourse) {
                     if (L1R4 <= ((PolytechnicCourse) temp).getL1R4()) {
