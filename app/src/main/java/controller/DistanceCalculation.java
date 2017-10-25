@@ -33,7 +33,6 @@ public class DistanceCalculation extends AsyncTask<String, Void, Double>{
             String key = "AIzaSyA4weAen8iFGCIl_RxzGmFEodGV-YXPVFw";
             String s = String.format("https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=%s&destinations=%s&key=%s",
                     pincode_1, pincode_2, key);
-            System.out.println(s);
             URL url = new URL(s);
             HttpURLConnection urlConnection= (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");

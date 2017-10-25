@@ -5,11 +5,21 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import controller.MapController;
 
 /**
  * Initializes and display the actual details of for the selected Polytechnic Course
@@ -18,7 +28,7 @@ import android.widget.TextView;
  * @version 1.0
  * @since   2017-10-24
  */
-public class tab1PolyDetails extends Fragment{
+public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
     TextView CourseGrade;
     TextView CourseIntake;
     TextView CourseName;
@@ -31,6 +41,9 @@ public class tab1PolyDetails extends Fragment{
     TextView direction;
     TextView CourseDescription;
     TextView instiDescription;
+    GoogleMap mGoogleMap;
+    String postalCode;
+    String insName;
 
     /**
      * Sets data and display details of the Course dynamically
@@ -55,6 +68,10 @@ public class tab1PolyDetails extends Fragment{
         CourseDescription = (TextView) rootView.findViewById(R.id.course_desc_detail_text);
         instiDescription = (TextView) rootView.findViewById(R.id.institution_desc_detail_text);
 
+        SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
+                .findFragmentById(R.id.mapFragment);
+        mapFragment.getMapAsync(this);
+
         Intent i = getActivity().getIntent();
         String courseName = i.getExtras().getString("courseName", "No courseName found");
         final String courseWebsite = i.getExtras().getString("courseWebsite", "No courseWebsite found");
@@ -63,6 +80,9 @@ public class tab1PolyDetails extends Fragment{
         String institutionName = i.getExtras().getString("institutionName", "No institutionName found");
         String courseGrade = String.valueOf(i.getExtras().getInt("courseGrade", 0));
         String courseIntake = String.valueOf(i.getExtras().getInt("courseIntake", 0));
+            String postCode = String.valueOf(i.getExtras().getInt("postCode", 238801));
+        postalCode = postCode;
+        insName = institutionName;
 
         CourseGrade.setText(courseGrade);
         CourseIntake.setText(courseIntake);
@@ -108,5 +128,23 @@ public class tab1PolyDetails extends Fragment{
         career.setPaintFlags(career.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         return rootView;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mGoogleMap = googleMap;
+        MapController m1 = new MapController();
+        m1.execute(postalCode);
+        double[] latlng = {1.35,103.82};
+        try {
+            double[] location = m1.get();
+            latlng[0] = location[0];
+            latlng[1] = location[1];
+        }catch (Exception e){
+            Log.d("Address Error", "Can't get latitude and longitude");
+        }
+        LatLng LOCATION = new LatLng(latlng[0], latlng[1]);
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LOCATION, 10));
+        mGoogleMap.addMarker(new MarkerOptions().position(LOCATION).title(insName));
     }
 }

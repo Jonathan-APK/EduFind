@@ -5,15 +5,26 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import controller.MapController;
 
 /**
  * Initializes and display University Course Details view for the selected University Course
@@ -22,7 +33,7 @@ import android.widget.TextView;
  * @version 1.0
  * @since   2017-10-24
  */
-public class UniversityCourseDetailsUI extends AppCompatActivity {
+public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMapReadyCallback {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
@@ -37,6 +48,9 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
     TextView courseDescription;
     TextView career;
     TextView direction;
+    GoogleMap mGoogleMap;
+    String postalCode;
+    String insName;
 
     /**
      * Sets data and display details of the Course dynamically
@@ -60,12 +74,18 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
         direction = (TextView) findViewById(R.id.uni_direction);
         career = (TextView) findViewById(R.id.uni_career_prospect_text);
 
+        FragmentManager myFragmentManager = getSupportFragmentManager();
+        SupportMapFragment mapFragment = (SupportMapFragment) myFragmentManager.findFragmentById(R.id.mapFragment);
+        mapFragment.getMapAsync((OnMapReadyCallback) this);
+
         CourseGrade.setText("1");
         CourseIntake.setText("1000");
         CourseName.setText("Diploma In Information Security");
         InstitutionName.setText("Singapore Polytechnic");
         InstitutionLogo.setImageResource(R.mipmap.sp);
         CourseWebsite.setImageResource(R.drawable.website);
+        postalCode = "637658";
+        insName = "Nanyang Technological University";
 
         schDescription.setPaintFlags(schDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         courseDescription.setPaintFlags(courseDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -175,5 +195,23 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
         //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mGoogleMap = googleMap;
+        MapController m1 = new MapController();
+        m1.execute(postalCode);
+        double[] latlng = {1.35,103.82};
+        try {
+            double[] location = m1.get();
+            latlng[0] = location[0];
+            latlng[1] = location[1];
+        }catch (Exception e){
+            Log.d("Address Error", "Can't get latitude and longitude");
+        }
+        LatLng LOCATION = new LatLng(latlng[0], latlng[1]);
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LOCATION, 10));
+        mGoogleMap.addMarker(new MarkerOptions().position(LOCATION).title(insName));
     }
 }
