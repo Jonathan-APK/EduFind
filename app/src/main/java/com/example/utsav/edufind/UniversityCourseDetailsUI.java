@@ -53,6 +53,7 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
     GoogleMap mGoogleMap;
     String postalCode;
     String insName;
+    String insCode;
 
     /**
      * Sets data and display details of the Course dynamically
@@ -87,7 +88,9 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         String courseGrade = String.valueOf(i.getExtras().getDouble("courseGrade", 0));
         String courseIntake = String.valueOf(i.getExtras().getInt("courseIntake", 0));
         String postCode = String.valueOf(i.getExtras().getInt("postalCode", 238801));
+        String instPostCode = String.valueOf(i.getExtras().getInt("instPostalCode", 238801));
         postalCode = postCode;
+        insCode = instPostCode;
         insName = institutionName;
 
         CourseGrade.setText(courseGrade);
@@ -244,17 +247,21 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
         MapController m1 = new MapController();
-        m1.execute(postalCode);
+        MapController m2 = new MapController();
         double[] latlng = {1.35,103.82};
+        LatLng SINGAPORE = new LatLng(latlng[0], latlng[1]);
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SINGAPORE, 10));
         try {
+            m1.execute(postalCode);
             double[] location = m1.get();
-            latlng[0] = location[0];
-            latlng[1] = location[1];
+            LatLng HOME = new LatLng(location[0], location[1]);
+            mGoogleMap.addMarker(new MarkerOptions().position(HOME).title("Home"));
+            m2.execute(insCode);
+            location = m2.get();
+            LatLng INST = new LatLng(location[0], location[1]);
+            mGoogleMap.addMarker(new MarkerOptions().position(INST).title(insName));
         }catch (Exception e){
             Log.d("Address Error", "Can't get latitude and longitude");
         }
-        LatLng LOCATION = new LatLng(latlng[0], latlng[1]);
-        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LOCATION, 10));
-        mGoogleMap.addMarker(new MarkerOptions().position(LOCATION).title(insName));
     }
 }
