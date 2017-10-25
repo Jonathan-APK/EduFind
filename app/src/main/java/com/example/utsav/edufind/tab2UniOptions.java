@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import controller.CourseSearchController;
+import controller.SearchController;
 import entity.Course;
 import entity.PolytechnicCourse;
 
@@ -64,7 +64,7 @@ public class tab2UniOptions extends Fragment {
      * and puts them in an ArrayList of Course objects consisting of only university courses.
      */
     private void initializeData(){
-        CourseSearchController c1 = new CourseSearchController();
+        SearchController c1 = new SearchController();
         courseList = c1.search(interest, specialization, 0, postalCode);
 
         for (int i = 0; i < courseList.size(); i++) {

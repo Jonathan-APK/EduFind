@@ -33,6 +33,10 @@ public class CourseController {
         polyList = new ArrayList<PolytechnicCourse>();
         poly = new PolytechnicCourse();
 
+        //Create IO object using IO factory
+        //Pass the IO object to the Course Factory as parameter
+        //Retrieve the list using IO
+
         csvFile = polyFile;
 
         try {

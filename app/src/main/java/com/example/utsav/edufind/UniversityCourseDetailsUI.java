@@ -57,7 +57,7 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
     /**
      * Sets data and display details of the Course dynamically
      * @param savedInstanceState Current state of application
-     * @return View Polytechnic Course Details view
+     * @return View University Course Details view
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,13 +124,6 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         FragmentManager myFragmentManager = getSupportFragmentManager();
         SupportMapFragment mapFragment = (SupportMapFragment) myFragmentManager.findFragmentById(R.id.mapFragment);
         mapFragment.getMapAsync((OnMapReadyCallback) this);
-
-        CourseGrade.setText("1");
-        CourseIntake.setText("1000");
-        CourseName.setText("Diploma In Information Security");
-        InstitutionName.setText("Singapore Polytechnic");
-        InstitutionLogo.setImageResource(R.mipmap.sp);
-        CourseWebsite.setImageResource(R.drawable.website);
 
         CourseWebsite.setImageResource(R.drawable.website);
         CourseWebsite.setOnClickListener(new View.OnClickListener() {
