@@ -155,7 +155,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                     in.putExtra("courseDescription", courseDescription);
                     in.putExtra("courseGrade", courseGrade);
                     in.putExtra("courseIntake", courseIntake);
-                    in.putExtra("postCode", postCode);
+                    in.putExtra("postalCode", postalCode);
                     in.putExtra("interest", interest);
                     in.putExtra("specialization", specialization);
                     v.getContext().startActivity(in);
@@ -220,7 +220,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                     in.putExtra("courseDescription", courseDescription);
                     in.putExtra("courseGrade", courseGrade);
                     in.putExtra("courseIntake", courseIntake);
-                    in.putExtra("postCode", postCode);
+                    in.putExtra("postalCode", postalCode);
                     v.getContext().startActivity(in);
                 }
             });
