@@ -143,7 +143,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             final String courseDescription = courses.get(i).getCourseDescription();
             final int courseGrade = ((PolytechnicCourse) courses.get(i)).getL1R4();
             final int courseIntake = courses.get(i).getIntake();
-            final int postCode = courses.get(i).getInstitution().getPostalCode();
+            final int instPostCode = courses.get(i).getInstitution().getPostalCode();
             CourseViewHolder.cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -156,6 +156,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                     in.putExtra("courseGrade", courseGrade);
                     in.putExtra("courseIntake", courseIntake);
                     in.putExtra("postalCode", postalCode);
+                    in.putExtra("instPostalCode", instPostCode);
                     in.putExtra("interest", interest);
                     in.putExtra("specialization", specialization);
                     v.getContext().startActivity(in);
@@ -208,7 +209,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             final String courseDescription = courses.get(i).getCourseDescription();
             final double courseGrade = ((UniversityCourse) courses.get(i)).getGradePointAverage();
             final int courseIntake = courses.get(i).getIntake();
-            final int postCode = courses.get(i).getInstitution().getPostalCode();
+            final int instPostCode = courses.get(i).getInstitution().getPostalCode();
             CourseViewHolder.cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -221,6 +222,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                     in.putExtra("courseGrade", courseGrade);
                     in.putExtra("courseIntake", courseIntake);
                     in.putExtra("postalCode", postalCode);
+                    in.putExtra("instPostalCode", instPostCode);
                     v.getContext().startActivity(in);
                 }
             });
