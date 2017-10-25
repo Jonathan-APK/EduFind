@@ -82,6 +82,5 @@ public class tab2UniOptions extends Fragment {
         RVAdapter adapter = new RVAdapter(courseList, interest, specialization, postalCode);
         rv.setAdapter(adapter);
     }
-
 }
 

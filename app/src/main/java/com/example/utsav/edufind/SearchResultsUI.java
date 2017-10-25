@@ -147,26 +147,22 @@ public class SearchResultsUI extends AppCompatActivity {
 
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()){
-
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
                         intent = new Intent(SearchResultsUI.super.getApplication(), MainUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
-
                     case R.id.bookmarks:
                         intent = new Intent(SearchResultsUI.super.getApplication(), BookmarksUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
-
                     case R.id.aboutus:
                         intent = new Intent(SearchResultsUI.super.getApplication(), AboutUs.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
-
                     default:
 
                         return true;
@@ -175,7 +171,6 @@ public class SearchResultsUI extends AppCompatActivity {
         });
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,myToolbar,R.string.drawer_open, R.string.drawer_close){
 
             @Override

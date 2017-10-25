@@ -27,7 +27,6 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
-
     TextView CourseGrade;
     TextView CourseIntake;
     TextView CourseName;
@@ -142,7 +141,6 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -163,7 +161,6 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
             // This method will trigger on item Click of navigation menu
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
             //Checking if the item is in checked state or not, if not make it in checked state
             if(menuItem.isChecked()) menuItem.setChecked(false);
             else menuItem.setChecked(true);
@@ -180,28 +177,23 @@ public class UniversityCourseDetailsUI extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     return true;
-
                 case R.id.bookmarks:
                     intent = new Intent(UniversityCourseDetailsUI.this, BookmarksUI.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     return true;
-
                 case R.id.aboutus:
                     intent = new Intent(UniversityCourseDetailsUI.this, AboutUs.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     return true;
-
                 default:
-
                     return true;
             }
             }
         });
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,myToolbar,R.string.drawer_open, R.string.drawer_close){
 
             @Override

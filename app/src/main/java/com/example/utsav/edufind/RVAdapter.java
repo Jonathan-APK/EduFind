@@ -27,7 +27,6 @@ import entity.Course;
  * @since   2017-10-24
  */
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> {
-
     /**
      * This class references the respective View widgets inside the layout through its id.
      */

@@ -16,7 +16,6 @@ import java.util.List;
 
 import entity.Bookmark;
 
-
 /**
  * This class sets the course information in their respective View elements and populates the card view
  * of each course dynamically based on the size of the Course objects.
@@ -26,7 +25,6 @@ import entity.Bookmark;
  * @since   2017-10-24
  */
 public class RVAdapterBookmarks extends RecyclerView.Adapter<RVAdapterBookmarks.BookmarkViewHolder> {
-
     /**
      * This class references the respective View widgets inside the layout through its id.
      */
@@ -106,16 +104,12 @@ public class RVAdapterBookmarks extends RecyclerView.Adapter<RVAdapterBookmarks.
      */
     @Override
     public void onBindViewHolder(BookmarkViewHolder BookmarkViewHolder, final int i) {
-
         BookmarkViewHolder.Date_createdTV.setText(bookmarks.get(i).getDate());
         BookmarkViewHolder.Time_createdTV.setText(bookmarks.get(i).getTime());
         BookmarkViewHolder.AoiTV.setText(bookmarks.get(i).getInterest());
         BookmarkViewHolder.SpecTV.setText(bookmarks.get(i).getSpecialization());
         BookmarkViewHolder.PostalTV.setText(String.valueOf(bookmarks.get(i).getPostalCode()));
         BookmarkViewHolder.L1R4TV.setText(String.valueOf(bookmarks.get(i).getL1R4()));
-
-
-
     }
 
     @Override

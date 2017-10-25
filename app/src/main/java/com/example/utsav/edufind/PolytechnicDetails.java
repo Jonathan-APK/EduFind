@@ -28,7 +28,6 @@ public class PolytechnicDetails extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
-
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
@@ -41,7 +40,6 @@ public class PolytechnicDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.polytechnic_details);
-
         initializeToolbar("Polytechnic Details");
 
         // Create the adapter that will return a fragment for each of the three
@@ -51,7 +49,6 @@ public class PolytechnicDetails extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
     }
@@ -79,7 +76,6 @@ public class PolytechnicDetails extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -87,11 +83,9 @@ public class PolytechnicDetails extends AppCompatActivity {
      * This is a FragmentPagerAdapter that returns a fragment corresponding to the selected tab.
      */
     private class SectionsPagerAdapter extends FragmentPagerAdapter {
-
         SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
-
         /**
          * Displays the appropriate view based on the selected tab
          * @param position Selected tab in integer form
@@ -158,7 +152,6 @@ public class PolytechnicDetails extends AppCompatActivity {
             // This method will trigger on item Click of navigation menu
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
                 //Checking if the item is in checked state or not, if not make it in checked state
                 if(menuItem.isChecked()) menuItem.setChecked(false);
                 else menuItem.setChecked(true);
@@ -168,35 +161,29 @@ public class PolytechnicDetails extends AppCompatActivity {
 
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()){
-
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
                         intent = new Intent(PolytechnicDetails.this, MainUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
-
                     case R.id.bookmarks:
                         intent = new Intent(PolytechnicDetails.this, BookmarksUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
-
                     case R.id.aboutus:
                         intent = new Intent(PolytechnicDetails.this, AboutUs.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
-
                     default:
-
                         return true;
                 }
             }
         });
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,myToolbar,R.string.drawer_open, R.string.drawer_close){
 
             @Override
