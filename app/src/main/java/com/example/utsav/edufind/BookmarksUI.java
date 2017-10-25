@@ -69,9 +69,8 @@ public class BookmarksUI extends AppCompatActivity {
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 final int position = viewHolder.getAdapterPosition();
 
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(BookmarksUI.this); //alert for confirm to delete
-                    builder.setMessage("Are you sure to delete?");    //set message
+                AlertDialog.Builder builder = new AlertDialog.Builder(BookmarksUI.this); //alert for confirm to delete
+                builder.setMessage("Are you sure to delete?");    //set message
                 builder.setPositiveButton("REMOVE", new DialogInterface.OnClickListener() { //when click on DELETE
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -89,7 +88,6 @@ public class BookmarksUI extends AppCompatActivity {
                     }
                 }).show();  //show alert dialog
             }
-
         };
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
@@ -118,8 +116,6 @@ public class BookmarksUI extends AppCompatActivity {
         bookmarkList.add(new Bookmark("interest2", "specialization2", 6, 120345, "date2", "time2"));
         bookmarkList.add(new Bookmark("interest3", "specialization3", 7, 120354, "date3", "time3"));
         bookmarkList.add(new Bookmark("interest4", "specialization4", 3, 120354, "date4", "time4"));
-
-
     }
 
     /**
@@ -130,8 +126,6 @@ public class BookmarksUI extends AppCompatActivity {
         adapter = new RVAdapterBookmarks(bookmarkList);
         rv.setAdapter(adapter);
     }
-
-
 
 //    /**
 //     * Handles event when an option is selected
@@ -166,39 +160,39 @@ public class BookmarksUI extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-            //Checking if the item is in checked state or not, if not make it in checked state
-            if(menuItem.isChecked()) menuItem.setChecked(false);
-            else menuItem.setChecked(true);
+                //Checking if the item is in checked state or not, if not make it in checked state
+                if(menuItem.isChecked()) menuItem.setChecked(false);
+                else menuItem.setChecked(true);
 
-            //Closing drawer on item click
-            mDrawerLayout.closeDrawers();
+                //Closing drawer on item click
+                mDrawerLayout.closeDrawers();
 
-            //Check to see which item was being clicked and perform appropriate action
-            switch (menuItem.getItemId()){
+                //Check to see which item was being clicked and perform appropriate action
+                switch (menuItem.getItemId()){
 
-                //Replacing the main content with ContentFragment Which is our Inbox View;
-                case R.id.home:
-                    intent = new Intent(BookmarksUI.super.getApplication(), MainUI.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    return true;
+                    //Replacing the main content with ContentFragment Which is our Inbox View;
+                    case R.id.home:
+                        intent = new Intent(BookmarksUI.super.getApplication(), MainUI.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        return true;
 
-                case R.id.bookmarks:
-                    intent = new Intent(BookmarksUI.super.getApplication(), BookmarksUI.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    return true;
+                    case R.id.bookmarks:
+                        intent = new Intent(BookmarksUI.super.getApplication(), BookmarksUI.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        return true;
 
-                case R.id.aboutus:
-                    intent = new Intent(BookmarksUI.super.getApplication(), AboutUs.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    return true;
+                    case R.id.aboutus:
+                        intent = new Intent(BookmarksUI.super.getApplication(), AboutUs.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        return true;
 
-                default:
+                    default:
 
-                    return true;
-            }
+                        return true;
+                }
             }
         });
 

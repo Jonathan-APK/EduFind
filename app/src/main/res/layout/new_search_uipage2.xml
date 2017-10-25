@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- The main content view -->
     <LinearLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
@@ -21,67 +20,103 @@
             android:elevation="4dp"
             android:theme="@style/appBarMainTheme" />
 
-        <TextView
-            android:id="@+id/L1R4TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="120dp"
-            android:text="@string/L1R4"
-            android:textColor="@color/colorAccent"
-            android:textAllCaps="true"
-            android:drawableEnd="@drawable/help"
-            android:drawablePadding="10dp"
-            android:textSize="20sp" />
+        <!-- The main content view -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/linear_background_with_shadow"
+            android:layout_below="@+id/view"
+            android:layout_gravity="center">
 
-        <Spinner
-            android:id="@+id/L1R4Spinner"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="50dp"
-            android:gravity='center'
-            android:background="@drawable/spinner_bg"
-            android:dropDownWidth="match_parent"
-            android:minWidth="200dp"
-            android:spinnerMode="dropdown" />
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+            </RelativeLayout>
 
-        <TextView
-            android:id="@+id/postalCodeTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="40dp"
-            android:text="@string/PostalCode"
-            android:textColor="@color/colorAccent"
-            android:textAllCaps="true"
-            android:textSize="20sp" />
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="8"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/postalCodeTextInput"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:drawableStart="@drawable/pindrop"
-            android:background="#ffffff"
-            android:drawablePadding="10dp"
-            android:inputType="number"
-            android:maxLength="6"
-            android:digits="0123456789"
-            android:minWidth="200dp"
-            android:height="32dp"
-            android:layout_marginTop="10dp"
-            android:text="764426"/>
+                <TextView
+                    android:id="@+id/L1R4TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/help"
+                    android:drawablePadding="10dp"
+                    android:text="@string/L1R4"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textAlignment="textStart"/>
 
-        <Button
-            android:id="@+id/submitBtn"
-            android:layout_width="250dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
-            android:onClick="submitSearchResults"
-            android:text="@string/Submit"
-            android:theme="@style/greenBtn" />
+                <Spinner
+                    android:id="@+id/L1R4Spinner"
+                    android:maxWidth="600dp"
+                    android:layout_width="500dp"
+                    android:minWidth="200dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity='center'
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/spinner_bg"
+                    android:dropDownWidth="match_parent"
+                    android:layout_below="@+id/L1R4TextView"
+                    android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/postalCodeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/PostalCode"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:layout_below="@+id/L1R4Spinner"
+                    android:textSize="20sp" />
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/postalCodeTextInput"
+                    android:maxWidth="600dp"
+                    android:layout_width="500dp"
+                    android:minWidth="200dp"
+                    android:layout_height="50dp"
+                    android:drawableStart="@drawable/pindrop"
+                    android:background="#ffffff"
+                    android:drawablePadding="10dp"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:digits="0123456789"
+                    android:height="32dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/postalCodeTextView"
+                    android:layout_centerHorizontal="true"
+                    android:text="764426"/>
+
+                <Button
+                    android:id="@+id/submitBtn"
+                    android:layout_width="250dp"
+                    android:layout_height="60dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
+                    android:onClick="submitSearchResults"
+                    android:text="Next"
+                    android:gravity="center"
+                    android:layout_below="@+id/postalCodeTextInput"
+                    android:theme="@style/greenBtn" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <!-- The navigation drawer -->

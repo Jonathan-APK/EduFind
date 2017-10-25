@@ -15,7 +15,6 @@ import android.view.MenuItem;
  * @since   2017-10-24
  */
 public class MainUI extends AppCompatActivity{
-
     /**
      * Initialize layout
      * @param savedInstanceState
@@ -49,7 +48,6 @@ public class MainUI extends AppCompatActivity{
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         return super.onOptionsItemSelected(item);
     }
 

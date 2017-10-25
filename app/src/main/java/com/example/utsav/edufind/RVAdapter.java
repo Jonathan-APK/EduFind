@@ -27,7 +27,6 @@ import entity.Course;
  * @since   2017-10-24
  */
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> {
-
     /**
      * This class references the respective View widgets inside the layout through its id.
      */
@@ -144,6 +143,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             final String courseDescription = courses.get(i).getCourseDescription();
             final int courseGrade = ((PolytechnicCourse) courses.get(i)).getL1R4();
             final int courseIntake = courses.get(i).getIntake();
+            final int postCode = courses.get(i).getInstitution().getPostalCode();
             CourseViewHolder.cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -155,9 +155,9 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                     in.putExtra("courseDescription", courseDescription);
                     in.putExtra("courseGrade", courseGrade);
                     in.putExtra("courseIntake", courseIntake);
+                    in.putExtra("postCode", postCode);
                     in.putExtra("interest", interest);
                     in.putExtra("specialization", specialization);
-                    in.putExtra("postalCode", postalCode);
                     v.getContext().startActivity(in);
                 }
             });
@@ -208,6 +208,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             final String courseDescription = courses.get(i).getCourseDescription();
             final double courseGrade = ((UniversityCourse) courses.get(i)).getGradePointAverage();
             final int courseIntake = courses.get(i).getIntake();
+            final int postCode = courses.get(i).getInstitution().getPostalCode();
             CourseViewHolder.cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -219,6 +220,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                     in.putExtra("courseDescription", courseDescription);
                     in.putExtra("courseGrade", courseGrade);
                     in.putExtra("courseIntake", courseIntake);
+                    in.putExtra("postCode", postCode);
                     v.getContext().startActivity(in);
                 }
             });
