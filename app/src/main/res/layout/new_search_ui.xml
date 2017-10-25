@@ -21,62 +21,96 @@
             android:theme="@style/appBarMainTheme" />
 
         <!-- The main content view -->
-        <TextView
-            android:id="@+id/areaOfInterestTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="120dp"
-            android:text="@string/AreaOfInterest"
-            android:textAllCaps="true"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/linear_background_with_shadow"
+            android:layout_below="@+id/view"
+            android:layout_gravity="center">
 
-        <Spinner
-            android:id="@+id/areaOfInterestSpinner"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="50dp"
-            android:gravity='center'
-            android:background="@drawable/spinner_bg"
-            android:dropDownWidth="match_parent"
-            android:minWidth="200dp"
-            android:spinnerMode="dropdown" />
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+                </RelativeLayout>
 
-        <TextView
-            android:id="@+id/specializationTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="40dp"
-            android:text="@string/Specialization"
-            android:textAllCaps="true"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="8"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
-        <Spinner
-            android:id="@+id/specializationSpinner"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="50dp"
-            android:background="@drawable/spinner_bg"
-            android:dropDownWidth="match_parent"
-            android:minWidth="200dp"
-            android:spinnerMode="dropdown" />
+                <TextView
+                    android:id="@+id/areaOfInterestTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/AreaOfInterest"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textAlignment="textStart"/>
 
-        <Button
-            android:id="@+id/nextSearchBtn"
-            android:layout_width="250dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
-            android:onClick="goToNewSearchUIPage2"
-            android:text="Next"
-            android:theme="@style/greenBtn" />
+                <Spinner
+                    android:id="@+id/areaOfInterestSpinner"
+                    android:maxWidth="600dp"
+                    android:layout_width="500dp"
+                    android:minWidth="200dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity='center'
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/spinner_bg"
+                    android:dropDownWidth="match_parent"
+                    android:layout_below="@+id/areaOfInterestTextView"
+                    android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/specializationTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/Specialization"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:layout_below="@+id/areaOfInterestSpinner"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/specializationSpinner"
+                    android:maxWidth="600dp"
+                    android:layout_width="500dp"
+                    android:minWidth="200dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/spinner_bg"
+                    android:dropDownWidth="match_parent"
+                    android:layout_below="@+id/specializationTextView"
+                    android:spinnerMode="dropdown" />
+
+                <Button
+                    android:id="@+id/nextSearchBtn"
+                    android:layout_width="250dp"
+                    android:layout_height="60dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
+                    android:onClick="goToNewSearchUIPage2"
+                    android:text="Next"
+                    android:gravity="center"
+                    android:layout_below="@+id/specializationSpinner"
+                    android:theme="@style/greenBtn" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
-
     <!-- The navigation drawer -->
     <android.support.design.widget.NavigationView
         android:id="@+id/navigation_view"

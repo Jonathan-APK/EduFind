@@ -1,15 +1,18 @@
 package com.example.utsav.edufind;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +34,7 @@ public class BookmarksUI extends AppCompatActivity {
     private NavigationView navigationView;
     private ArrayList<Bookmark> bookmarkList;
     private RecyclerView rv;
+    RVAdapterBookmarks adapter;
 
     /**
      * Initialize layout
@@ -40,15 +44,55 @@ public class BookmarksUI extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //Get data from previous activity
         Intent i = getIntent();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bookmarks_ui);
+
         initializeToolbar("Bookmarks");
+
         rv= (RecyclerView) findViewById(R.id.rv);
+
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
         initializeData();
         initializeAdapter();
+
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+                final int position = viewHolder.getAdapterPosition();
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(BookmarksUI.this); //alert for confirm to delete
+                builder.setMessage("Are you sure to delete?");    //set message
+                builder.setPositiveButton("REMOVE", new DialogInterface.OnClickListener() { //when click on DELETE
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapter.notifyItemRemoved(position);    //item removed from recylcerview
+                        bookmarkList.remove(position);  //then remove item
+
+                        return;
+                    }
+                }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {  //not removing items if cancel is done
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapter.notifyItemRemoved(position + 1);    //notifies the RecyclerView Adapter that data in adapter has been removed at a particular position.
+                        adapter.notifyItemRangeChanged(position, adapter.getItemCount());   //notifies the RecyclerView Adapter that positions of element in adapter has been changed from position(removed element index to end of list), please update it.
+                        return;
+                    }
+                }).show();  //show alert dialog
+            }
+        };
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        itemTouchHelper.attachToRecyclerView(rv);
     }
 
     /**
@@ -80,7 +124,7 @@ public class BookmarksUI extends AppCompatActivity {
      * and puts them in an ArrayList of Course objects consisting of only university courses.
      */
     private void initializeAdapter(){
-        RVAdapterBookmarks adapter = new RVAdapterBookmarks(bookmarkList);
+        adapter = new RVAdapterBookmarks(bookmarkList);
         rv.setAdapter(adapter);
     }
 
@@ -116,38 +160,45 @@ public class BookmarksUI extends AppCompatActivity {
             // This method will trigger on item Click of navigation menu
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            //Checking if the item is in checked state or not, if not make it in checked state
-            if(menuItem.isChecked()) menuItem.setChecked(false);
-            else menuItem.setChecked(true);
 
-            //Closing drawer on item click
-            mDrawerLayout.closeDrawers();
+                //Checking if the item is in checked state or not, if not make it in checked state
+                if(menuItem.isChecked()) menuItem.setChecked(false);
+                else menuItem.setChecked(true);
 
-            //Check to see which item was being clicked and perform appropriate action
-            switch (menuItem.getItemId()){
-                //Replacing the main content with ContentFragment Which is our Inbox View;
-                case R.id.home:
-                    intent = new Intent(BookmarksUI.super.getApplication(), MainUI.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    return true;
-                case R.id.bookmarks:
-                    intent = new Intent(BookmarksUI.super.getApplication(), BookmarksUI.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    return true;
-                case R.id.aboutus:
-                    intent = new Intent(BookmarksUI.super.getApplication(), AboutUs.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    return true;
-                default:
-                    return true;
-            }
+                //Closing drawer on item click
+                mDrawerLayout.closeDrawers();
+
+                //Check to see which item was being clicked and perform appropriate action
+                switch (menuItem.getItemId()){
+
+                    //Replacing the main content with ContentFragment Which is our Inbox View;
+                    case R.id.home:
+                        intent = new Intent(BookmarksUI.super.getApplication(), MainUI.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        return true;
+
+                    case R.id.bookmarks:
+                        intent = new Intent(BookmarksUI.super.getApplication(), BookmarksUI.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        return true;
+
+                    case R.id.aboutus:
+                        intent = new Intent(BookmarksUI.super.getApplication(), AboutUs.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        return true;
+
+                    default:
+
+                        return true;
+                }
             }
         });
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,myToolbar,R.string.drawer_open, R.string.drawer_close){
 
             @Override

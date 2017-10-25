@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="5dp"
             android:text="Date Created:"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:text="17/05/2016"
@@ -50,7 +50,7 @@
             android:text="Time Created:"
             android:layout_marginTop="0dp"
             android:layout_marginStart="10dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="10dp"
             android:layout_below="@+id/date_createdlabel"
             android:textColor="@color/colorAccent"/>
 
@@ -60,25 +60,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:layout_marginStart="5dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="10dp"
             android:textSize="18sp"
             android:textStyle="bold"
             android:text="17/05/2016"
             android:textColor="@color/colorAccent"
             android:layout_toEndOf="@+id/time_createdlabel"
             android:layout_below="@+id/date_createdTV" />
-
-        <ImageView
-            android:id="@+id/deleteBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="-10dip"
-            android:layout_marginRight="-10dip"
-            app:srcCompat="@drawable/ic_cancel_black_24dp"
-            android:tint="@color/darkgray"
-            android:contentDescription="Delete"/>
 
 
         <View
