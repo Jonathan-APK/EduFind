@@ -2,6 +2,7 @@ package com.example.utsav.edufind;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -37,17 +38,18 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
-
     TextView CourseGrade;
     TextView CourseIntake;
     TextView CourseName;
     TextView InstitutionName;
     ImageView InstitutionLogo;
     ImageView CourseWebsite;
-    TextView schDescription;
+    TextView institutionDescription;
     TextView courseDescription;
     TextView career;
     TextView direction;
+    TextView CourseDescription;
+    TextView InstitutionDescription;
     GoogleMap mGoogleMap;
     String postalCode;
     String insName;
@@ -69,10 +71,52 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         InstitutionName = (TextView)findViewById(R.id.uni_Institution_name);
         InstitutionLogo = (ImageView) findViewById(R.id.uni_Institution_Logo);
         CourseWebsite = (ImageView) findViewById(R.id.uni_Course_Website);
-        schDescription = (TextView) findViewById(R.id.uni_institution_desc_text);
+        institutionDescription = (TextView) findViewById(R.id.uni_institution_desc_text);
         courseDescription = (TextView) findViewById(R.id.uni_course_desc_text);
         direction = (TextView) findViewById(R.id.uni_direction);
         career = (TextView) findViewById(R.id.uni_career_prospect_text);
+        CourseDescription = (TextView) findViewById(R.id.uni_course_desc_detail_text);
+        InstitutionDescription = (TextView) findViewById(R.id.uni_institution_desc_detail_text);
+
+        Intent i = getIntent();
+        String courseName = i.getExtras().getString("courseName", "No courseName found");
+        final String courseWebsite = i.getExtras().getString("courseWebsite", "No courseWebsite found");
+        String institutionDesc = i.getExtras().getString("institutionDescription", "No institutionDescription found");
+        String courseDesc = i.getExtras().getString("courseDescription", "No courseDescription found");
+        String institutionName = i.getExtras().getString("institutionName", "No institutionName found");
+        String courseGrade = String.valueOf(i.getExtras().getDouble("courseGrade", 0));
+        String courseIntake = String.valueOf(i.getExtras().getInt("courseIntake", 0));
+
+        CourseGrade.setText(courseGrade);
+        CourseIntake.setText(courseIntake);
+        CourseName.setText(courseName);
+        InstitutionName.setText(institutionName);
+        CourseDescription.setText(courseDesc);
+        InstitutionDescription.setText(institutionDesc);
+
+        switch (institutionName) {
+            case "Singapore University of Technology and Design": {
+                InstitutionLogo.setImageResource(R.mipmap.sutd);
+                break;
+            }
+            case "Nanyang Technological University": {
+                InstitutionLogo.setImageResource(R.mipmap.ntu);
+                break;
+            }
+            case "Singapore Management University": {
+                InstitutionLogo.setImageResource(R.mipmap.smu);
+                break;
+            }
+            case "National University of Singapore": {
+                InstitutionLogo.setImageResource(R.mipmap.nus);
+                break;
+            }
+            case "Singapore Institute of Technology": {
+                InstitutionLogo.setImageResource(R.mipmap.sit);
+                break;
+            }
+            default:
+        }
 
         FragmentManager myFragmentManager = getSupportFragmentManager();
         SupportMapFragment mapFragment = (SupportMapFragment) myFragmentManager.findFragmentById(R.id.mapFragment);
@@ -87,7 +131,15 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         postalCode = "637658";
         insName = "Nanyang Technological University";
 
-        schDescription.setPaintFlags(schDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        CourseWebsite.setImageResource(R.drawable.website);
+        CourseWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(courseWebsite)));
+                (v.getContext()).startActivity(browserIntent);
+            }
+        });
+        institutionDescription.setPaintFlags(institutionDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         courseDescription.setPaintFlags(courseDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         direction.setPaintFlags(direction.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         career.setPaintFlags(career.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -116,7 +168,6 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -137,7 +188,6 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
             // This method will trigger on item Click of navigation menu
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
             //Checking if the item is in checked state or not, if not make it in checked state
             if(menuItem.isChecked()) menuItem.setChecked(false);
             else menuItem.setChecked(true);
@@ -154,28 +204,23 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     return true;
-
                 case R.id.bookmarks:
                     intent = new Intent(UniversityCourseDetailsUI.this, BookmarksUI.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     return true;
-
                 case R.id.aboutus:
                     intent = new Intent(UniversityCourseDetailsUI.this, AboutUs.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     return true;
-
                 default:
-
                     return true;
             }
             }
         });
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,myToolbar,R.string.drawer_open, R.string.drawer_close){
 
             @Override

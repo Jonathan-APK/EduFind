@@ -39,8 +39,7 @@ public class tab2UniOptions extends Fragment {
     private int postalCode;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab2_uni_options, container, false);
 
         rv= rootView.findViewById(R.id.unirv);
@@ -48,6 +47,11 @@ public class tab2UniOptions extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
+
+        Intent i = getActivity().getIntent();
+        interest = i.getExtras().getString("interest", "No interest found");
+        specialization = i.getExtras().getString("specialization", "No specialization found");
+        postalCode = i.getExtras().getInt("postalCode", 000000);
 
         initializeData();
         initializeAdapter();
@@ -65,7 +69,7 @@ public class tab2UniOptions extends Fragment {
 
         for (int i = 0; i < courseList.size(); i++) {
             if (courseList.get(i) instanceof PolytechnicCourse) {
-                courseList.remove(i);
+                courseList.remove(i--);
             }
         }
     }
@@ -75,9 +79,8 @@ public class tab2UniOptions extends Fragment {
      * populates the respective course items in a card view.
      */
     private void initializeAdapter(){
-        RVAdapter adapter= new RVAdapter(courseList);
+        RVAdapter adapter = new RVAdapter(courseList, interest, specialization, postalCode);
         rv.setAdapter(adapter);
     }
-
 }
 

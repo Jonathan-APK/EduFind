@@ -1,16 +1,25 @@
 package com.example.utsav.edufind;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import java.util.ArrayList;
+
+import entity.Bookmark;
 
 /**
  * Initialize and display Saved Bookmarks page
@@ -23,6 +32,9 @@ public class BookmarksUI extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
+    private ArrayList<Bookmark> bookmarkList;
+    private RecyclerView rv;
+    RVAdapterBookmarks adapter;
 
     /**
      * Initialize layout
@@ -30,10 +42,56 @@ public class BookmarksUI extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Get data from previous activity
+        Intent i = getIntent();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bookmarks_ui);
 
         initializeToolbar("Bookmarks");
+
+        rv= (RecyclerView) findViewById(R.id.rv);
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true);
+        initializeData();
+        initializeAdapter();
+
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+                final int position = viewHolder.getAdapterPosition();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(BookmarksUI.this); //alert for confirm to delete
+                builder.setMessage("Are you sure to delete?");    //set message
+                builder.setPositiveButton("REMOVE", new DialogInterface.OnClickListener() { //when click on DELETE
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapter.notifyItemRemoved(position);    //item removed from recylcerview
+                        bookmarkList.remove(position);  //then remove item
+
+                        return;
+                    }
+                }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {  //not removing items if cancel is done
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapter.notifyItemRemoved(position + 1);    //notifies the RecyclerView Adapter that data in adapter has been removed at a particular position.
+                        adapter.notifyItemRangeChanged(position, adapter.getItemCount());   //notifies the RecyclerView Adapter that positions of element in adapter has been changed from position(removed element index to end of list), please update it.
+                        return;
+                    }
+                }).show();  //show alert dialog
+            }
+        };
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        itemTouchHelper.attachToRecyclerView(rv);
     }
 
     /**
@@ -49,19 +107,40 @@ public class BookmarksUI extends AppCompatActivity {
     }
 
     /**
-     * Handles event when a menu option is selected
-     * @param item An item button in the menu of the side pane
-     * @return boolean
+     * This method retrieves all the search results from the course search controller class
+     * and puts them in an ArrayList of Course objects consisting of only polytechnic courses.
      */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        return super.onOptionsItemSelected(item);
+    private void initializeData(){
+        bookmarkList = new ArrayList<>();
+        bookmarkList.add(new Bookmark("interest1", "specialization1", 5, 120354, "date1", "time1"));
+        bookmarkList.add(new Bookmark("interest2", "specialization2", 6, 120345, "date2", "time2"));
+        bookmarkList.add(new Bookmark("interest3", "specialization3", 7, 120354, "date3", "time3"));
+        bookmarkList.add(new Bookmark("interest4", "specialization4", 3, 120354, "date4", "time4"));
     }
+
+    /**
+     * This method retrieves all the search results from the course search controller class
+     * and puts them in an ArrayList of Course objects consisting of only university courses.
+     */
+    private void initializeAdapter(){
+        adapter = new RVAdapterBookmarks(bookmarkList);
+        rv.setAdapter(adapter);
+    }
+
+//    /**
+//     * Handles event when an option is selected
+//     * @param item An item button in the menu of the side pane
+//     * @return boolean
+//     */
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     /**
      * Initialize and implements toolbar, drawer, and side panel UI and functions

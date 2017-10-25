@@ -9,20 +9,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Created by boonleng94 on 27/9/2017.
+ * This class takes in the search parameters entered by the user to do search, filtering and sorting on the data
+ * of the available courses provided by the csv files from the CourseController
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-24
  */
-
 public class CourseSearchController {
 
-    public boolean validateInterest(String interest, String specialization) {
-        boolean valid = false;
-        //Check both fields are not empty
-        if (!(interest.isEmpty()) && !(specialization.isEmpty())) {
-            valid = true;
-        }
-        return valid;
-    }
-
+    /**
+     * This method checks that the postalCode passed is valid (6 digits only)
+     * @param postalCode The postal code entered by the user
+     */
     public boolean validatePostalCode(int postalCode) {
         boolean valid = false;
         //Check field is not empty
@@ -35,7 +34,13 @@ public class CourseSearchController {
         return valid;
     }
 
-    //Tested to be working. Waiting to fill pk's data. Does search, filter and sort properly
+    /**
+     * This method uses the search parameters entered by the user to search, filter, and sort the results according to distance
+     * @param interest The interest specified by the user
+     * @param specialization The specialization specified by the user
+     * @param L1R4 The L1R4 grade of the user
+     * @param postalCode The postal code entered by the user
+     */
     public ArrayList<Course> search(String interest, String specialization, int L1R4, int postalCode) {
         ArrayList<Course> courseList = new ArrayList<Course>();
         ArrayList<Course> filteredCourseList = new ArrayList<Course>();
@@ -45,8 +50,9 @@ public class CourseSearchController {
         ArrayList<Double> sortedDistanceList = new ArrayList<Double>();
         Course temp = new Course();
 
-        //Retrieve full list of polytechnic courses
+        //Retrieve full list of polytechnic courses and university courses
         //courseList = CourseController.retrieveListOfPolyCourses();
+        //courseList = CourseController.retrieveListOfUniCourses();
         Institution int1 = new Institution("Nanyang Polytechnic", "NYP Desc", 569830);
         Institution int2 = new Institution("Singapore Polytechnic", "SP Desc", 139651);
         PolytechnicCourse pc1 = new PolytechnicCourse("Diploma in Food Science", "APPLIED SCIENCES", "Food Science", "website1", "School of Health Science", "Diploma", "This is a very long description to fill up the space bug in the layout in poly details tab", int1, 10, 14);

@@ -1,5 +1,6 @@
 package com.example.utsav.edufind;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -86,18 +87,15 @@ public class SearchResultsUI extends AppCompatActivity {
 
         if (id == R.id.bookmarkSearchParametersBtn) {
             // BOOKMARK SEARCH PARAMETERS HERE
-
             // Show confirmation via Builder Design Pattern
             AlertDialog.Builder builder= new AlertDialog.Builder(SearchResultsUI.this);
             builder.setMessage("Search parameters are bookmarked!");
             builder.setPositiveButton("OK", null);
-
             AlertDialog alert = builder.create();
             alert.show();
 
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -111,7 +109,7 @@ public class SearchResultsUI extends AppCompatActivity {
 
         for (int i = 0; i < courseList.size(); i++) {
             if (courseList.get(i) instanceof UniversityCourse) {
-                courseList.remove(i);
+                courseList.remove(i--);
             }
         }
     }
@@ -121,8 +119,21 @@ public class SearchResultsUI extends AppCompatActivity {
      * and puts them in an ArrayList of Course objects consisting of only university courses.
      */
     private void initializeAdapter(){
-        RVAdapter adapter = new RVAdapter(courseList);
+        RVAdapter adapter = new RVAdapter(courseList, interest, specialization, postalCode);
         rv.setAdapter(adapter);
+
+        if (adapter.getItemCount() == 0) {
+            // Show no results
+            AlertDialog.Builder builder = new AlertDialog.Builder(SearchResultsUI.this); //alert for confirm to delete
+            builder.setMessage("Your search returned no results!");    //set message
+            builder.setPositiveButton("Return", new DialogInterface.OnClickListener() { //when click on DELETE
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                    return;
+                }
+            }).show();  //show alert dialog
+        }
     }
 
     public void initializeToolbar(@NonNull String toolbarTitle){
@@ -147,35 +158,29 @@ public class SearchResultsUI extends AppCompatActivity {
 
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()){
-
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
                         intent = new Intent(SearchResultsUI.super.getApplication(), MainUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
-
                     case R.id.bookmarks:
                         intent = new Intent(SearchResultsUI.super.getApplication(), BookmarksUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
-
                     case R.id.aboutus:
                         intent = new Intent(SearchResultsUI.super.getApplication(), AboutUs.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
-
                     default:
-
                         return true;
                 }
             }
         });
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,myToolbar,R.string.drawer_open, R.string.drawer_close){
 
             @Override

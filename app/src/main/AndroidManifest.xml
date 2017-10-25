@@ -35,6 +35,7 @@
         <activity android:name=".SearchResultsUI" />
         <activity android:name=".AboutUs" />
         <activity android:name=".NewSearchUIPage2" />
+        <activity android:name=".UniversityCourseDetailsUI" />
         <activity
             android:name=".PolytechnicDetails"
             android:label="@string/title_activity_polytechnic_details"
