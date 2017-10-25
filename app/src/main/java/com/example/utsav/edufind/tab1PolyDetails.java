@@ -81,7 +81,7 @@ public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
         String institutionName = i.getExtras().getString("institutionName", "No institutionName found");
         String courseGrade = String.valueOf(i.getExtras().getInt("courseGrade", 0));
         String courseIntake = String.valueOf(i.getExtras().getInt("courseIntake", 0));
-        String postCode = String.valueOf(i.getExtras().getInt("postCode", 238801));
+        String postCode = String.valueOf(i.getExtras().getInt("postalCode", 238801));
         postalCode = postCode;
         insName = institutionName;
 
@@ -145,7 +145,7 @@ public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
             Log.d("Address Error", "Can't get latitude and longitude");
         }
         LatLng LOCATION = new LatLng(latlng[0], latlng[1]);
-        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LOCATION, 10));
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LOCATION, 11));
         mGoogleMap.addMarker(new MarkerOptions().position(LOCATION).title(insName));
     }
 }

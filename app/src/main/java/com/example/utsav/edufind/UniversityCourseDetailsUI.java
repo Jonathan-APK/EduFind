@@ -86,6 +86,9 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         String institutionName = i.getExtras().getString("institutionName", "No institutionName found");
         String courseGrade = String.valueOf(i.getExtras().getDouble("courseGrade", 0));
         String courseIntake = String.valueOf(i.getExtras().getInt("courseIntake", 0));
+        String postCode = String.valueOf(i.getExtras().getInt("postalCode", 238801));
+        postalCode = postCode;
+        insName = institutionName;
 
         CourseGrade.setText(courseGrade);
         CourseIntake.setText(courseIntake);
@@ -128,8 +131,6 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         InstitutionName.setText("Singapore Polytechnic");
         InstitutionLogo.setImageResource(R.mipmap.sp);
         CourseWebsite.setImageResource(R.drawable.website);
-        postalCode = "637658";
-        insName = "Nanyang Technological University";
 
         CourseWebsite.setImageResource(R.drawable.website);
         CourseWebsite.setOnClickListener(new View.OnClickListener() {
