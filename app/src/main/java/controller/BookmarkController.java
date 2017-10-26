@@ -1,6 +1,7 @@
 package controller;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -21,16 +22,10 @@ public class BookmarkController {
         String line;
         BufferedReader br = null;
 
-        try {
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         if(checkBookmarkExist() == false){
             createBookmarkFile();
-        }else {
-            try {
+        }
+        try {
                 br = new BufferedReader(new FileReader(path));
                 while ((line = br.readLine()) != null) {
                     Bookmark bookmark = new Bookmark();
@@ -39,6 +34,8 @@ public class BookmarkController {
                     bookmark.setSpecialization(tempArray[1]);
                     bookmark.setL1R4(Integer.parseInt(tempArray[2]));
                     bookmark.setPostalCode(Integer.parseInt(tempArray[3]));
+                    bookmark.setDate(tempArray[4]);
+                    bookmark.setTime(tempArray[5]);
                     bookmarkList.add(bookmark);
                 }
             } catch (FileNotFoundException e) {
@@ -54,92 +51,87 @@ public class BookmarkController {
                     }
                 }
             }
-        }
+
         return bookmarkList;
     }
 
     public boolean addBookmark(Bookmark bm){
         path=current.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
         boolean rt = false;
+        BufferedWriter bw = null;
 
         if(checkBookmarkExist() == false){
             createBookmarkFile();
-        } else {
+        }
             if (bm == null)
                 return rt;
             else {
-                FileOutputStream outputStream;
+
                 try {
-                    outputStream = current.openFileOutput(path, Context.MODE_PRIVATE);
-                    StringBuilder input = new StringBuilder();
-                    input.append(bm.getInterest());
-                    input.append("^");
-                    input.append(bm.getSpecialization());
-                    input.append("^");
-                    input.append(String.valueOf(bm.getL1R4()));
-                    input.append("^");
-                    input.append(String.valueOf(bm.getPostalCode()));
-                    input.append("^");
-                    input.append(bm.getDate());
-                    input.append("^");
-                    input.append(bm.getTime());
-                    input.append("\n");
-                    outputStream.write(String.valueOf(input).getBytes());
+                    String bookmarkData = bm.getInterest() + "^" + bm.getSpecialization() + "^" + bm.getL1R4() +"^" + bm.getPostalCode() + "^" + bm.getDate()
+                            +"^" +bm.getTime();
+                    FileOutputStream outputStream;
+                    OutputStreamWriter osw;
+                    outputStream = new FileOutputStream(new File(path), true);
+                    outputStream.write(bookmarkData.getBytes());
+                    osw = new OutputStreamWriter(outputStream);
+                    osw.append("\n");
+                    osw.flush();
+                    osw.close();
+                    outputStream.flush();
                     outputStream.close();
                     rt = true;
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
+
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
+
             }
-        }
+
         return rt;
     }
 
     public boolean updateBookmark(ArrayList<Bookmark> newList) {
         path=current.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
         BufferedWriter bw = null;
+        FileOutputStream outputStream = null;
+        OutputStreamWriter osw = null;
         boolean rt = false;
+        String bookmarkData;
+
         if(checkBookmarkExist() == false){
             createBookmarkFile();
-        } else {
+        }
             if (newList.size() <= 0)
                 return rt;
             else {
+
                 try {
-                    bw = new BufferedWriter(new FileWriter(path));
 
                     for (int i = 0; i < newList.size(); i++) {
-                        bw.append(newList.get(i).getInterest());
-                        bw.append("^");
-                        bw.append(newList.get(i).getSpecialization());
-                        bw.append("^");
-                        bw.append(String.valueOf(newList.get(i).getL1R4()));
-                        bw.append("^");
-                        bw.append(String.valueOf(newList.get(i).getPostalCode()));
-                        bw.append("^");
-                        bw.append(newList.get(i).getDate());
-                        bw.append("^");
-                        bw.append(newList.get(i).getTime());
-                        bw.newLine();
+                        bookmarkData = newList.get(i).getInterest() + "^" + newList.get(i).getSpecialization() + "^" + newList.get(i).getL1R4() + "^" + newList.get(i).getPostalCode() + "^" + newList.get(i).getDate()
+                                + "^" + newList.get(i).getTime();
+
+                        outputStream = new FileOutputStream(new File(path), false);
+                        outputStream.write(bookmarkData.getBytes());
+                        osw = new OutputStreamWriter(outputStream);
+                        osw.write("\n");
+
                     }
+                        osw.flush();
+                        outputStream.flush();
+                        osw.close();
+                        outputStream.close();
+
                     rt = true;
-                } catch (FileNotFoundException e) {
+
+
+                } catch (Exception e) {
                     e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    if (bw != null) {
-                        try {
-                            bw.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
                 }
+
             }
-        }
+
         return rt;
     }
 
@@ -162,7 +154,7 @@ public class BookmarkController {
 
         try {
             bw = new BufferedWriter(new FileWriter(path + "/bookmark.csv"));
-            bw.append("");
+            bw.write("");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

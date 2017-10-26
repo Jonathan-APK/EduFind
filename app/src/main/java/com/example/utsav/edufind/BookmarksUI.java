@@ -111,15 +111,6 @@ public class BookmarksUI extends AppCompatActivity {
      * and puts them in an ArrayList of Course objects consisting of only polytechnic courses.
      */
     private void initializeData(){
-        BookmarkController bc1 = new BookmarkController(this);
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");
-        String date = df.format(c.getTime());
-        String time = df2.format(c.getTime());
-        Bookmark bm = new Bookmark("Elmo", "Testing", 1, 123456, date, time);
-        bc1.addBookmark(bm);
-
         bookmarkList = new ArrayList<>();
         BookmarkController bookmarkIO = new BookmarkController(this);
         bookmarkList = bookmarkIO.retrieveListOfBookmark();
