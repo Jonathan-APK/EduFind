@@ -17,8 +17,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
+import controller.BookmarkController;
 import entity.Bookmark;
 
 /**
@@ -44,14 +47,11 @@ public class BookmarksUI extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //Get data from previous activity
         Intent i = getIntent();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bookmarks_ui);
 
         initializeToolbar("Bookmarks");
-
-        rv= (RecyclerView) findViewById(R.id.rv);
-
+        rv = (RecyclerView) findViewById(R.id.rv);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
@@ -111,11 +111,18 @@ public class BookmarksUI extends AppCompatActivity {
      * and puts them in an ArrayList of Course objects consisting of only polytechnic courses.
      */
     private void initializeData(){
+        BookmarkController bc1 = new BookmarkController(this);
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");
+        String date = df.format(c.getTime());
+        String time = df2.format(c.getTime());
+        Bookmark bm = new Bookmark("Elmo", "Testing", 1, 123456, date, time);
+        bc1.addBookmark(bm);
+
         bookmarkList = new ArrayList<>();
-        bookmarkList.add(new Bookmark("interest1", "specialization1", 5, 120354, "date1", "time1"));
-        bookmarkList.add(new Bookmark("interest2", "specialization2", 6, 120345, "date2", "time2"));
-        bookmarkList.add(new Bookmark("interest3", "specialization3", 7, 120354, "date3", "time3"));
-        bookmarkList.add(new Bookmark("interest4", "specialization4", 3, 120354, "date4", "time4"));
+        BookmarkController bookmarkIO = new BookmarkController(this);
+        bookmarkList = bookmarkIO.retrieveListOfBookmark();
     }
 
     /**

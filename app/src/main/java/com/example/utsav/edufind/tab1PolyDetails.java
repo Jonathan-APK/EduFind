@@ -42,6 +42,7 @@ public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
     TextView CourseDescription;
     TextView instiDescription;
     TextView InstitutionDescription;
+    ImageView imageView;
     GoogleMap mGoogleMap;
     String postalCode;
     String insName;
@@ -69,6 +70,7 @@ public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
         career = (TextView) rootView.findViewById(R.id.career_prospect_text);
         CourseDescription = (TextView) rootView.findViewById(R.id.course_desc_detail_text);
         InstitutionDescription = (TextView) rootView.findViewById(R.id.institution_desc_detail_text);
+        imageView = (ImageView) rootView.findViewById(R.id.imageView);
 
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
                 .findFragmentById(R.id.mapFragment);
@@ -97,22 +99,27 @@ public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
         switch (institutionName) {
             case "Singapore Polytechnic": {
                 InstitutionLogo.setImageResource(R.mipmap.sp);
+                imageView.setImageResource(R.mipmap.sp_sch_image);
                 break;
             }
             case "Ngee Ann Polytechnic": {
                 InstitutionLogo.setImageResource(R.mipmap.np);
+                imageView.setImageResource(R.drawable.np);
                 break;
             }
             case "Republic Polytechnic": {
                 InstitutionLogo.setImageResource(R.mipmap.rp);
+                imageView.setImageResource(R.drawable.rp);
                 break;
             }
             case "Nanyang Polytechnic": {
                 InstitutionLogo.setImageResource(R.mipmap.nyp);
+                imageView.setImageResource(R.drawable.nyp);
                 break;
             }
             case "Temasek Polytechnic": {
                 InstitutionLogo.setImageResource(R.mipmap.tp);
+                imageView.setImageResource(R.drawable.tp);
                 break;
             }
             default:
@@ -125,7 +132,6 @@ public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
                 (v.getContext()).startActivity(browserIntent);
             }
         });
-        CourseWebsite.setImageResource(R.drawable.website);
         institutionDescription.setPaintFlags(institutionDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         courseDescription.setPaintFlags(courseDescription.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         direction.setPaintFlags(direction.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -146,7 +152,7 @@ public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
             m1.execute(postalCode);
             double[] location = m1.get();
             LatLng HOME = new LatLng(location[0], location[1]);
-            mGoogleMap.addMarker(new MarkerOptions().position(HOME).title("Home"));
+            mGoogleMap.addMarker(new MarkerOptions().position(HOME).title("Your Location"));
             m2.execute(insCode);
             location = m2.get();
             LatLng INST = new LatLng(location[0], location[1]);

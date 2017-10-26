@@ -15,12 +15,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
+import java.util.Calendar;
 import java.util.ArrayList;
-
+import java.text.SimpleDateFormat;
 import controller.SearchController;
+import controller.BookmarkController;
 import entity.Course;
 import entity.UniversityCourse;
+import entity.Bookmark;
 
 /**
  * This class displays the search results of polytechnic courses based on the user's
@@ -84,10 +86,18 @@ public class SearchResultsUI extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         if (id == R.id.bookmarkSearchParametersBtn) {
             // BOOKMARK SEARCH PARAMETERS HERE
             // Show confirmation via Builder Design Pattern
+            //BookmarkController add new bookmark method here
+            BookmarkController bc1 = new BookmarkController(this);
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");
+            String date = df.format(c.getTime());
+            String time = df2.format(c.getTime());
+            Bookmark bm = new Bookmark(interest, specialization, L1R4, postalCode, date, time);
+            bc1.addBookmark(bm);
             AlertDialog.Builder builder= new AlertDialog.Builder(SearchResultsUI.this);
             builder.setMessage("Search parameters are bookmarked!");
             builder.setPositiveButton("OK", null);
@@ -104,7 +114,7 @@ public class SearchResultsUI extends AppCompatActivity {
      * and puts them in an ArrayList of Course objects consisting of only polytechnic courses.
      */
     private void initializeData(){
-        SearchController c1 = new SearchController();
+        SearchController c1 = new SearchController(this);
         courseList = c1.search(interest, specialization, L1R4, postalCode);
 
         for (int i = 0; i < courseList.size(); i++) {

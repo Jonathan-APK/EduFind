@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="areaOFInterestData">
-    <item>APPLIED SCIENCES</item>
-    <item>BUILT ENVIRONMENT</item>
-    <item>BUSINESS \u0026 MANAGEMENT</item>
-    <item>ENGINEERING</item>
-    <item>HEALTH SCIENCES</item>
-    <item>HUMANITIES</item>
-    <item>INFORMATION \u0026 DIGITAL TECHNOLOGIES</item>
-    <item>MARITIME STUDIES</item>
-    <item>MEDIA \u0026 DESIGN</item>
-
+    <item>Applied Sciences</item>
+    <item>Built Environment</item>
+    <item>Business \u0026 Management</item>
+    <item>Engineering</item>
+    <item>Health Sciences</item>
+    <item>Humanities</item>
+    <item>Information \u0026 Digital Technologies</item>
+    <item>Maritime Studies</item>
+    <item>Media \u0026 Design</item>
 </string-array>
 
     <string-array name="appliedScience">

@@ -185,6 +185,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                     CourseViewHolder.InstitutionLogo.setImageResource(R.mipmap.sit);
                     break;
                 }
+                case "Digipen Institute of Technology Singapore": {
+                    CourseViewHolder.InstitutionLogo.setImageResource(R.mipmap.digipen);
+                    break;
+                }
                 default:
             }
             CourseViewHolder.InstitutionName.setText(courses.get(i).getInstitution().getInstitution());

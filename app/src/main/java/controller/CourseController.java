@@ -1,53 +1,49 @@
 package controller;
 
-import java.net.URL;
+import com.example.utsav.edufind.R;
+
+import android.content.Context;
+import java.io.InputStream;
+
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import entity.Course;
 import entity.PolytechnicCourse;
 import entity.UniversityCourse;
 import entity.Institution;
 
-/**
- * Created by boonleng94 on 27/9/2017.
- */
-
 public class CourseController {
-    private static Institution institute;
     private static String csvFile;
     private static BufferedReader br = null;
     private static String line;
-    private static String delimiter = "^";
+    private static String delimiter = "\\^";
     private static String[] tempArray;
-    private static ArrayList<UniversityCourse> uniList;
-    private static ArrayList<PolytechnicCourse> polyList;
-    private static PolytechnicCourse poly;
-    private static UniversityCourse uni;
-    private static String polyFile = "C:/Users/boonleng94/AndroidStudioProjects/EduFind/app/src/main/data/Polytechnic.csv";
-    private static String uniFile = "C:/Users/boonleng94/AndroidStudioProjects/EduFind/app/src/main/data/University.csv";
+    private Context context;
+    private static InputStream stream;
 
-    public static ArrayList<PolytechnicCourse> retrieveListOfPolyCourses() {
-        polyList = new ArrayList<PolytechnicCourse>();
-        poly = new PolytechnicCourse();
+    public CourseController(Context context) {
+        this.context = context;
+    }
 
+    public ArrayList<Course> retrieveListOfPolyCourses() {
+        ArrayList<Course> polyList = new ArrayList<Course>();
+        stream = context.getResources().openRawResource(R.raw.polytechnic);
         //Create IO object using IO factory
         //Pass the IO object to the Course Factory as parameter
         //Retrieve the list using IO
 
-        csvFile = polyFile;
-
         try {
-
-            br = new BufferedReader(new FileReader(csvFile));
+            br = new BufferedReader(new InputStreamReader(stream));
             while ((line = br.readLine()) != null) {
                 // use comma as separator
+                PolytechnicCourse poly = new PolytechnicCourse();
                 tempArray = line.split(delimiter);
-
-                institute = new Institution(tempArray[0], tempArray[12], Integer.parseInt(tempArray[5]));
-
+                Institution institute = new Institution(tempArray[0], tempArray[12], Integer.parseInt(tempArray[5]));
                 poly.setInstitution(institute);
                 poly.setSchool(tempArray[1]);
                 poly.setCourseName(tempArray[2]);
@@ -58,7 +54,6 @@ public class CourseController {
                 poly.setIntake(Integer.parseInt(tempArray[8]));
                 poly.setWebsite(tempArray[9]);
                 poly.setCourseDescription(tempArray[10]);
-
                 polyList.add(poly);
             }
 
@@ -78,34 +73,26 @@ public class CourseController {
         return polyList;
     }
 
-    public static ArrayList<UniversityCourse> retrieveListOfUniCourses() {
-
-        uniList = new ArrayList<UniversityCourse>();
-        uni = new UniversityCourse();
-
-        csvFile = uniFile;
-
+    public ArrayList<Course> retrieveListOfUniCourses() {
+        ArrayList<Course> uniList = new ArrayList<Course>();
+        stream = context.getResources().openRawResource(R.raw.university);
         try {
-
-            br = new BufferedReader(new FileReader(csvFile));
+            br = new BufferedReader(new InputStreamReader(stream));
             while ((line = br.readLine()) != null) {
-
                 // use comma as separator
+                UniversityCourse uni = new UniversityCourse();
                 tempArray = line.split(delimiter);
-
-                institute = new Institution(tempArray[0], tempArray[12], Integer.parseInt(tempArray[5]));
-
+                Institution institute = new Institution(tempArray[0], tempArray[11], Integer.parseInt(tempArray[5].replaceAll("\\s+","")));
                 uni.setInstitution(institute);
                 uni.setSchool(tempArray[1]);
                 uni.setCourseName(tempArray[2]);
                 uni.setInterest(tempArray[3]);
                 uni.setSpecialization(tempArray[4]);
-                uni.setGradePointAverage(Integer.parseInt(tempArray[6]));
+                uni.setGradePointAverage(Double.parseDouble(tempArray[6]));
                 uni.setEducationLevel(tempArray[7]);
                 uni.setIntake(Integer.parseInt(tempArray[8]));
                 uni.setWebsite(tempArray[9]);
                 uni.setCourseDescription(tempArray[10]);
-
                 uniList.add(uni);
             }
 
@@ -125,7 +112,7 @@ public class CourseController {
         return uniList;
     }
 
-    public static ArrayList<Institution> retrieveListOfInstitution() {
+    /*public static ArrayList<Institution> retrieveListOfInstitution() {
         ArrayList<Institution> schList = new ArrayList<Institution>();
         uniList = retrieveListOfUniCourses();
         polyList = retrieveListOfPolyCourses();
@@ -184,5 +171,5 @@ public class CourseController {
 
         }
         return schList;
-    }
+    }*/
 }
