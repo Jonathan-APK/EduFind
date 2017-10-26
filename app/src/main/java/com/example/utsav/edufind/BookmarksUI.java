@@ -22,7 +22,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import controller.BookmarkController;
+import controller.DataStoreFactory;
+import controller.DataStoreInterface;
 import entity.Bookmark;
+import entity.Course;
 
 /**
  * Initialize and display Saved Bookmarks page
@@ -112,8 +115,13 @@ public class BookmarksUI extends AppCompatActivity {
      */
     private void initializeData(){
         bookmarkList = new ArrayList<>();
-        BookmarkController bookmarkIO = new BookmarkController(this);
-        bookmarkList = bookmarkIO.retrieveListOfBookmark();
+        /*BookmarkController bookmarkIO = new BookmarkController(this);
+        bookmarkList = bookmarkIO.retrieveListOfBookmark();*/
+
+        //PK FACTORY TEST
+        DataStoreInterface di = DataStoreFactory.getDatastore("bookmark",this);
+        bookmarkList = (ArrayList<Bookmark>)(Object)di.retrieveList();
+
     }
 
     /**

@@ -57,10 +57,16 @@ public class SearchController {
         ArrayList<Double> sortedDistanceList = new ArrayList<Double>();
         Course temp = new Course();
 
-        //Retrieve full list of polytechnic courses and university courses
+        /*//Retrieve full list of polytechnic courses and university courses
         CourseController cc = new CourseController(current);
         courseList = cc.retrieveListOfPolyCourses();
-        courseList.addAll(cc.retrieveListOfUniCourses());
+        courseList.addAll(cc.retrieveListOfUniCourses());*/
+
+        //PK FACTORY TEST /Retrieve full list of polytechnic courses and university courses
+        DataStoreInterface di = DataStoreFactory.getDatastore("poly",current);
+        courseList = (ArrayList<Course>)(Object)di.retrieveList();
+        di = DataStoreFactory.getDatastore("uni",current);
+        courseList.addAll((ArrayList<Course>)(Object)di.retrieveList());
 
         //Filter list according to inputs
         for (int i = 0; i < courseList.size(); i++) {

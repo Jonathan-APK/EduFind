@@ -18,6 +18,11 @@ import android.view.View;
 import java.util.Calendar;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
+
+import controller.BookMarkImplementation;
+import controller.CourseFactory;
+import controller.DataStoreFactory;
+import controller.DataStoreInterface;
 import controller.SearchController;
 import controller.BookmarkController;
 import entity.Course;
@@ -90,14 +95,26 @@ public class SearchResultsUI extends AppCompatActivity {
             // BOOKMARK SEARCH PARAMETERS HERE
             // Show confirmation via Builder Design Pattern
             //BookmarkController add new bookmark method here
-            BookmarkController bc1 = new BookmarkController(this);
+
+            //PK FACTORY TEST
+            DataStoreInterface di = DataStoreFactory.getDatastore("bookmark",this);
+
+            //PK FACTORY TEST
+            //BookmarkController bc1 = new BookmarkController(this);
+
             Calendar c = Calendar.getInstance();
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");
             String date = df.format(c.getTime());
             String time = df2.format(c.getTime());
+
             Bookmark bm = new Bookmark(interest, specialization, L1R4, postalCode, date, time);
-            bc1.addBookmark(bm);
+
+            //PK FACTORY TEST
+            ((BookMarkImplementation)di).addBookmark(bm);
+            //PK FACTORY TEST
+            //bc1.addBookmark(bm);
+
             AlertDialog.Builder builder= new AlertDialog.Builder(SearchResultsUI.this);
             builder.setMessage("Search parameters are bookmarked!");
             builder.setPositiveButton("OK", null);
