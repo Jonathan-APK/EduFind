@@ -197,7 +197,6 @@
                             android:id="@+id/layoutContent"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="192dp"
                             android:background="@drawable/relative_background_with_shadow"
                             android:orientation="vertical"
                             android:layout_below="@+id/layoutCircle"

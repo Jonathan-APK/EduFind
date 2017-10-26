@@ -50,6 +50,7 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
     TextView direction;
     TextView CourseDescription;
     TextView InstitutionDescription;
+    ImageView imageView;
     GoogleMap mGoogleMap;
     String postalCode;
     String insName;
@@ -78,6 +79,7 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         career = (TextView) findViewById(R.id.uni_career_prospect_text);
         CourseDescription = (TextView) findViewById(R.id.uni_course_desc_detail_text);
         InstitutionDescription = (TextView) findViewById(R.id.uni_institution_desc_detail_text);
+        imageView = (ImageView) findViewById(R.id.uni_imageView);
 
         Intent i = getIntent();
         String courseName = i.getExtras().getString("courseName", "No courseName found");
@@ -101,28 +103,19 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         InstitutionDescription.setText(institutionDesc);
 
         switch (institutionName) {
-            case "Singapore University of Technology and Design": {
-                InstitutionLogo.setImageResource(R.mipmap.sutd);
-                break;
-            }
             case "Nanyang Technological University": {
                 InstitutionLogo.setImageResource(R.mipmap.ntu);
-                break;
-            }
-            case "Singapore Management University": {
-                InstitutionLogo.setImageResource(R.mipmap.smu);
+                imageView.setImageResource(R.drawable.ntu);
                 break;
             }
             case "National University of Singapore": {
                 InstitutionLogo.setImageResource(R.mipmap.nus);
-                break;
-            }
-            case "Singapore Institute of Technology": {
-                InstitutionLogo.setImageResource(R.mipmap.sit);
+                imageView.setImageResource(R.drawable.nus);
                 break;
             }
             case "Digipen Institute of Technology Singapore": {
                 InstitutionLogo.setImageResource(R.mipmap.digipen);
+                imageView.setImageResource(R.drawable.digipen);
                 break;
             }
             default:

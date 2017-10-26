@@ -30,7 +30,7 @@ public class DistanceCalculation extends AsyncTask<String, Void, Double>{
         String pincode_2 = strings[1];
 
         try{
-            String key = "AIzaSyA4weAen8iFGCIl_RxzGmFEodGV-YXPVFw";
+            String key = "AIzaSyAk87srcPHP5Zo6jhWpdIiSRS-A47jM1eE";
             String s = String.format("https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=%s&destinations=%s&key=%s",
                     pincode_1, pincode_2, key);
             URL url = new URL(s);
