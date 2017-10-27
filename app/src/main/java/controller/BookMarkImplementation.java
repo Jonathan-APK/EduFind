@@ -37,6 +37,7 @@ public class BookMarkImplementation implements DataStoreInterface {
         String line;
         BufferedReader br = null;
 
+
         if(checkBookmarkExist() == false){
             createBookmarkFile();
         }
@@ -52,6 +53,7 @@ public class BookMarkImplementation implements DataStoreInterface {
                 bookmark.setDate(tempArray[4]);
                 bookmark.setTime(tempArray[5]);
                 bookmarkList.add(bookmark);
+
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -108,17 +110,32 @@ public class BookMarkImplementation implements DataStoreInterface {
 
     public boolean updateBookmark(ArrayList<Bookmark> newList) {
         String path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
-        BufferedWriter bw = null;
         FileOutputStream outputStream = null;
-        OutputStreamWriter osw = null;
+        BufferedWriter osw = null;
         boolean rt = false;
         String bookmarkData;
+        boolean ss = false;
 
         if(checkBookmarkExist() == false){
             createBookmarkFile();
         }
         if (newList.size() <= 0)
-            return rt;
+
+            try {
+                bookmarkData = "";
+                outputStream = new FileOutputStream(new File(path), false);
+                outputStream.write(bookmarkData.getBytes());
+                osw.flush();
+                outputStream.flush();
+                osw.close();
+                outputStream.close();
+            }catch (Exception e) {
+           e.printStackTrace();
+                return rt;
+
+            }
+
+
         else {
 
             try {
@@ -127,14 +144,16 @@ public class BookMarkImplementation implements DataStoreInterface {
                     bookmarkData = newList.get(i).getInterest() + "^" + newList.get(i).getSpecialization() + "^" + newList.get(i).getL1R4() + "^" + newList.get(i).getPostalCode() + "^" + newList.get(i).getDate()
                             + "^" + newList.get(i).getTime();
 
-                    outputStream = new FileOutputStream(new File(path), false);
+                    outputStream = new FileOutputStream(new File(path), ss);
                     outputStream.write(bookmarkData.getBytes());
-                    osw = new OutputStreamWriter(outputStream);
-                    osw.write("\n");
-
+                    FileWriter fw = new FileWriter(path, true);
+                    osw = new BufferedWriter(fw);
+                    osw.newLine();
+                    ss = true;
+                    osw.flush();
+                    outputStream.flush();
                 }
-                osw.flush();
-                outputStream.flush();
+
                 osw.close();
                 outputStream.close();
 
@@ -186,22 +205,5 @@ public class BookMarkImplementation implements DataStoreInterface {
                 }
             }
         }
-
-        /*try {
-            bw = new BufferedWriter(new FileWriter(path + "/bookmark.csv"));
-            bw.write("");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (bw != null) {
-                try {
-                    bw.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }*/
     }
 }

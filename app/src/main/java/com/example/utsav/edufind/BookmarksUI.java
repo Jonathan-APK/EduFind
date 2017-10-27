@@ -13,14 +13,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
+import controller.BookMarkImplementation;
 import controller.DataStoreFactory;
 import controller.DataStoreInterface;
 import entity.Bookmark;
@@ -78,6 +81,8 @@ public class BookmarksUI extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         adapter.notifyItemRemoved(position);    //item removed from recylcerview
                         bookmarkList.remove(position);  //then remove item
+                        DataStoreInterface di = DataStoreFactory.getDatastore("bookmark",getApplicationContext());
+                        ((BookMarkImplementation)di).updateBookmark(bookmarkList);
 
                         return;
                     }
