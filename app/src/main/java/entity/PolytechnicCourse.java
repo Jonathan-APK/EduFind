@@ -17,8 +17,8 @@ public class PolytechnicCourse extends Course{
 
     }
 
-    public PolytechnicCourse(String courseName, String interest, String specialization, String website, String school, String educationLevel, String courseDescription, Institution institution, int intake, int l1R4) {
-        super(courseName, interest, specialization, website, school, educationLevel, courseDescription, institution, intake);
+    public PolytechnicCourse(String courseName, String interest, String specialisation, String website, String school, String educationLevel, String courseDescription, Institution institution, int intake, int l1R4) {
+        super(courseName, interest, specialisation, website, school, educationLevel, courseDescription, institution, intake);
         L1R4 = l1R4;
     }
 

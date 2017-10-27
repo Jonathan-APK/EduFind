@@ -47,7 +47,7 @@ public class BookMarkImplementation implements DataStoreInterface {
                 Bookmark bookmark = new Bookmark();
                 tempArray = line.split(delimiter);
                 bookmark.setInterest(tempArray[0]);
-                bookmark.setSpecialization(tempArray[1]);
+                bookmark.setspecialisation(tempArray[1]);
                 bookmark.setL1R4(Integer.parseInt(tempArray[2]));
                 bookmark.setPostalCode(Integer.parseInt(tempArray[3]));
                 bookmark.setDate(tempArray[4]);
@@ -85,7 +85,7 @@ public class BookMarkImplementation implements DataStoreInterface {
         else {
 
             try {
-                String bookmarkData = bm.getInterest() + "^" + bm.getSpecialization() + "^" + bm.getL1R4() +"^" + bm.getPostalCode() + "^" + bm.getDate()
+                String bookmarkData = bm.getInterest() + "^" + bm.getspecialisation() + "^" + bm.getL1R4() +"^" + bm.getPostalCode() + "^" + bm.getDate()
                         +"^" +bm.getTime();
                 FileOutputStream outputStream;
                 OutputStreamWriter osw;
@@ -141,7 +141,7 @@ public class BookMarkImplementation implements DataStoreInterface {
             try {
 
                 for (int i = 0; i < newList.size(); i++) {
-                    bookmarkData = newList.get(i).getInterest() + "^" + newList.get(i).getSpecialization() + "^" + newList.get(i).getL1R4() + "^" + newList.get(i).getPostalCode() + "^" + newList.get(i).getDate()
+                    bookmarkData = newList.get(i).getInterest() + "^" + newList.get(i).getspecialisation() + "^" + newList.get(i).getL1R4() + "^" + newList.get(i).getPostalCode() + "^" + newList.get(i).getDate()
                             + "^" + newList.get(i).getTime();
 
                     outputStream = new FileOutputStream(new File(path), ss);

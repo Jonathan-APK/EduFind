@@ -1,4 +1,4 @@
-package com.example.utsav.edufind;
+package boundary;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -16,8 +16,11 @@ import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView;
 
+import com.example.utsav.edufind.MainUI;
+import com.example.utsav.edufind.R;
+
 /**
- * Initializes and display page 1 of the New Search UI for the user to choose his ideal interest and specialization
+ * Initializes and display page 1 of the New Search UI for the user to choose his ideal interest and specialisation
  *
  * @author Minions
  * @version 1.0
@@ -27,8 +30,8 @@ public class NewSearchUI extends AppCompatActivity implements OnItemSelectedList
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
-    private ArrayAdapter<CharSequence> specializationAdaptor;
-    private Spinner specializationSpinner;
+    private ArrayAdapter<CharSequence> specialisationAdaptor;
+    private Spinner specialisationSpinner;
 
     /**
      * Initialize layout
@@ -51,64 +54,64 @@ public class NewSearchUI extends AppCompatActivity implements OnItemSelectedList
         areaOfInterestSpinner.setOnItemSelectedListener(this);
         areaOfInterestSpinner.setAdapter(adapter);
 
-        //Populate specializationSpinner
-        specializationSpinner = (Spinner) findViewById(R.id.specializationSpinner);
+        //Populate specialisationSpinner
+        specialisationSpinner = (Spinner) findViewById(R.id.specialisationSpinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
-        specializationAdaptor = ArrayAdapter.createFromResource(this, R.array.appliedScience, android.R.layout.simple_spinner_item);
+        specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.appliedScience, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
-        specializationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        specialisationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        specializationSpinner.setAdapter(specializationAdaptor);
+        specialisationSpinner.setAdapter(specialisationAdaptor);
     }
 
     public void onItemSelected(AdapterView<?> parent, View arg1, int pos, long arg3) {
         switch (pos) {
             case 0:
-                specializationAdaptor = ArrayAdapter.createFromResource(this, R.array.appliedScience, android.R.layout.simple_spinner_item);
-                specializationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                specializationSpinner.setAdapter(specializationAdaptor);
+                specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.appliedScience, android.R.layout.simple_spinner_item);
+                specialisationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                specialisationSpinner.setAdapter(specialisationAdaptor);
 
                 break;
             case 1:
-                specializationAdaptor = ArrayAdapter.createFromResource(this, R.array.builtEnvironment, android.R.layout.simple_spinner_item);
-                specializationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                specializationSpinner.setAdapter(specializationAdaptor);
+                specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.builtEnvironment, android.R.layout.simple_spinner_item);
+                specialisationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                specialisationSpinner.setAdapter(specialisationAdaptor);
 
                 break;
             case 2:
-                specializationAdaptor = ArrayAdapter.createFromResource(this, R.array.business, android.R.layout.simple_spinner_item);
-                specializationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                specializationSpinner.setAdapter(specializationAdaptor);
+                specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.business, android.R.layout.simple_spinner_item);
+                specialisationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                specialisationSpinner.setAdapter(specialisationAdaptor);
                 break;
             case 3:
-                specializationAdaptor = ArrayAdapter.createFromResource(this, R.array.engineering, android.R.layout.simple_spinner_item);
-                specializationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                specializationSpinner.setAdapter(specializationAdaptor);
+                specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.engineering, android.R.layout.simple_spinner_item);
+                specialisationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                specialisationSpinner.setAdapter(specialisationAdaptor);
                 break;
             case 4:
-                specializationAdaptor = ArrayAdapter.createFromResource(this, R.array.healthScience, android.R.layout.simple_spinner_item);
-                specializationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                specializationSpinner.setAdapter(specializationAdaptor);
+                specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.healthScience, android.R.layout.simple_spinner_item);
+                specialisationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                specialisationSpinner.setAdapter(specialisationAdaptor);
                 break;
             case 5:
-                specializationAdaptor = ArrayAdapter.createFromResource(this, R.array.humanities, android.R.layout.simple_spinner_item);
-                specializationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                specializationSpinner.setAdapter(specializationAdaptor);
+                specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.humanities, android.R.layout.simple_spinner_item);
+                specialisationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                specialisationSpinner.setAdapter(specialisationAdaptor);
                 break;
             case 6:
-                specializationAdaptor = ArrayAdapter.createFromResource(this, R.array.informationTech, android.R.layout.simple_spinner_item);
-                specializationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                specializationSpinner.setAdapter(specializationAdaptor);
+                specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.informationTech, android.R.layout.simple_spinner_item);
+                specialisationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                specialisationSpinner.setAdapter(specialisationAdaptor);
                 break;
             case 7:
-                specializationAdaptor = ArrayAdapter.createFromResource(this, R.array.maritime, android.R.layout.simple_spinner_item);
-                specializationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                specializationSpinner.setAdapter(specializationAdaptor);
+                specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.maritime, android.R.layout.simple_spinner_item);
+                specialisationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                specialisationSpinner.setAdapter(specialisationAdaptor);
                 break;
             case 8:
-                specializationAdaptor = ArrayAdapter.createFromResource(this, R.array.media, android.R.layout.simple_spinner_item);
-                specializationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                specializationSpinner.setAdapter(specializationAdaptor);
+                specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.media, android.R.layout.simple_spinner_item);
+                specialisationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                specialisationSpinner.setAdapter(specialisationAdaptor);
                 break;
         }
     }
@@ -144,10 +147,10 @@ public class NewSearchUI extends AppCompatActivity implements OnItemSelectedList
         //Passing data to next activity
         Spinner areaOfInterestSpinner = (Spinner) findViewById(R.id.areaOfInterestSpinner);
         String interest = areaOfInterestSpinner.getSelectedItem().toString();
-        Spinner specializationSpinner = (Spinner) findViewById(R.id.specializationSpinner);
-        String specialization = specializationSpinner.getSelectedItem().toString();
+        Spinner specialisationSpinner = (Spinner) findViewById(R.id.specialisationSpinner);
+        String specialisation = specialisationSpinner.getSelectedItem().toString();
         intent.putExtra("interest", interest);
-        intent.putExtra("specialization", specialization);
+        intent.putExtra("specialisation", specialisation);
         startActivity(intent);
     }
 

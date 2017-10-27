@@ -1,4 +1,4 @@
-package com.example.utsav.edufind;
+package boundary;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -18,6 +18,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.utsav.edufind.MainUI;
+import com.example.utsav.edufind.R;
+
 /**
  * Initializes and display page 2 of the New Search UI for the user to enter his L1R4 and residential postal code
  *
@@ -32,7 +35,7 @@ public class NewSearchUIPage2 extends AppCompatActivity {
 
     //Store user inputs from previous activity
     private String interest;
-    private String specialization;
+    private String specialisation;
 
     /**
      * Initialize layout
@@ -43,7 +46,7 @@ public class NewSearchUIPage2 extends AppCompatActivity {
         //Get data from previous activity
         Intent i = getIntent();
         interest = i.getExtras().getString("interest", "No interest found");
-        specialization = i.getExtras().getString("specialization", "No specialization found");
+        specialisation = i.getExtras().getString("specialisation", "No specialisation found");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_search_uipage2);
         initializeToolbar("New Search");
@@ -118,7 +121,7 @@ public class NewSearchUIPage2 extends AppCompatActivity {
         EditText postalCodeTextInput = (EditText) findViewById(R.id.postalCodeTextInput);
         int postalCode = Integer.parseInt(postalCodeTextInput.getText().toString());
         intent.putExtra("interest", interest);
-        intent.putExtra("specialization", specialization);
+        intent.putExtra("specialisation", specialisation);
         intent.putExtra("L1R4", L1R4);
         intent.putExtra("postalCode", postalCode);
         startActivity(intent);

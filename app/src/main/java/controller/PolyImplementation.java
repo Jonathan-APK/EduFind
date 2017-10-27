@@ -52,7 +52,7 @@ public class PolyImplementation implements DataStoreInterface{
                 poly.setSchool(tempArray[1]);
                 poly.setCourseName(tempArray[2]);
                 poly.setInterest(tempArray[3]);
-                poly.setSpecialization(tempArray[4]);
+                poly.setspecialisation(tempArray[4]);
                 ((PolytechnicCourse)poly).setL1R4(Integer.parseInt(tempArray[6]));
                 poly.setEducationLevel(tempArray[7]);
                 poly.setIntake(Integer.parseInt(tempArray[8]));

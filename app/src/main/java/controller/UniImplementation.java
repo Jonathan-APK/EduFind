@@ -47,7 +47,7 @@ public class UniImplementation implements DataStoreInterface{
                 uni.setSchool(tempArray[1]);
                 uni.setCourseName(tempArray[2]);
                 uni.setInterest(tempArray[3]);
-                uni.setSpecialization(tempArray[4]);
+                uni.setspecialisation(tempArray[4]);
                 ((UniversityCourse)uni).setGradePointAverage(Double.parseDouble(tempArray[6]));
                 uni.setEducationLevel(tempArray[7]);
                 uni.setIntake(Integer.parseInt(tempArray[8]));

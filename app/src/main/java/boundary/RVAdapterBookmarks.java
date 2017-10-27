@@ -1,17 +1,16 @@
-package com.example.utsav.edufind;
+package boundary;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.utsav.edufind.R;
 
 import java.util.List;
 
@@ -61,16 +60,16 @@ public class RVAdapterBookmarks extends RecyclerView.Adapter<RVAdapterBookmarks.
 
     List<Bookmark> bookmarks;
     String interest;
-    String specialization;
+    String specialisation;
     String date;
     String time;
     int L1R4;
     int postalCode;
 
-    public RVAdapterBookmarks(List<Bookmark> bookmarks, String interest, String specialization, int L1R4, int postalCode, String date, String time){
+    public RVAdapterBookmarks(List<Bookmark> bookmarks, String interest, String specialisation, int L1R4, int postalCode, String date, String time){
         this.bookmarks = bookmarks;
         this.interest = interest;
-        this.specialization = specialization;
+        this.specialisation = specialisation;
         this.L1R4 = L1R4;
         this.postalCode = postalCode;
         this.date = date;
@@ -108,9 +107,25 @@ public class RVAdapterBookmarks extends RecyclerView.Adapter<RVAdapterBookmarks.
         BookmarkViewHolder.Date_createdTV.setText(bookmarks.get(i).getDate());
         BookmarkViewHolder.Time_createdTV.setText(bookmarks.get(i).getTime());
         BookmarkViewHolder.AoiTV.setText(bookmarks.get(i).getInterest());
-        BookmarkViewHolder.SpecTV.setText(bookmarks.get(i).getSpecialization());
+        BookmarkViewHolder.SpecTV.setText(bookmarks.get(i).getspecialisation());
         BookmarkViewHolder.PostalTV.setText(String.valueOf(bookmarks.get(i).getPostalCode()));
         BookmarkViewHolder.L1R4TV.setText(String.valueOf(bookmarks.get(i).getL1R4()));
+
+        final String interest = bookmarks.get(i).getInterest();
+        final String specialisation = bookmarks.get(i).getspecialisation();
+        final int L1R4 = bookmarks.get(i).getL1R4();
+        final int postalCode = bookmarks.get(i).getPostalCode();
+        BookmarkViewHolder.cv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(v.getContext(), SearchResultsUI.class);
+                in.putExtra("interest", interest);
+                in.putExtra("specialisation", specialisation);
+                in.putExtra("L1R4", L1R4);
+                in.putExtra("postalCode", postalCode);
+                v.getContext().startActivity(in);
+            }
+        });
     }
 
     @Override

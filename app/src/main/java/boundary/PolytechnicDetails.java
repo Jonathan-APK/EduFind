@@ -1,4 +1,4 @@
-package com.example.utsav.edufind;
+package boundary;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -16,6 +16,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.example.utsav.edufind.MainUI;
+import com.example.utsav.edufind.R;
 
 /**
  * Initializes and display Polytechnic Course Details view for the selected University Course

@@ -67,18 +67,18 @@
                     android:spinnerMode="dropdown" />
 
                 <TextView
-                    android:id="@+id/specializationTextView"
+                    android:id="@+id/specialisationTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="@string/Specialization"
+                    android:text="@string/specialisation"
                     android:textAllCaps="true"
                     android:textColor="@color/colorAccent"
                     android:layout_below="@+id/areaOfInterestSpinner"
                     android:textSize="20sp" />
 
                 <Spinner
-                    android:id="@+id/specializationSpinner"
+                    android:id="@+id/specialisationSpinner"
                     android:maxWidth="600dp"
                     android:layout_width="500dp"
                     android:minWidth="200dp"
@@ -87,7 +87,7 @@
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/spinner_bg"
                     android:dropDownWidth="match_parent"
-                    android:layout_below="@+id/specializationTextView"
+                    android:layout_below="@+id/specialisationTextView"
                     android:spinnerMode="dropdown" />
 
                 <Button
@@ -99,7 +99,7 @@
                     android:onClick="goToNewSearchUIPage2"
                     android:text="Next"
                     android:gravity="center"
-                    android:layout_below="@+id/specializationSpinner"
+                    android:layout_below="@+id/specialisationSpinner"
                     android:theme="@style/greenBtn" />
             </RelativeLayout>
 

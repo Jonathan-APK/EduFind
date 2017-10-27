@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import boundary.BookmarksUI;
+import boundary.NewSearchUI;
+
 /**
  * Initialize and display Main Home page
  *

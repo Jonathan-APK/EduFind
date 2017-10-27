@@ -44,11 +44,11 @@ public class SearchController {
     /**
      * This method uses the search parameters entered by the user to search, filter, and sort the results according to distance
      * @param interest The interest specified by the user
-     * @param specialization The specialization specified by the user
+     * @param specialisation The specialisation specified by the user
      * @param L1R4 The L1R4 grade of the user
      * @param postalCode The postal code entered by the user
      */
-    public ArrayList<Course> search(String interest, String specialization, int L1R4, int postalCode) {
+    public ArrayList<Course> search(String interest, String specialisation, int L1R4, int postalCode) {
         ArrayList<Course> courseList = new ArrayList<Course>();
         ArrayList<Course> filteredCourseList = new ArrayList<Course>();
         ArrayList<Course> sortedCourseList = new ArrayList<Course>();
@@ -71,8 +71,8 @@ public class SearchController {
         //Filter list according to inputs
         for (int i = 0; i < courseList.size(); i++) {
             temp = courseList.get(i);
-            //Filter by interests and specialization
-            if (temp.getInterest().toLowerCase().equals(interest.toLowerCase()) && temp.getSpecialization().toLowerCase().contains(specialization.toLowerCase())) {
+            //Filter by interests and specialisation
+            if (temp.getInterest().toLowerCase().equals(interest.toLowerCase()) && temp.getspecialisation().toLowerCase().contains(specialisation.toLowerCase())) {
                 //Filter by L1R4
                 if (temp instanceof PolytechnicCourse) {
                     if (L1R4 <= ((PolytechnicCourse) temp).getL1R4()) {

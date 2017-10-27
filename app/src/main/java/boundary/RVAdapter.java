@@ -1,4 +1,4 @@
-package com.example.utsav.edufind;
+package boundary;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.ImageView;
 import android.util.TypedValue;
 import android.util.DisplayMetrics;
+
+import com.example.utsav.edufind.R;
 
 import java.util.List;
 
@@ -64,13 +66,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
 
     List<Course> courses;
     String interest;
-    String specialization;
+    String specialisation;
     int postalCode;
 
-    public RVAdapter(List<Course> courses, String interest, String specialization, int postalCode){
+    public RVAdapter(List<Course> courses, String interest, String specialisation, int postalCode){
         this.courses = courses;
         this.interest = interest;
-        this.specialization = specialization;
+        this.specialisation = specialisation;
         this.postalCode = postalCode;
     }
 
@@ -158,7 +160,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                     in.putExtra("postalCode", postalCode);
                     in.putExtra("instPostalCode", instPostCode);
                     in.putExtra("interest", interest);
-                    in.putExtra("specialization", specialization);
+                    in.putExtra("specialisation", specialisation);
                     v.getContext().startActivity(in);
                 }
             });
