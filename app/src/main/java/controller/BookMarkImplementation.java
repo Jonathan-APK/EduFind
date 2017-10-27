@@ -1,6 +1,7 @@
 package controller;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -23,7 +24,6 @@ public class BookMarkImplementation implements DataStoreInterface {
 
     private static String delimiter = "\\^";
     private Context context;
-    private String path;
 
     public BookMarkImplementation(Context context){
         this.context = context;
@@ -32,7 +32,7 @@ public class BookMarkImplementation implements DataStoreInterface {
     @Override
     public ArrayList<Object> retrieveList() {
         ArrayList<Object> bookmarkList = new ArrayList<Object>();
-        path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
+        String path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
         String[] tempArray;
         String line;
         BufferedReader br = null;
@@ -70,7 +70,8 @@ public class BookMarkImplementation implements DataStoreInterface {
         return bookmarkList;    }
 
     public boolean addBookmark(Bookmark bm){
-        path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
+
+        String path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
         boolean rt = false;
         BufferedWriter bw = null;
 
@@ -106,7 +107,7 @@ public class BookMarkImplementation implements DataStoreInterface {
     }
 
     public boolean updateBookmark(ArrayList<Bookmark> newList) {
-        path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
+        String path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
         BufferedWriter bw = null;
         FileOutputStream outputStream = null;
         OutputStreamWriter osw = null;
@@ -150,7 +151,7 @@ public class BookMarkImplementation implements DataStoreInterface {
     }
 
     public boolean checkBookmarkExist(){
-        path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
+        String path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
         boolean exist = false;
         File file = new File ( path );
         if (file.exists())
@@ -162,11 +163,31 @@ public class BookMarkImplementation implements DataStoreInterface {
 
     public void createBookmarkFile() {
         BufferedWriter bw = null;
-        path = context.getFilesDir().getAbsolutePath() + "/bookmark";
+        String path = context.getFilesDir().getAbsolutePath() + "/bookmark";
         File file = new File(path);
         file.mkdirs();
 
         try {
+        File yourFile = new File(path + "/bookmark.csv");
+        yourFile.createNewFile(); // if file already exists will do nothing
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        /*try {
             bw = new BufferedWriter(new FileWriter(path + "/bookmark.csv"));
             bw.write("");
         } catch (FileNotFoundException e) {
@@ -181,6 +202,6 @@ public class BookMarkImplementation implements DataStoreInterface {
                     e.printStackTrace();
                 }
             }
-        }
+        }*/
     }
 }

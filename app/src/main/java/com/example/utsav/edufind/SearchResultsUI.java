@@ -20,11 +20,9 @@ import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 
 import controller.BookMarkImplementation;
-import controller.CourseFactory;
 import controller.DataStoreFactory;
 import controller.DataStoreInterface;
 import controller.SearchController;
-import controller.BookmarkController;
 import entity.Course;
 import entity.UniversityCourse;
 import entity.Bookmark;
@@ -112,6 +110,7 @@ public class SearchResultsUI extends AppCompatActivity {
 
             //PK FACTORY TEST
             ((BookMarkImplementation)di).addBookmark(bm);
+
             //PK FACTORY TEST
             //bc1.addBookmark(bm);
 

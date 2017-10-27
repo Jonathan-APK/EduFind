@@ -21,7 +21,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import controller.BookmarkController;
 import controller.DataStoreFactory;
 import controller.DataStoreInterface;
 import entity.Bookmark;
