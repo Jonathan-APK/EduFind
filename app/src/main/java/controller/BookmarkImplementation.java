@@ -1,7 +1,6 @@
 package controller;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,29 +15,24 @@ import java.util.ArrayList;
 
 import entity.Bookmark;
 
-/**
- * Created by darks on 26-Oct-17.
- */
-
-public class BookMarkImplementation implements DataStoreInterface {
+public class BookmarkImplementation implements DataStoreInterface {
 
     private static String delimiter = "\\^";
     private Context context;
 
-    public BookMarkImplementation(Context context){
+    public BookmarkImplementation(Context context){
         this.context = context;
     }
 
     @Override
     public ArrayList<Object> retrieveList() {
-        ArrayList<Object> bookmarkList = new ArrayList<Object>();
+        ArrayList<Object> bookmarkList = new ArrayList<>();
         String path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
         String[] tempArray;
         String line;
         BufferedReader br = null;
 
-
-        if(checkBookmarkExist() == false){
+        if(!checkBookmarkFileExists()){
             createBookmarkFile();
         }
         try {
@@ -55,9 +49,7 @@ public class BookMarkImplementation implements DataStoreInterface {
                 bookmarkList.add(bookmark);
 
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (br != null) {
@@ -68,25 +60,22 @@ public class BookMarkImplementation implements DataStoreInterface {
                 }
             }
         }
-
-        return bookmarkList;    }
+        return bookmarkList;    
+    }
 
     public boolean addBookmark(Bookmark bm){
-
         String path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
         boolean rt = false;
-        BufferedWriter bw = null;
 
-        if(checkBookmarkExist() == false){
+        if(!checkBookmarkFileExists()){
             createBookmarkFile();
         }
+        
         if (bm == null)
-            return rt;
+            return false;
         else {
-
             try {
-                String bookmarkData = bm.getInterest() + "^" + bm.getspecialisation() + "^" + bm.getL1R4() +"^" + bm.getPostalCode() + "^" + bm.getDate()
-                        +"^" +bm.getTime();
+                String bookmarkData = bm.getInterest() + "^" + bm.getspecialisation() + "^" + bm.getL1R4() +"^" + bm.getPostalCode() + "^" + bm.getDate() +"^" +bm.getTime();
                 FileOutputStream outputStream;
                 OutputStreamWriter osw;
                 outputStream = new FileOutputStream(new File(path), true);
@@ -98,13 +87,10 @@ public class BookMarkImplementation implements DataStoreInterface {
                 outputStream.flush();
                 outputStream.close();
                 rt = true;
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
-
         return rt;
     }
 
@@ -116,11 +102,10 @@ public class BookMarkImplementation implements DataStoreInterface {
         String bookmarkData;
         boolean ss = false;
 
-        if(checkBookmarkExist() == false){
+        if(!checkBookmarkFileExists()){
             createBookmarkFile();
         }
         if (newList.size() <= 0)
-
             try {
                 bookmarkData = "";
                 outputStream = new FileOutputStream(new File(path), false);
@@ -129,21 +114,14 @@ public class BookMarkImplementation implements DataStoreInterface {
                 outputStream.flush();
                 osw.close();
                 outputStream.close();
-            }catch (Exception e) {
-           e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
                 return rt;
-
             }
-
-
         else {
-
             try {
-
                 for (int i = 0; i < newList.size(); i++) {
-                    bookmarkData = newList.get(i).getInterest() + "^" + newList.get(i).getspecialisation() + "^" + newList.get(i).getL1R4() + "^" + newList.get(i).getPostalCode() + "^" + newList.get(i).getDate()
-                            + "^" + newList.get(i).getTime();
-
+                    bookmarkData = newList.get(i).getInterest() + "^" + newList.get(i).getspecialisation() + "^" + newList.get(i).getL1R4() + "^" + newList.get(i).getPostalCode() + "^" + newList.get(i).getDate() + "^" + newList.get(i).getTime();
                     outputStream = new FileOutputStream(new File(path), ss);
                     outputStream.write(bookmarkData.getBytes());
                     FileWriter fw = new FileWriter(path, true);
@@ -153,23 +131,17 @@ public class BookMarkImplementation implements DataStoreInterface {
                     osw.flush();
                     outputStream.flush();
                 }
-
                 osw.close();
                 outputStream.close();
-
                 rt = true;
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
-
         return rt;
     }
 
-    public boolean checkBookmarkExist(){
+    private boolean checkBookmarkFileExists(){
         String path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
         boolean exist = false;
         File file = new File ( path );
@@ -180,30 +152,16 @@ public class BookMarkImplementation implements DataStoreInterface {
         return exist;
     }
 
-    public void createBookmarkFile() {
-        BufferedWriter bw = null;
+    private void createBookmarkFile() {
         String path = context.getFilesDir().getAbsolutePath() + "/bookmark";
         File file = new File(path);
         file.mkdirs();
 
         try {
-        File yourFile = new File(path + "/bookmark.csv");
-        yourFile.createNewFile(); // if file already exists will do nothing
-
-        } catch (FileNotFoundException e) {
+            File yourFile = new File(path + "/bookmark.csv");
+            yourFile.createNewFile(); // if file already exists will do nothing
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (IOException e) {
-
-            e.printStackTrace();
-        } finally {
-            if (bw != null) {
-                try {
-                    bw.close();
-                } catch (IOException e) {
-
-                    e.printStackTrace();
-                }
-            }
         }
     }
 }

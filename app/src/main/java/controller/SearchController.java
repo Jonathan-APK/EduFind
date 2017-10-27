@@ -2,6 +2,7 @@ package controller;
 
 import android.content.Context;
 
+import controller.factory.DataStoreFactory;
 import entity.Course;
 import entity.PolytechnicCourse;
 import entity.Institution;
@@ -49,20 +50,15 @@ public class SearchController {
      * @param postalCode The postal code entered by the user
      */
     public ArrayList<Course> search(String interest, String specialisation, int L1R4, int postalCode) {
-        ArrayList<Course> courseList = new ArrayList<Course>();
-        ArrayList<Course> filteredCourseList = new ArrayList<Course>();
-        ArrayList<Course> sortedCourseList = new ArrayList<Course>();
-        ArrayList<Institution> institutionList = new ArrayList<Institution>();
-        ArrayList<Institution> sortedInstitutionList = new ArrayList<Institution>();
-        ArrayList<Double> sortedDistanceList = new ArrayList<Double>();
-        Course temp = new Course();
+        ArrayList<Course> courseList;
+        ArrayList<Course> filteredCourseList = new ArrayList<>();
+        ArrayList<Course> sortedCourseList = new ArrayList<>();
+        ArrayList<Institution> institutionList = new ArrayList<>();
+        ArrayList<Institution> sortedInstitutionList = new ArrayList<>();
+        ArrayList<Double> sortedDistanceList = new ArrayList<>();
+        Course temp;
 
-        /*//Retrieve full list of polytechnic courses and university courses
-        CourseController cc = new CourseController(current);
-        courseList = cc.retrieveListOfPolyCourses();
-        courseList.addAll(cc.retrieveListOfUniCourses());*/
-
-        //PK FACTORY TEST /Retrieve full list of polytechnic courses and university courses
+        //Retrieve full list of polytechnic courses and university courses
         DataStoreInterface di = DataStoreFactory.getDatastore("poly",current);
         courseList = (ArrayList<Course>)(Object)di.retrieveList();
         di = DataStoreFactory.getDatastore("uni",current);
@@ -72,8 +68,8 @@ public class SearchController {
         for (int i = 0; i < courseList.size(); i++) {
             temp = courseList.get(i);
             //Filter by interests and specialisation
-            if (temp.getInterest().toLowerCase().equals(interest.toLowerCase()) && temp.getspecialisation().toLowerCase().contains(specialisation.toLowerCase())) {
-                //Filter by L1R4
+            if (temp.getInterest().toLowerCase().equals(interest.toLowerCase()) && temp.getSpecialisation().toLowerCase().contains(specialisation.toLowerCase())) {
+                //Filter by L1R4 (for poly)
                 if (temp instanceof PolytechnicCourse) {
                     if (L1R4 <= ((PolytechnicCourse) temp).getL1R4()) {
                         filteredCourseList.add(courseList.get(i));
@@ -94,7 +90,7 @@ public class SearchController {
 
         //Get list of distances from the institutions
         for (int i = 0; i < institutionList.size(); i++) {
-            DistanceCalculation d1 = new DistanceCalculation();
+            DistanceCalculator d1 = new DistanceCalculator();
             d1.execute(String.valueOf(postalCode), String.valueOf(institutionList.get(i).getPostalCode()));
             try {
                 double distance = d1.get();
@@ -109,7 +105,7 @@ public class SearchController {
         //Sort the institutions using sorted distances list
         for (int i = 0; i < sortedDistanceList.size(); i++) {
             for (int j = 0; j < institutionList.size(); j++) {
-                DistanceCalculation d1 = new DistanceCalculation();
+                DistanceCalculator d1 = new DistanceCalculator();
                 d1.execute(String.valueOf(postalCode), String.valueOf(institutionList.get(j).getPostalCode()));
                 try {
                     double distance = d1.get();

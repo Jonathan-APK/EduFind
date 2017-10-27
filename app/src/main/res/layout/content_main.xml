@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="?attr/colorPrimary"
-    tools:context="com.example.utsav.edufind.MainUI">
+    tools:context="com.example.utsav.edufind.MainAppUI">
 
     <ImageView
         android:id="@+id/logoImageView"

@@ -11,13 +11,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import controller.factory.CourseFactory;
 import entity.Course;
 import entity.Institution;
 import entity.UniversityCourse;
-
-/**
- * Created by darks on 26-Oct-17.
- */
 
 public class UniImplementation implements DataStoreInterface{
 
@@ -34,31 +31,26 @@ public class UniImplementation implements DataStoreInterface{
 
     @Override
     public ArrayList<Object> retrieveList() {
-        ArrayList<Object> uniList = new ArrayList<Object>();
+        ArrayList<Object> uniList = new ArrayList<>();
         stream = context.getResources().openRawResource(R.raw.university);
         try {
             br = new BufferedReader(new InputStreamReader(stream));
             while ((line = br.readLine()) != null) {
-                // use comma as separator
                 Course uni = CourseFactory.createCourse("uni");
                 tempArray = line.split(delimiter);
                 Institution institute = new Institution(tempArray[0], tempArray[11], Integer.parseInt(tempArray[5].replaceAll("\\s+","")));
                 uni.setInstitution(institute);
-                uni.setSchool(tempArray[1]);
                 uni.setCourseName(tempArray[2]);
                 uni.setInterest(tempArray[3]);
-                uni.setspecialisation(tempArray[4]);
+                uni.setSpecialisation(tempArray[4]);
                 ((UniversityCourse)uni).setGradePointAverage(Double.parseDouble(tempArray[6]));
-                uni.setEducationLevel(tempArray[7]);
                 uni.setIntake(Integer.parseInt(tempArray[8]));
                 uni.setWebsite(tempArray[9]);
                 uni.setCourseDescription(tempArray[10]);
+                uni.setCareerProspect(tempArray[11]);
                 uniList.add(uni);
             }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (br != null) {

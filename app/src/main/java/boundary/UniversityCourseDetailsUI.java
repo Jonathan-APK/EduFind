@@ -11,14 +11,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.utsav.edufind.MainUI;
+import com.example.utsav.edufind.MainAppUI;
 import com.example.utsav.edufind.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -52,6 +51,7 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
     TextView direction;
     TextView CourseDescription;
     TextView InstitutionDescription;
+    TextView CareerProspect;
     ImageView imageView;
     GoogleMap mGoogleMap;
     String postalCode;
@@ -81,6 +81,7 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         career = (TextView) findViewById(R.id.uni_career_prospect_text);
         CourseDescription = (TextView) findViewById(R.id.uni_course_desc_detail_text);
         InstitutionDescription = (TextView) findViewById(R.id.uni_institution_desc_detail_text);
+        CareerProspect = (TextView) findViewById(R.id.uni_career_prospect_detail_text);
         imageView = (ImageView) findViewById(R.id.uni_imageView);
 
         Intent i = getIntent();
@@ -93,6 +94,7 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         String courseIntake = String.valueOf(i.getExtras().getInt("courseIntake", 0));
         String postCode = String.valueOf(i.getExtras().getInt("postalCode", 238801));
         String instPostCode = String.valueOf(i.getExtras().getInt("instPostalCode", 238801));
+        String careerProspect = i.getExtras().getString("careerProspect", "No careerProspect found");
         postalCode = postCode;
         insCode = instPostCode;
         insName = institutionName;
@@ -103,6 +105,7 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         InstitutionName.setText(institutionName);
         CourseDescription.setText(courseDesc);
         InstitutionDescription.setText(institutionDesc);
+        CareerProspect.setText(careerProspect);
 
         switch (institutionName) {
             case "Nanyang Technological University": {
@@ -163,7 +166,6 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
         return super.onOptionsItemSelected(item);
     }
 
@@ -193,10 +195,9 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
 
             //Check to see which item was being clicked and perform appropriate action
             switch (menuItem.getItemId()){
-
                 //Replacing the main content with ContentFragment Which is our Inbox View;
                 case R.id.home:
-                    intent = new Intent(UniversityCourseDetailsUI.this, MainUI.class);
+                    intent = new Intent(UniversityCourseDetailsUI.this, MainAppUI.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     return true;
@@ -206,7 +207,7 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
                     startActivity(intent);
                     return true;
                 case R.id.aboutus:
-                    intent = new Intent(UniversityCourseDetailsUI.this, AboutUs.class);
+                    intent = new Intent(UniversityCourseDetailsUI.this, AboutUsUI.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     return true;
@@ -217,14 +218,13 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         });
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,myToolbar,R.string.drawer_open, R.string.drawer_close){
 
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,myToolbar,R.string.drawer_open, R.string.drawer_close){
             @Override
             public void onDrawerClosed(View drawerView) {
                 // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
                 super.onDrawerClosed(drawerView);
             }
-
             @Override
             public void onDrawerOpened(View drawerView) {
                 // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank
@@ -256,7 +256,6 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
             LatLng INST = new LatLng(location[0], location[1]);
             mGoogleMap.addMarker(new MarkerOptions().position(INST).title(insName));
         }catch (Exception e){
-            Log.d("Address Error", "Can't get latitude and longitude");
         }
     }
 }

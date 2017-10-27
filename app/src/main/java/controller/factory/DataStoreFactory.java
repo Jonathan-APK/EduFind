@@ -1,10 +1,12 @@
-package controller;
+package controller.factory;
 
 import android.content.Context;
 
-/**
- * Created by darks on 26-Oct-17.
- */
+import controller.BookmarkImplementation;
+import controller.DataStoreInterface;
+import controller.PolyImplementation;
+import controller.UniImplementation;
+
 public class DataStoreFactory {
 
 
@@ -14,7 +16,7 @@ public class DataStoreFactory {
         DataStoreInterface dataStore = null;
 
         if(datastoreOption.equalsIgnoreCase("bookmark")) {
-            dataStore = new BookMarkImplementation(context);
+            dataStore = new BookmarkImplementation(context);
         } else if(datastoreOption.equalsIgnoreCase("uni")) {
             dataStore = new UniImplementation(context);
         } else if(datastoreOption.equalsIgnoreCase("poly")) {

@@ -60,7 +60,6 @@ public class Bookmark {
         this.postalCode = postalCode;
     }
 
-
     public String getDate() {
         return date;
     }

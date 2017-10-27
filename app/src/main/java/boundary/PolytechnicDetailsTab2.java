@@ -27,7 +27,7 @@ import entity.PolytechnicCourse;
  * @version 1.0
  * @since   2017-10-24
  */
-public class tab2UniOptions extends Fragment {
+public class PolytechnicDetailsTab2 extends Fragment {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
@@ -81,7 +81,7 @@ public class tab2UniOptions extends Fragment {
      * populates the respective course items in a card view.
      */
     private void initializeAdapter(){
-        RVAdapter adapter = new RVAdapter(courseList, interest, specialisation, postalCode);
+        CoursesRVAdapter adapter = new CoursesRVAdapter(courseList, interest, specialisation, postalCode);
         rv.setAdapter(adapter);
     }
 }

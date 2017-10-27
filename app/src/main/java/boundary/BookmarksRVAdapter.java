@@ -24,7 +24,7 @@ import entity.Bookmark;
  * @version 1.0
  * @since   2017-10-24
  */
-public class RVAdapterBookmarks extends RecyclerView.Adapter<RVAdapterBookmarks.BookmarkViewHolder> {
+public class BookmarksRVAdapter extends RecyclerView.Adapter<BookmarksRVAdapter.BookmarkViewHolder> {
     /**
      * This class references the respective View widgets inside the layout through its id.
      */
@@ -52,31 +52,14 @@ public class RVAdapterBookmarks extends RecyclerView.Adapter<RVAdapterBookmarks.
             CardView.LayoutParams lp = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);
             DisplayMetrics dm = cv2.getResources().getDisplayMetrics();
             lp.setMargins(convertDpToPx(5, dm), convertDpToPx(5, dm), convertDpToPx(5, dm), convertDpToPx(5, dm));
-            //lp.setMargins(5, 5, 5, 5);
             cv2.setLayoutParams(lp);
             cv2.setContentPadding(0, 0, 0, 0);
         }
     }
 
     List<Bookmark> bookmarks;
-    String interest;
-    String specialisation;
-    String date;
-    String time;
-    int L1R4;
-    int postalCode;
 
-    public RVAdapterBookmarks(List<Bookmark> bookmarks, String interest, String specialisation, int L1R4, int postalCode, String date, String time){
-        this.bookmarks = bookmarks;
-        this.interest = interest;
-        this.specialisation = specialisation;
-        this.L1R4 = L1R4;
-        this.postalCode = postalCode;
-        this.date = date;
-        this.time = time;
-    }
-
-    public RVAdapterBookmarks(List<Bookmark> bookmarks){
+    public BookmarksRVAdapter(List<Bookmark> bookmarks){
         this.bookmarks = bookmarks;
     }
 

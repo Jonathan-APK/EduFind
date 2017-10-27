@@ -22,11 +22,11 @@
 
         <!-- The main content view -->
         <LinearLayout
+            android:baselineAligned="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:background="@drawable/linear_background_with_shadow"
-            android:layout_below="@+id/view"
             android:layout_gravity="center">
 
             <RelativeLayout
@@ -94,8 +94,7 @@
                     android:height="32dp"
                     android:layout_marginTop="10dp"
                     android:layout_below="@+id/postalCodeTextView"
-                    android:layout_centerHorizontal="true"
-                    android:text="764426"/>
+                    android:layout_centerHorizontal="true" />
 
                 <Button
                     android:id="@+id/submitBtn"

@@ -16,62 +16,53 @@
         <item>Biomedical</item>
         <item>Food Science</item>
         <item>Biotechnology</item>
-
     </string-array>
 
     <string-array name="builtEnvironment">
         <item>Green Building</item>
         <item>Civil Engineering</item>
         <item>Architectural Design</item>
-
     </string-array>
 
     <string-array name="business">
         <item>Accountancy</item>
         <item>Banking</item>
         <item>Business Management</item>
-
     </string-array>
 
     <string-array name="engineering">
         <item>Aerospace</item>
         <item>Electrical and Electronic Engineering</item>
         <item>Mechanical Engineering</item>
-
     </string-array>
 
     <string-array name="healthScience">
         <item>Health Services</item>
         <item>Optometry</item>
         <item>Sports Sciences</item>
-
     </string-array>
 
     <string-array name="humanities">
         <item>Early Childhood Studies</item>
         <item>Psychology Studies</item>
-
     </string-array>
 
     <string-array name="informationTech">
         <item>Security</item>
         <item>Business IT</item>
         <item>Mobile Software Development</item>
-
     </string-array>
 
     <string-array name="maritime">
         <item>Maritime Business</item>
         <item>Marine \u0026 Offshore Technology</item>
         <item>Marine Engineering</item>
-
     </string-array>
 
     <string-array name="media">
         <item>Game Design</item>
         <item>Animation</item>
         <item>Film, Arts and theatre</item>
-
     </string-array>
 
     <string-array name="L1R4Values">

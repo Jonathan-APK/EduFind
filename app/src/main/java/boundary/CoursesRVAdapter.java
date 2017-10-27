@@ -28,7 +28,7 @@ import entity.Course;
  * @version 1.0
  * @since   2017-10-24
  */
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> {
+public class CoursesRVAdapter extends RecyclerView.Adapter<CoursesRVAdapter.CourseViewHolder> {
     /**
      * This class references the respective View widgets inside the layout through its id.
      */
@@ -58,7 +58,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             CardView.LayoutParams lp = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);
             DisplayMetrics dm = cv.getResources().getDisplayMetrics();
             lp.setMargins(convertDpToPx(5, dm), convertDpToPx(5, dm), convertDpToPx(5, dm), convertDpToPx(5, dm));
-            //lp.setMargins(5, 5, 5, 5);
             cv.setLayoutParams(lp);
             cv.setContentPadding(0, 0, 0, 0);
         }
@@ -69,7 +68,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
     String specialisation;
     int postalCode;
 
-    public RVAdapter(List<Course> courses, String interest, String specialisation, int postalCode){
+    public CoursesRVAdapter(List<Course> courses, String interest, String specialisation, int postalCode){
         this.courses = courses;
         this.interest = interest;
         this.specialisation = specialisation;
@@ -143,13 +142,14 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             final String courseWebsite = courses.get(i).getWebsite();
             final String schDescription = courses.get(i).getInstitution().getInstiDescription();
             final String courseDescription = courses.get(i).getCourseDescription();
+            final String careerProspect = courses.get(i).getCareerProspect();
             final int courseGrade = ((PolytechnicCourse) courses.get(i)).getL1R4();
             final int courseIntake = courses.get(i).getIntake();
             final int instPostCode = courses.get(i).getInstitution().getPostalCode();
             CourseViewHolder.cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent in = new Intent(v.getContext(), PolytechnicDetails.class);
+                    Intent in = new Intent(v.getContext(), PolytechnicDetailsUI.class);
                     in.putExtra("courseName", courseName);
                     in.putExtra("institutionName", institutionName);
                     in.putExtra("courseWebsite", courseWebsite);
@@ -161,6 +161,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                     in.putExtra("instPostalCode", instPostCode);
                     in.putExtra("interest", interest);
                     in.putExtra("specialisation", specialisation);
+                    in.putExtra("careerProspect", careerProspect);
                     v.getContext().startActivity(in);
                 }
             });
@@ -213,6 +214,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
             final String courseWebsite = courses.get(i).getWebsite();
             final String schDescription = courses.get(i).getInstitution().getInstiDescription();
             final String courseDescription = courses.get(i).getCourseDescription();
+            final String careerProspect = courses.get(i).getCareerProspect();
             final double courseGrade = ((UniversityCourse) courses.get(i)).getGradePointAverage();
             final int courseIntake = courses.get(i).getIntake();
             final int instPostCode = courses.get(i).getInstitution().getPostalCode();
@@ -229,6 +231,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CourseViewHolder> 
                     in.putExtra("courseIntake", courseIntake);
                     in.putExtra("postalCode", postalCode);
                     in.putExtra("instPostalCode", instPostCode);
+                    in.putExtra("careerProspect", careerProspect);
                     v.getContext().startActivity(in);
                 }
             });

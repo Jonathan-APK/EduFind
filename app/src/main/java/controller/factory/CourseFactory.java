@@ -1,15 +1,10 @@
-package controller;
+package controller.factory;
 
 import entity.Course;
 import entity.PolytechnicCourse;
 import entity.UniversityCourse;
 
-/**
- * Created by darks on 26-Oct-17.
- */
-
 public class CourseFactory {
-
 
     public static Course createCourse(String course){
 

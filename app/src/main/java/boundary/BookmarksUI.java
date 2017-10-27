@@ -17,13 +17,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.utsav.edufind.MainUI;
+import com.example.utsav.edufind.MainAppUI;
 import com.example.utsav.edufind.R;
 
 import java.util.ArrayList;
 
-import controller.BookMarkImplementation;
-import controller.DataStoreFactory;
+import controller.BookmarkImplementation;
+import controller.factory.DataStoreFactory;
 import controller.DataStoreInterface;
 import entity.Bookmark;
 
@@ -40,11 +40,11 @@ public class BookmarksUI extends AppCompatActivity {
     private NavigationView navigationView;
     private ArrayList<Bookmark> bookmarkList;
     private RecyclerView rv;
-    RVAdapterBookmarks adapter;
+    BookmarksRVAdapter adapter;
 
     /**
      * Initialize layout
-     * @param savedInstanceState
+     * @param savedInstanceState saved instance date
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +62,10 @@ public class BookmarksUI extends AppCompatActivity {
         initializeAdapter();
 
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 return false;
             }
-
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 final int position = viewHolder.getAdapterPosition();
@@ -80,16 +78,13 @@ public class BookmarksUI extends AppCompatActivity {
                         adapter.notifyItemRemoved(position);    //item removed from recylcerview
                         bookmarkList.remove(position);  //then remove item
                         DataStoreInterface di = DataStoreFactory.getDatastore("bookmark",getApplicationContext());
-                        ((BookMarkImplementation)di).updateBookmark(bookmarkList);
-
-                        return;
+                        ((BookmarkImplementation)di).updateBookmark(bookmarkList);
                     }
                 }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {  //not removing items if cancel is done
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         adapter.notifyItemRemoved(position + 1);    //notifies the RecyclerView Adapter that data in adapter has been removed at a particular position.
                         adapter.notifyItemRangeChanged(position, adapter.getItemCount());   //notifies the RecyclerView Adapter that positions of element in adapter has been changed from position(removed element index to end of list), please update it.
-                        return;
                     }
                 }).show();  //show alert dialog
             }
@@ -117,13 +112,8 @@ public class BookmarksUI extends AppCompatActivity {
      */
     private void initializeData(){
         bookmarkList = new ArrayList<>();
-        /*BookmarkController bookmarkIO = new BookmarkController(this);
-        bookmarkList = bookmarkIO.retrieveListOfBookmark();*/
-
-        //PK FACTORY TEST
         DataStoreInterface di = DataStoreFactory.getDatastore("bookmark",this);
         bookmarkList = (ArrayList<Bookmark>)(Object)di.retrieveList();
-
     }
 
     /**
@@ -131,7 +121,7 @@ public class BookmarksUI extends AppCompatActivity {
      * and puts them in an ArrayList of Course objects consisting of only university courses.
      */
     private void initializeAdapter(){
-        adapter = new RVAdapterBookmarks(bookmarkList);
+        adapter = new BookmarksRVAdapter(bookmarkList);
         rv.setAdapter(adapter);
 
         if (adapter.getItemCount() == 0) {
@@ -142,26 +132,10 @@ public class BookmarksUI extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     finish();
-                    return;
                 }
             }).show();  //show alert dialog
         }
     }
-
-//    /**
-//     * Handles event when an option is selected
-//     * @param item An item button in the menu of the side pane
-//     * @return boolean
-//     */
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     /**
      * Initialize and implements toolbar, drawer, and side panel UI and functions
@@ -193,7 +167,7 @@ public class BookmarksUI extends AppCompatActivity {
 
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
-                        intent = new Intent(BookmarksUI.super.getApplication(), MainUI.class);
+                        intent = new Intent(BookmarksUI.super.getApplication(), MainAppUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
@@ -205,7 +179,7 @@ public class BookmarksUI extends AppCompatActivity {
                         return true;
 
                     case R.id.aboutus:
-                        intent = new Intent(BookmarksUI.super.getApplication(), AboutUs.class);
+                        intent = new Intent(BookmarksUI.super.getApplication(), AboutUsUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
@@ -220,7 +194,6 @@ public class BookmarksUI extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,myToolbar,R.string.drawer_open, R.string.drawer_close){
-
             @Override
             public void onDrawerClosed(View drawerView) {
                 // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank

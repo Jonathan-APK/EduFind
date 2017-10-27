@@ -16,7 +16,7 @@ import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView;
 
-import com.example.utsav.edufind.MainUI;
+import com.example.utsav.edufind.MainAppUI;
 import com.example.utsav.edufind.R;
 
 /**
@@ -26,7 +26,7 @@ import com.example.utsav.edufind.R;
  * @version 1.0
  * @since 2017-10-24
  */
-public class NewSearchUI extends AppCompatActivity implements OnItemSelectedListener {
+public class NewSearchPage1 extends AppCompatActivity implements OnItemSelectedListener {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
@@ -70,13 +70,11 @@ public class NewSearchUI extends AppCompatActivity implements OnItemSelectedList
                 specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.appliedScience, android.R.layout.simple_spinner_item);
                 specialisationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 specialisationSpinner.setAdapter(specialisationAdaptor);
-
                 break;
             case 1:
                 specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.builtEnvironment, android.R.layout.simple_spinner_item);
                 specialisationAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 specialisationSpinner.setAdapter(specialisationAdaptor);
-
                 break;
             case 2:
                 specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.business, android.R.layout.simple_spinner_item);
@@ -142,7 +140,7 @@ public class NewSearchUI extends AppCompatActivity implements OnItemSelectedList
      * @param view The current view
      */
     public void goToNewSearchUIPage2(View view) {
-        intent = new Intent(this, NewSearchUIPage2.class);
+        intent = new Intent(this, NewSearchPage2.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         //Passing data to next activity
         Spinner areaOfInterestSpinner = (Spinner) findViewById(R.id.areaOfInterestSpinner);
@@ -181,17 +179,17 @@ public class NewSearchUI extends AppCompatActivity implements OnItemSelectedList
                 switch (menuItem.getItemId()) {
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
-                        intent = new Intent(NewSearchUI.super.getApplication(), MainUI.class);
+                        intent = new Intent(NewSearchPage1.super.getApplication(), MainAppUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
                     case R.id.bookmarks:
-                        intent = new Intent(NewSearchUI.super.getApplication(), BookmarksUI.class);
+                        intent = new Intent(NewSearchPage1.super.getApplication(), BookmarksUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
                     case R.id.aboutus:
-                        intent = new Intent(NewSearchUI.super.getApplication(), AboutUs.class);
+                        intent = new Intent(NewSearchPage1.super.getApplication(), AboutUsUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;

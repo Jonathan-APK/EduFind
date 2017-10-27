@@ -16,17 +16,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.utsav.edufind.MainUI;
+import com.example.utsav.edufind.MainAppUI;
 import com.example.utsav.edufind.R;
 
 import java.util.Calendar;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 
-import controller.BookMarkImplementation;
-import controller.DataStoreFactory;
+import controller.BookmarkImplementation;
+import controller.factory.DataStoreFactory;
 import controller.DataStoreInterface;
 import controller.SearchController;
+
 import entity.Course;
 import entity.UniversityCourse;
 import entity.Bookmark;
@@ -102,7 +103,7 @@ public class SearchResultsUI extends AppCompatActivity {
             Bookmark bm = new Bookmark(interest, specialisation, L1R4, postalCode, date, time);
 
             DataStoreInterface di = DataStoreFactory.getDatastore("bookmark",this);
-            ((BookMarkImplementation)di).addBookmark(bm);
+            ((BookmarkImplementation)di).addBookmark(bm);
 
             // Show confirmation via Builder Design Pattern
             AlertDialog.Builder builder= new AlertDialog.Builder(SearchResultsUI.this);
@@ -136,7 +137,7 @@ public class SearchResultsUI extends AppCompatActivity {
      * and puts them in an ArrayList of Course objects consisting of only university courses.
      */
     private void initializeAdapter(){
-        RVAdapter adapter = new RVAdapter(courseList, interest, specialisation, postalCode);
+        CoursesRVAdapter adapter = new CoursesRVAdapter(courseList, interest, specialisation, postalCode);
         rv.setAdapter(adapter);
 
         if (adapter.getItemCount() == 0) {
@@ -147,7 +148,6 @@ public class SearchResultsUI extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     finish();
-                    return;
                 }
             }).show();  //show alert dialog
         }
@@ -177,7 +177,7 @@ public class SearchResultsUI extends AppCompatActivity {
                 switch (menuItem.getItemId()){
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
-                        intent = new Intent(SearchResultsUI.super.getApplication(), MainUI.class);
+                        intent = new Intent(SearchResultsUI.super.getApplication(), MainAppUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
@@ -187,7 +187,7 @@ public class SearchResultsUI extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     case R.id.aboutus:
-                        intent = new Intent(SearchResultsUI.super.getApplication(), AboutUs.class);
+                        intent = new Intent(SearchResultsUI.super.getApplication(), AboutUsUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
