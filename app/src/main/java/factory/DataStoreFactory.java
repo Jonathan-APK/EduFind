@@ -2,10 +2,10 @@ package factory;
 
 import android.content.Context;
 
-import controller.BookmarkImplementation;
-import controller.DataStoreInterface;
-import controller.PolyImplementation;
-import controller.UniImplementation;
+import strategy.BookmarkImplementation;
+import strategy.DataStoreInterface;
+import strategy.PolyImplementation;
+import strategy.UniImplementation;
 
 public class DataStoreFactory {
 

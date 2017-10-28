@@ -23,9 +23,9 @@ import java.util.Calendar;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 
-import controller.BookmarkImplementation;
+import strategy.BookmarkImplementation;
 import factory.DataStoreFactory;
-import controller.DataStoreInterface;
+import strategy.DataStoreInterface;
 import controller.SearchController;
 
 import entity.Course;
