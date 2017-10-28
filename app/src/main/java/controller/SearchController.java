@@ -103,18 +103,27 @@ public class SearchController {
         //Sort the distances in ascending order
         Collections.sort(sortedDistanceList);
 
-        //Sort the institutions using sorted distances list
-        for (int i = 0; i < sortedDistanceList.size(); i++) {
-            for (int j = 0; j < institutionList.size(); j++) {
-                DistanceCalculator d1 = new DistanceCalculator();
-                d1.execute(String.valueOf(postalCode), String.valueOf(institutionList.get(j).getPostalCode()));
-                try {
-                    double distance = d1.get();
-                    if (distance == sortedDistanceList.get(i)) {
-                        sortedInstitutionList.add(institutionList.get(j));
+        //Only sort by distance if GoogleMapsAPI working correctly
+        if (sortedDistanceList.size() != 0) {
+            //Sort the institutions using sorted distances list
+            for (int i = 0; i < sortedDistanceList.size(); i++) {
+                for (int j = 0; j < institutionList.size(); j++) {
+                    DistanceCalculator d1 = new DistanceCalculator();
+                    d1.execute(String.valueOf(postalCode), String.valueOf(institutionList.get(j).getPostalCode()));
+                    try {
+                        double distance = d1.get();
+                        if (distance == sortedDistanceList.get(i)) {
+                            sortedInstitutionList.add(institutionList.get(j));
+                        }
+                    } catch (Exception e) {
                     }
-                } catch (Exception e) {
                 }
+            }
+        }
+        else {
+            //No distance sorting
+            for (int j = 0; j < institutionList.size(); j++) {
+                sortedInstitutionList.add(institutionList.get(j));
             }
         }
 

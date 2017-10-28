@@ -44,7 +44,7 @@ public class NewSearchPage1 extends AppCompatActivity implements OnItemSelectedL
         setContentView(R.layout.new_search_ui);
         initializeToolbar("New Search");
 
-        //Populate areaOfInterestSpinner
+        // Populate areaOfInterestSpinner
         Spinner areaOfInterestSpinner = (Spinner) findViewById(R.id.areaOfInterestSpinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.areaOFInterestData, android.R.layout.simple_spinner_item);
@@ -54,7 +54,6 @@ public class NewSearchPage1 extends AppCompatActivity implements OnItemSelectedL
         areaOfInterestSpinner.setOnItemSelectedListener(this);
         areaOfInterestSpinner.setAdapter(adapter);
 
-        //Populate specialisationSpinner
         specialisationSpinner = (Spinner) findViewById(R.id.specialisationSpinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         specialisationAdaptor = ArrayAdapter.createFromResource(this, R.array.appliedScience, android.R.layout.simple_spinner_item);
@@ -64,6 +63,7 @@ public class NewSearchPage1 extends AppCompatActivity implements OnItemSelectedL
         specialisationSpinner.setAdapter(specialisationAdaptor);
     }
 
+    // Populate specialisationSpinner based on selected interest
     public void onItemSelected(AdapterView<?> parent, View arg1, int pos, long arg3) {
         switch (pos) {
             case 0:

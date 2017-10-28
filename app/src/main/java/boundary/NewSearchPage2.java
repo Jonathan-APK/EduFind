@@ -43,7 +43,7 @@ public class NewSearchPage2 extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Get data from previous activity
+        // Get data from previous activity
         Intent i = getIntent();
         interest = i.getExtras().getString("interest", "No interest found");
         specialisation = i.getExtras().getString("specialisation", "No specialisation found");
@@ -51,7 +51,6 @@ public class NewSearchPage2 extends AppCompatActivity {
         setContentView(R.layout.new_search_uipage2);
         initializeToolbar("New Search");
 
-        //Populate L1R4Spinner
         Spinner LIR4Spinner = (Spinner) findViewById(R.id.L1R4Spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.L1R4Values, android.R.layout.simple_spinner_item);
