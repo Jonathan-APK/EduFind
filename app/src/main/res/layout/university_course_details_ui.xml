@@ -85,7 +85,8 @@
                         <View
                             android:id="@+id/view"
                             style="@style/Divider"
-                            android:layout_below="@+id/uni_Institution_Logo"/>
+                            android:layout_marginTop="10dp"
+                            android:layout_below="@+id/uni_Institution_name"/>
 
                         <LinearLayout
                             android:id="@+id/layoutCircle"
@@ -200,6 +201,7 @@
                             android:background="@drawable/relative_background_with_shadow"
                             android:orientation="vertical"
                             android:layout_below="@+id/layoutCircle"
+                            android:paddingTop="15dp"
                             android:paddingStart="15dp"
                             android:paddingEnd="15dp"
                             >

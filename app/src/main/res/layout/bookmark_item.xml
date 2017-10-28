@@ -80,20 +80,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:background="@drawable/linear_background_with_shadow"
             android:layout_below="@+id/view"
             android:padding="10dp">
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start">
 
                     <TextView
                         android:id="@+id/aoiLabel"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="@string/AreaOfInterest"
                         android:textAllCaps="true"
@@ -101,79 +101,92 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/aoiTV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/aoiLabel"
-                        android:text="Media"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/specLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/aoiTV"
-                        android:textAllCaps="true"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/specialisation"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/specTV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/specLabel"
-                        android:text="Digital Media"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="16sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end">
-
-                <TextView
                         android:id="@+id/postalLabel"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                    android:textAllCaps="true"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textAllCaps="true"
                         android:text="@string/PostalCode"
+                        android:layout_toEndOf="@+id/aoiLabel"
                         android:textColor="@color/colorAccent"
                         android:textSize="18sp" />
 
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start">
                 <TextView
-                    android:id="@+id/postalTV"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/aoiTV"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/postalLabel"
-                    android:text="530637"
+                    android:layout_weight="1"
+                    android:text="Media"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/L1R4Label"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/postalTV"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="530637"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="start">
+
+                <TextView
+                    android:id="@+id/specLabel"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:textAllCaps="true"
-                    android:layout_below="@+id/postalTV"
-                    android:text="@string/L1R4"
-                    android:layout_marginTop="15dp"
+                    android:text="@string/specialisation"
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/L1R4TV"
-                    android:layout_width="60dp"
+                    android:id="@+id/L1R4Label"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/L1R4Label"
+                    android:textAllCaps="true"
+                    android:text="@string/L1R4"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start">
+
+                <TextView
+                    android:id="@+id/specTV"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Digital Media"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/L1R4TV"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:text="22"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp" />
-            </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 </android.support.v7.widget.CardView>

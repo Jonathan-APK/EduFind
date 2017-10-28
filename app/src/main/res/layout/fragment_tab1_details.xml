@@ -58,9 +58,11 @@
                 <View
                     android:id="@+id/view"
                     style="@style/Divider"
-                    android:layout_below="@+id/tab1_Institution_Logo"/>
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/tab1_Institution_name"/>
 
                 <LinearLayout
+                    android:id="@+id/layoutCircles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -169,11 +171,11 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="192dp"
                     android:background="@drawable/relative_background_with_shadow"
                     android:orientation="vertical"
                     android:paddingStart="15dp"
                     android:paddingEnd="15dp"
+                    android:layout_below="@+id/layoutCircles"
                     >
 
                     <TextView

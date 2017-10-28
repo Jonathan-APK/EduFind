@@ -43,7 +43,8 @@
         <View
             android:id="@+id/view"
             style="@style/Divider"
-            android:layout_below="@+id/Institution_Logo"/>
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/Institution_name"/>
 
         <LinearLayout
             android:layout_width="match_parent"
