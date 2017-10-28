@@ -90,26 +90,26 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start">
 
-                    <TextView
-                        android:id="@+id/aoiLabel"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="@string/AreaOfInterest"
-                        android:textAllCaps="true"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/aoiLabel"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/AreaOfInterest"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/postalLabel"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:textAllCaps="true"
-                        android:text="@string/PostalCode"
-                        android:layout_toEndOf="@+id/aoiLabel"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/postalLabel"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="true"
+                    android:text="@string/PostalCode"
+                    android:layout_toEndOf="@+id/aoiLabel"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 

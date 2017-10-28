@@ -119,7 +119,15 @@ public class NewSearchPage2 extends AppCompatActivity {
         Spinner L1R4Spinner = (Spinner) findViewById(R.id.L1R4Spinner);
         int L1R4 = Integer.parseInt(L1R4Spinner.getSelectedItem().toString());
         EditText postalCodeTextInput = (EditText) findViewById(R.id.postalCodeTextInput);
-        int postalCode = Integer.parseInt(postalCodeTextInput.getText().toString());
+
+        //If postal code not given, set postal code as center of SG
+        int postalCode;
+        if(postalCodeTextInput.getText().toString().matches("")){
+            postalCode = 574415;
+        }
+        else {
+            postalCode = Integer.parseInt(postalCodeTextInput.getText().toString());
+        }
         intent.putExtra("interest", interest);
         intent.putExtra("specialisation", specialisation);
         intent.putExtra("L1R4", L1R4);
