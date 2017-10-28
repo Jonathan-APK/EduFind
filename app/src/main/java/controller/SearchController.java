@@ -2,10 +2,12 @@ package controller;
 
 import android.content.Context;
 
+import factory.DataStoreFactory;
 import entity.Course;
 import entity.PolytechnicCourse;
 import entity.Institution;
 import entity.UniversityCourse;
+import strategy.DataStoreInterface;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,30 +46,31 @@ public class SearchController {
     /**
      * This method uses the search parameters entered by the user to search, filter, and sort the results according to distance
      * @param interest The interest specified by the user
-     * @param specialization The specialization specified by the user
+     * @param specialisation The specialisation specified by the user
      * @param L1R4 The L1R4 grade of the user
      * @param postalCode The postal code entered by the user
      */
-    public ArrayList<Course> search(String interest, String specialization, int L1R4, int postalCode) {
-        ArrayList<Course> courseList = new ArrayList<Course>();
-        ArrayList<Course> filteredCourseList = new ArrayList<Course>();
-        ArrayList<Course> sortedCourseList = new ArrayList<Course>();
-        ArrayList<Institution> institutionList = new ArrayList<Institution>();
-        ArrayList<Institution> sortedInstitutionList = new ArrayList<Institution>();
-        ArrayList<Double> sortedDistanceList = new ArrayList<Double>();
-        Course temp = new Course();
+    public ArrayList<Course> search(String interest, String specialisation, int L1R4, int postalCode) {
+        ArrayList<Course> courseList;
+        ArrayList<Course> filteredCourseList = new ArrayList<>();
+        ArrayList<Course> sortedCourseList = new ArrayList<>();
+        ArrayList<Institution> institutionList = new ArrayList<>();
+        ArrayList<Institution> sortedInstitutionList = new ArrayList<>();
+        ArrayList<Double> sortedDistanceList = new ArrayList<>();
+        Course temp;
 
         //Retrieve full list of polytechnic courses and university courses
-        CourseController cc = new CourseController(current);
-        courseList = cc.retrieveListOfPolyCourses();
-        courseList.addAll(cc.retrieveListOfUniCourses());
+        DataStoreInterface di = DataStoreFactory.createDatastore("poly",current);
+        courseList = (ArrayList<Course>)(Object)di.retrieveList();
+        di = DataStoreFactory.createDatastore("uni",current);
+        courseList.addAll((ArrayList<Course>)(Object)di.retrieveList());
 
         //Filter list according to inputs
         for (int i = 0; i < courseList.size(); i++) {
             temp = courseList.get(i);
-            //Filter by interests and specialization
-            if (temp.getInterest().toLowerCase().equals(interest.toLowerCase()) && temp.getSpecialization().toLowerCase().contains(specialization.toLowerCase())) {
-                //Filter by L1R4
+            //Filter by interests and specialisation
+            if (temp.getInterest().toLowerCase().equals(interest.toLowerCase()) && temp.getSpecialisation().toLowerCase().contains(specialisation.toLowerCase())) {
+                //Filter by L1R4 (for poly)
                 if (temp instanceof PolytechnicCourse) {
                     if (L1R4 <= ((PolytechnicCourse) temp).getL1R4()) {
                         filteredCourseList.add(courseList.get(i));
@@ -88,7 +91,7 @@ public class SearchController {
 
         //Get list of distances from the institutions
         for (int i = 0; i < institutionList.size(); i++) {
-            DistanceCalculation d1 = new DistanceCalculation();
+            DistanceCalculator d1 = new DistanceCalculator();
             d1.execute(String.valueOf(postalCode), String.valueOf(institutionList.get(i).getPostalCode()));
             try {
                 double distance = d1.get();
@@ -103,7 +106,7 @@ public class SearchController {
         //Sort the institutions using sorted distances list
         for (int i = 0; i < sortedDistanceList.size(); i++) {
             for (int j = 0; j < institutionList.size(); j++) {
-                DistanceCalculation d1 = new DistanceCalculation();
+                DistanceCalculator d1 = new DistanceCalculator();
                 d1.execute(String.valueOf(postalCode), String.valueOf(institutionList.get(j).getPostalCode()));
                 try {
                     double distance = d1.get();

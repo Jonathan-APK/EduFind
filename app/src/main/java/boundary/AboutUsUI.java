@@ -1,4 +1,4 @@
-package com.example.utsav.edufind;
+package boundary;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -12,6 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.utsav.edufind.MainAppUI;
+import com.example.utsav.edufind.R;
+
 /**
  * Initialize and display About Us page
  *
@@ -19,7 +22,7 @@ import android.view.View;
  * @version 1.0
  * @since   2017-10-24
  */
-public class AboutUs extends AppCompatActivity {
+public class AboutUsUI extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
@@ -90,7 +93,7 @@ public class AboutUs extends AppCompatActivity {
 
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
-                        intent = new Intent(getApplication(), MainUI.class);
+                        intent = new Intent(getApplication(), MainAppUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
@@ -100,7 +103,7 @@ public class AboutUs extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     case R.id.aboutus:
-                        intent = new Intent(getApplication(), AboutUs.class);
+                        intent = new Intent(getApplication(), AboutUsUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
@@ -112,13 +115,11 @@ public class AboutUs extends AppCompatActivity {
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,myToolbar,R.string.drawer_open, R.string.drawer_close){
-
             @Override
             public void onDrawerClosed(View drawerView) {
                 // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
                 super.onDrawerClosed(drawerView);
             }
-
             @Override
             public void onDrawerOpened(View drawerView) {
                 // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank

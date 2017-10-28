@@ -10,7 +10,7 @@ package entity;
  */
 public class Bookmark {
     private String interest;
-    private String specialization;
+    private String specialisation;
     private String date;
     private String time;
     private int L1R4;
@@ -19,9 +19,9 @@ public class Bookmark {
     public Bookmark() {
     }
 
-    public Bookmark(String interest, String specialization, int L1R4, int postalCode, String date, String time) {
+    public Bookmark(String interest, String specialisation, int L1R4, int postalCode, String date, String time) {
         this.interest = interest;
-        this.specialization = specialization;
+        this.specialisation = specialisation;
         this.L1R4 = L1R4;
         this.postalCode = postalCode;
         this.date = date;
@@ -36,12 +36,12 @@ public class Bookmark {
         this.interest = interest;
     }
 
-    public String getSpecialization() {
-        return specialization;
+    public String getspecialisation() {
+        return specialisation;
     }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setspecialisation(String specialisation) {
+        this.specialisation = specialisation;
     }
 
     public int getL1R4() {
@@ -59,7 +59,6 @@ public class Bookmark {
     public void setPostalCode(int postalCode) {
         this.postalCode = postalCode;
     }
-
 
     public String getDate() {
         return date;

@@ -1,17 +1,17 @@
-package com.example.utsav.edufind;
+package boundary;
 
 import android.content.Intent;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.utsav.edufind.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,7 +28,7 @@ import controller.MapController;
  * @version 1.0
  * @since   2017-10-24
  */
-public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
+public class PolytechnicDetailsTab1 extends Fragment implements OnMapReadyCallback{
     TextView CourseGrade;
     TextView CourseIntake;
     TextView CourseName;
@@ -40,8 +40,8 @@ public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
     TextView career;
     TextView direction;
     TextView CourseDescription;
-    TextView instiDescription;
     TextView InstitutionDescription;
+    TextView CareerProspect;
     ImageView imageView;
     GoogleMap mGoogleMap;
     String postalCode;
@@ -58,22 +58,22 @@ public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab1_details, container, false);
-        CourseGrade = (TextView) rootView.findViewById(R.id.tab1_Course_Grade);
-        CourseIntake = (TextView) rootView.findViewById(R.id.tab1_Course_Intake);
-        CourseName = (TextView) rootView.findViewById(R.id.tab1_Course_name);
-        InstitutionName = (TextView) rootView.findViewById(R.id.tab1_Institution_name);
-        InstitutionLogo = (ImageView) rootView.findViewById(R.id.tab1_Institution_Logo);
-        CourseWebsite = (ImageView) rootView.findViewById(R.id.tab1_Course_Website);
-        institutionDescription = (TextView) rootView.findViewById(R.id.institution_desc_text);
-        courseDescription = (TextView) rootView.findViewById(R.id.course_desc_text);
-        direction = (TextView) rootView.findViewById(R.id.direction);
-        career = (TextView) rootView.findViewById(R.id.career_prospect_text);
-        CourseDescription = (TextView) rootView.findViewById(R.id.course_desc_detail_text);
-        InstitutionDescription = (TextView) rootView.findViewById(R.id.institution_desc_detail_text);
-        imageView = (ImageView) rootView.findViewById(R.id.imageView);
+        CourseGrade = rootView.findViewById(R.id.tab1_Course_Grade);
+        CourseIntake = rootView.findViewById(R.id.tab1_Course_Intake);
+        CourseName = rootView.findViewById(R.id.tab1_Course_name);
+        InstitutionName = rootView.findViewById(R.id.tab1_Institution_name);
+        InstitutionLogo = rootView.findViewById(R.id.tab1_Institution_Logo);
+        CourseWebsite = rootView.findViewById(R.id.tab1_Course_Website);
+        institutionDescription = rootView.findViewById(R.id.institution_desc_text);
+        courseDescription = rootView.findViewById(R.id.course_desc_text);
+        direction = rootView.findViewById(R.id.direction);
+        career = rootView.findViewById(R.id.career_prospect_text);
+        CourseDescription = rootView.findViewById(R.id.course_desc_detail_text);
+        InstitutionDescription = rootView.findViewById(R.id.institution_desc_detail_text);
+        CareerProspect = rootView.findViewById(R.id.career_prospect_detail_text);
+        imageView = rootView.findViewById(R.id.imageView);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
-                .findFragmentById(R.id.mapFragment);
+        SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.mapFragment);
         mapFragment.getMapAsync(this);
 
         Intent i = getActivity().getIntent();
@@ -86,6 +86,7 @@ public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
         String courseIntake = String.valueOf(i.getExtras().getInt("courseIntake", 0));
         String postCode = String.valueOf(i.getExtras().getInt("postalCode", 238801));
         String instPostCode = String.valueOf(i.getExtras().getInt("instPostalCode", 238801));
+        String careerProspect = i.getExtras().getString("careerProspect", "No careerProspect found");
         postalCode = postCode;
         insCode = instPostCode;
         insName = institutionName;
@@ -96,6 +97,8 @@ public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
         InstitutionName.setText(institutionName);
         CourseDescription.setText(courseDesc);
         InstitutionDescription.setText(institutionDesc);
+        CareerProspect.setText(careerProspect);
+
         switch (institutionName) {
             case "Singapore Polytechnic": {
                 InstitutionLogo.setImageResource(R.mipmap.sp);
@@ -157,8 +160,7 @@ public class tab1PolyDetails extends Fragment implements OnMapReadyCallback{
             location = m2.get();
             LatLng INST = new LatLng(location[0], location[1]);
             mGoogleMap.addMarker(new MarkerOptions().position(INST).title(insName));
-        }catch (Exception e){
-            Log.d("Address Error", "Can't get latitude and longitude");
+        } catch (Exception e){
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.utsav.edufind;
+package boundary;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -18,6 +18,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.utsav.edufind.MainAppUI;
+import com.example.utsav.edufind.R;
+
 /**
  * Initializes and display page 2 of the New Search UI for the user to enter his L1R4 and residential postal code
  *
@@ -25,14 +28,14 @@ import android.widget.TextView;
  * @version 1.0
  * @since   2017-10-24
  */
-public class NewSearchUIPage2 extends AppCompatActivity {
+public class NewSearchPage2 extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
 
     //Store user inputs from previous activity
     private String interest;
-    private String specialization;
+    private String specialisation;
 
     /**
      * Initialize layout
@@ -43,7 +46,7 @@ public class NewSearchUIPage2 extends AppCompatActivity {
         //Get data from previous activity
         Intent i = getIntent();
         interest = i.getExtras().getString("interest", "No interest found");
-        specialization = i.getExtras().getString("specialization", "No specialization found");
+        specialisation = i.getExtras().getString("specialisation", "No specialisation found");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_search_uipage2);
         initializeToolbar("New Search");
@@ -71,7 +74,7 @@ public class NewSearchUIPage2 extends AppCompatActivity {
             if(event.getAction() == MotionEvent.ACTION_DOWN) {
                 if(event.getRawX() >= (L1R4TextView.getRight() - L1R4TextView.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                     // Show help via Builder Design Pattern
-                    AlertDialog.Builder builder= new AlertDialog.Builder(NewSearchUIPage2.this);
+                    AlertDialog.Builder builder= new AlertDialog.Builder(NewSearchPage2.this);
                     builder.setMessage("L1 stands for 1 First Language, which must be either English/Higher Mother Tongue.\n\n" +
                             "R4 stands for 4 Relevant Subjects.\n2 subjects must be either Humanities / Higher Art / Higher Music / Mathematics / Science / MSP / CSP / Bahasa Indonesia.\n" +
                             "The other 2 subjects can be any GCE O Level subjects or CCAs, excluding Religious Knowledge.");
@@ -116,9 +119,17 @@ public class NewSearchUIPage2 extends AppCompatActivity {
         Spinner L1R4Spinner = (Spinner) findViewById(R.id.L1R4Spinner);
         int L1R4 = Integer.parseInt(L1R4Spinner.getSelectedItem().toString());
         EditText postalCodeTextInput = (EditText) findViewById(R.id.postalCodeTextInput);
-        int postalCode = Integer.parseInt(postalCodeTextInput.getText().toString());
+
+        //If postal code not given, set postal code as center of SG
+        int postalCode;
+        if(postalCodeTextInput.getText().toString().matches("")){
+            postalCode = 574415;
+        }
+        else {
+            postalCode = Integer.parseInt(postalCodeTextInput.getText().toString());
+        }
         intent.putExtra("interest", interest);
-        intent.putExtra("specialization", specialization);
+        intent.putExtra("specialisation", specialisation);
         intent.putExtra("L1R4", L1R4);
         intent.putExtra("postalCode", postalCode);
         startActivity(intent);
@@ -153,17 +164,17 @@ public class NewSearchUIPage2 extends AppCompatActivity {
             switch (menuItem.getItemId()){
                 //Replacing the main content with ContentFragment Which is our Inbox View;
                 case R.id.home:
-                    intent = new Intent(NewSearchUIPage2.this, MainUI.class);
+                    intent = new Intent(NewSearchPage2.this, MainAppUI.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     return true;
                 case R.id.bookmarks:
-                    intent = new Intent(NewSearchUIPage2.this, BookmarksUI.class);
+                    intent = new Intent(NewSearchPage2.this, BookmarksUI.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     return true;
                 case R.id.aboutus:
-                    intent = new Intent(NewSearchUIPage2.this, AboutUs.class);
+                    intent = new Intent(NewSearchPage2.this, AboutUsUI.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     return true;
@@ -174,14 +185,13 @@ public class NewSearchUIPage2 extends AppCompatActivity {
         });
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,myToolbar,R.string.drawer_open, R.string.drawer_close){
 
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,myToolbar,R.string.drawer_open, R.string.drawer_close){
             @Override
             public void onDrawerClosed(View drawerView) {
                 // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
                 super.onDrawerClosed(drawerView);
             }
-
             @Override
             public void onDrawerOpened(View drawerView) {
                 // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank

@@ -1,20 +1,21 @@
 package factory;
 
-import java.util.ArrayList;
-
 import entity.Course;
 import entity.PolytechnicCourse;
 import entity.UniversityCourse;
 
 public class CourseFactory {
-    private ArrayList<Course> courseList;
-    private Course temp;
 
-    public ArrayList<Course> getCourseList() {
-        return courseList;
-    }
+    public static Course createCourse(String course){
 
-    public Course getTemp() {
-        return temp;
+        Course cc = null;
+
+        if(course.equalsIgnoreCase("poly")){
+            cc = new PolytechnicCourse();
+        }
+        else if(course.equalsIgnoreCase("uni")){
+            cc = new UniversityCourse();
+        }
+        return cc;
     }
 }

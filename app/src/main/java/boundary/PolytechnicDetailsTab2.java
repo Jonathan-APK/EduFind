@@ -1,4 +1,4 @@
-package com.example.utsav.edufind;
+package boundary;
 
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.utsav.edufind.R;
 
 import java.util.ArrayList;
 
@@ -25,7 +27,7 @@ import entity.PolytechnicCourse;
  * @version 1.0
  * @since   2017-10-24
  */
-public class tab2UniOptions extends Fragment {
+public class PolytechnicDetailsTab2 extends Fragment {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
@@ -35,7 +37,7 @@ public class tab2UniOptions extends Fragment {
 
     //Store user inputs from previous activity
     private String interest;
-    private String specialization;
+    private String specialisation;
     private int postalCode;
 
     @Override
@@ -50,7 +52,7 @@ public class tab2UniOptions extends Fragment {
 
         Intent i = getActivity().getIntent();
         interest = i.getExtras().getString("interest", "No interest found");
-        specialization = i.getExtras().getString("specialization", "No specialization found");
+        specialisation = i.getExtras().getString("specialisation", "No specialisation found");
         postalCode = i.getExtras().getInt("postalCode", 000000);
 
         initializeData();
@@ -65,7 +67,7 @@ public class tab2UniOptions extends Fragment {
      */
     private void initializeData(){
         SearchController c1 = new SearchController(getActivity());
-        courseList = c1.search(interest, specialization, 0, postalCode);
+        courseList = c1.search(interest, specialisation, 0, postalCode);
 
         for (int i = 0; i < courseList.size(); i++) {
             if (courseList.get(i) instanceof PolytechnicCourse) {
@@ -79,7 +81,7 @@ public class tab2UniOptions extends Fragment {
      * populates the respective course items in a card view.
      */
     private void initializeAdapter(){
-        RVAdapter adapter = new RVAdapter(courseList, interest, specialization, postalCode);
+        CoursesRVAdapter adapter = new CoursesRVAdapter(courseList, interest, specialisation, postalCode);
         rv.setAdapter(adapter);
     }
 }

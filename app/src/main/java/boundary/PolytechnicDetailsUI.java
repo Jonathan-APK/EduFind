@@ -1,4 +1,4 @@
-package com.example.utsav.edufind;
+package boundary;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -17,6 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.utsav.edufind.MainAppUI;
+import com.example.utsav.edufind.R;
+
 /**
  * Initializes and display Polytechnic Course Details view for the selected University Course
  *
@@ -24,7 +27,7 @@ import android.view.View;
  * @version 1.0
  * @since   2017-10-24
  */
-public class PolytechnicDetails extends AppCompatActivity {
+public class PolytechnicDetailsUI extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Intent intent;
     private NavigationView navigationView;
@@ -34,7 +37,6 @@ public class PolytechnicDetails extends AppCompatActivity {
     /**
      * Initialize SectionsPagerAdapter to implement tabbing function in the main view
      * @param savedInstanceState Current state of application
-     * @return View Polytechnic Course Details view
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,13 +100,13 @@ public class PolytechnicDetails extends AppCompatActivity {
             // Return current tabs
             switch (position){
                 case 0:
-                    tab1PolyDetails tab1 = new tab1PolyDetails();
+                    PolytechnicDetailsTab1 tab1 = new PolytechnicDetailsTab1();
                     return tab1;
                 case 1:
-                    tab2UniOptions tab2 = new tab2UniOptions();
+                    PolytechnicDetailsTab2 tab2 = new PolytechnicDetailsTab2();
                     return tab2;
                 default:
-                    tab1PolyDetails defaultTab = new tab1PolyDetails();
+                    PolytechnicDetailsTab1 defaultTab = new PolytechnicDetailsTab1();
                     return defaultTab;
             }
         }
@@ -153,8 +155,10 @@ public class PolytechnicDetails extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 //Checking if the item is in checked state or not, if not make it in checked state
-                if(menuItem.isChecked()) menuItem.setChecked(false);
-                else menuItem.setChecked(true);
+                if (menuItem.isChecked())
+                    menuItem.setChecked(false);
+                else
+                    menuItem.setChecked(true);
 
                 //Closing drawer on item click
                 mDrawerLayout.closeDrawers();
@@ -163,17 +167,17 @@ public class PolytechnicDetails extends AppCompatActivity {
                 switch (menuItem.getItemId()){
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
-                        intent = new Intent(PolytechnicDetails.this, MainUI.class);
+                        intent = new Intent(PolytechnicDetailsUI.this, MainAppUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
                     case R.id.bookmarks:
-                        intent = new Intent(PolytechnicDetails.this, BookmarksUI.class);
+                        intent = new Intent(PolytechnicDetailsUI.this, BookmarksUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
                     case R.id.aboutus:
-                        intent = new Intent(PolytechnicDetails.this, AboutUs.class);
+                        intent = new Intent(PolytechnicDetailsUI.this, AboutUsUI.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;

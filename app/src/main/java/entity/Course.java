@@ -12,30 +12,21 @@ package entity;
 public class Course {
     private String courseName;
     private String interest;
-    private String specialization;
+    private String specialisation;
     private String website;
-    private String school;
-    private String educationLevel;
     private String courseDescription;
+    private String careerProspect;
     private Institution institution;
     private int intake;
 
     public Course() {
     }
-    public Course(String courseName, String school, int intake, String website) {
-        this.courseName = courseName;
-        this.school = school;
-        this.intake = intake;
-        this.website = website;
-    }
 
-    public Course(String courseName, String interest, String specialization, String website, String school, String educationLevel, String courseDescription, Institution institution, int intake) {
+    public Course(String courseName, String interest, String specialisation, String website, String courseDescription, Institution institution, int intake) {
         this.courseName = courseName;
         this.interest = interest;
-        this.specialization = specialization;
+        this.specialisation = specialisation;
         this.website = website;
-        this.school = school;
-        this.educationLevel = educationLevel;
         this.courseDescription = courseDescription;
         this.institution = institution;
         this.intake = intake;
@@ -57,12 +48,12 @@ public class Course {
         this.interest = interest;
     }
 
-    public String getSpecialization() {
-        return specialization;
+    public String getSpecialisation() {
+        return specialisation;
     }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setSpecialisation(String specialisation) {
+        this.specialisation = specialisation;
     }
 
     public String getWebsite() {
@@ -73,28 +64,20 @@ public class Course {
         this.website = website;
     }
 
-    public String getSchool() {
-        return school;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
-    }
-
-    public String getEducationLevel() {
-        return educationLevel;
-    }
-
-    public void setEducationLevel(String educationLevel) {
-        this.educationLevel = educationLevel;
-    }
-
     public String getCourseDescription() {
         return courseDescription;
     }
 
     public void setCourseDescription(String courseDescription) {
         this.courseDescription = courseDescription;
+    }
+
+    public String getCareerProspect() {
+        return careerProspect;
+    }
+
+    public void setCareerProspect(String careerProspect) {
+        this.careerProspect = careerProspect;
     }
 
     public Institution getInstitution() {

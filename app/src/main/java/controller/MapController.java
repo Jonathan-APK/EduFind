@@ -9,14 +9,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-/**
- * Created by utsav on 25/10/17.
- */
-
-public class MapController extends AsyncTask<String, Void, double[]>{
-
+public class MapController extends AsyncTask<String, Void, double[]> {
     @Override
-    protected double[] doInBackground(String... strings){
+    protected double[] doInBackground(String... strings) {
         String address = strings[0];
         try {
             String s = String.format("http://maps.google.com/maps/api/geocode/json?address=%s", address);

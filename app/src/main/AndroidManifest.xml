@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".MainUI"
+            android:name=".MainAppUI"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,14 +30,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewSearchUI" />
-        <activity android:name=".BookmarksUI" />
-        <activity android:name=".SearchResultsUI" />
-        <activity android:name=".AboutUs" />
-        <activity android:name=".NewSearchUIPage2" />
-        <activity android:name=".UniversityCourseDetailsUI" />
+        <activity android:name="boundary.NewSearchPage1" />
+        <activity android:name="boundary.BookmarksUI" />
+        <activity android:name="boundary.SearchResultsUI" />
+        <activity android:name="boundary.AboutUsUI" />
+        <activity android:name="boundary.NewSearchPage2" />
+        <activity android:name="boundary.UniversityCourseDetailsUI" />
         <activity
-            android:name=".PolytechnicDetails"
+            android:name="boundary.PolytechnicDetailsUI"
             android:label="@string/title_activity_polytechnic_details"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 

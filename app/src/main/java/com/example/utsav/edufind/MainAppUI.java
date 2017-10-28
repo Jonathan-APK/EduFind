@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import boundary.BookmarksUI;
+import boundary.NewSearchPage1;
+
 /**
  * Initialize and display Main Home page
  *
@@ -14,10 +17,10 @@ import android.view.MenuItem;
  * @version 1.0
  * @since   2017-10-24
  */
-public class MainUI extends AppCompatActivity{
+public class MainAppUI extends AppCompatActivity{
     /**
      * Initialize layout
-     * @param savedInstanceState
+     * @param savedInstanceState saved instance state
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,7 @@ public class MainUI extends AppCompatActivity{
      * @param view The current view
      */
     public void goToSearchUI(View view) {
-        Intent intent = new Intent(this, NewSearchUI.class);
+        Intent intent = new Intent(this, NewSearchPage1.class);
         startActivity(intent);
     }
 

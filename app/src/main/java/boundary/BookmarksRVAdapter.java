@@ -1,7 +1,6 @@
-package com.example.utsav.edufind;
+package boundary;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -9,8 +8,9 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.utsav.edufind.R;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ import entity.Bookmark;
  * @version 1.0
  * @since   2017-10-24
  */
-public class RVAdapterBookmarks extends RecyclerView.Adapter<RVAdapterBookmarks.BookmarkViewHolder> {
+public class BookmarksRVAdapter extends RecyclerView.Adapter<BookmarksRVAdapter.BookmarkViewHolder> {
     /**
      * This class references the respective View widgets inside the layout through its id.
      */
@@ -52,31 +52,14 @@ public class RVAdapterBookmarks extends RecyclerView.Adapter<RVAdapterBookmarks.
             CardView.LayoutParams lp = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);
             DisplayMetrics dm = cv2.getResources().getDisplayMetrics();
             lp.setMargins(convertDpToPx(5, dm), convertDpToPx(5, dm), convertDpToPx(5, dm), convertDpToPx(5, dm));
-            //lp.setMargins(5, 5, 5, 5);
             cv2.setLayoutParams(lp);
             cv2.setContentPadding(0, 0, 0, 0);
         }
     }
 
     List<Bookmark> bookmarks;
-    String interest;
-    String specialization;
-    String date;
-    String time;
-    int L1R4;
-    int postalCode;
 
-    public RVAdapterBookmarks(List<Bookmark> bookmarks, String interest, String specialization, int L1R4, int postalCode, String date, String time){
-        this.bookmarks = bookmarks;
-        this.interest = interest;
-        this.specialization = specialization;
-        this.L1R4 = L1R4;
-        this.postalCode = postalCode;
-        this.date = date;
-        this.time = time;
-    }
-
-    public RVAdapterBookmarks(List<Bookmark> bookmarks){
+    public BookmarksRVAdapter(List<Bookmark> bookmarks){
         this.bookmarks = bookmarks;
     }
 
@@ -107,9 +90,25 @@ public class RVAdapterBookmarks extends RecyclerView.Adapter<RVAdapterBookmarks.
         BookmarkViewHolder.Date_createdTV.setText(bookmarks.get(i).getDate());
         BookmarkViewHolder.Time_createdTV.setText(bookmarks.get(i).getTime());
         BookmarkViewHolder.AoiTV.setText(bookmarks.get(i).getInterest());
-        BookmarkViewHolder.SpecTV.setText(bookmarks.get(i).getSpecialization());
+        BookmarkViewHolder.SpecTV.setText(bookmarks.get(i).getspecialisation());
         BookmarkViewHolder.PostalTV.setText(String.valueOf(bookmarks.get(i).getPostalCode()));
         BookmarkViewHolder.L1R4TV.setText(String.valueOf(bookmarks.get(i).getL1R4()));
+
+        final String interest = bookmarks.get(i).getInterest();
+        final String specialisation = bookmarks.get(i).getspecialisation();
+        final int L1R4 = bookmarks.get(i).getL1R4();
+        final int postalCode = bookmarks.get(i).getPostalCode();
+        BookmarkViewHolder.cv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(v.getContext(), SearchResultsUI.class);
+                in.putExtra("interest", interest);
+                in.putExtra("specialisation", specialisation);
+                in.putExtra("L1R4", L1R4);
+                in.putExtra("postalCode", postalCode);
+                v.getContext().startActivity(in);
+            }
+        });
     }
 
     @Override
