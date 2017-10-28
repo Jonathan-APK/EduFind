@@ -1,4 +1,4 @@
-package controller.factory;
+package factory;
 
 import entity.Course;
 import entity.PolytechnicCourse;

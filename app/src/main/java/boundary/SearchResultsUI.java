@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 
 import controller.BookmarkImplementation;
-import controller.factory.DataStoreFactory;
+import factory.DataStoreFactory;
 import controller.DataStoreInterface;
 import controller.SearchController;
 

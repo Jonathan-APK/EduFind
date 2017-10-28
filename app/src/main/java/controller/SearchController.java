@@ -2,7 +2,7 @@ package controller;
 
 import android.content.Context;
 
-import controller.factory.DataStoreFactory;
+import factory.DataStoreFactory;
 import entity.Course;
 import entity.PolytechnicCourse;
 import entity.Institution;

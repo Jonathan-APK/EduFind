@@ -23,7 +23,7 @@ import com.example.utsav.edufind.R;
 import java.util.ArrayList;
 
 import controller.BookmarkImplementation;
-import controller.factory.DataStoreFactory;
+import factory.DataStoreFactory;
 import controller.DataStoreInterface;
 import entity.Bookmark;
 
