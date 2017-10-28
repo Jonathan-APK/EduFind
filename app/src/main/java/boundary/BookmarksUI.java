@@ -77,7 +77,7 @@ public class BookmarksUI extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         adapter.notifyItemRemoved(position);    //item removed from recylcerview
                         bookmarkList.remove(position);  //then remove item
-                        DataStoreInterface di = DataStoreFactory.getDatastore("bookmark",getApplicationContext());
+                        DataStoreInterface di = DataStoreFactory.createDatastore("bookmark",getApplicationContext());
                         ((BookmarkImplementation)di).updateBookmark(bookmarkList);
                     }
                 }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {  //not removing items if cancel is done
@@ -112,7 +112,7 @@ public class BookmarksUI extends AppCompatActivity {
      */
     private void initializeData(){
         bookmarkList = new ArrayList<>();
-        DataStoreInterface di = DataStoreFactory.getDatastore("bookmark",this);
+        DataStoreInterface di = DataStoreFactory.createDatastore("bookmark",this);
         bookmarkList = (ArrayList<Bookmark>)(Object)di.retrieveList();
     }
 

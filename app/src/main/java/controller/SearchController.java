@@ -59,9 +59,9 @@ public class SearchController {
         Course temp;
 
         //Retrieve full list of polytechnic courses and university courses
-        DataStoreInterface di = DataStoreFactory.getDatastore("poly",current);
+        DataStoreInterface di = DataStoreFactory.createDatastore("poly",current);
         courseList = (ArrayList<Course>)(Object)di.retrieveList();
-        di = DataStoreFactory.getDatastore("uni",current);
+        di = DataStoreFactory.createDatastore("uni",current);
         courseList.addAll((ArrayList<Course>)(Object)di.retrieveList());
 
         //Filter list according to inputs

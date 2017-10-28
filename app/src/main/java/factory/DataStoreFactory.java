@@ -11,7 +11,7 @@ public class DataStoreFactory {
 
 
     // static method to return appropriate DataStoreInterface object based on user choice
-    public static DataStoreInterface getDatastore(String datastoreOption, Context context) {
+    public static DataStoreInterface createDatastore(String datastoreOption, Context context) {
 
         DataStoreInterface dataStore = null;
 

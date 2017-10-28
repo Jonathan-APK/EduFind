@@ -102,7 +102,7 @@ public class SearchResultsUI extends AppCompatActivity {
             String time = df2.format(c.getTime());
             Bookmark bm = new Bookmark(interest, specialisation, L1R4, postalCode, date, time);
 
-            DataStoreInterface di = DataStoreFactory.getDatastore("bookmark",this);
+            DataStoreInterface di = DataStoreFactory.createDatastore("bookmark",this);
             ((BookmarkImplementation)di).addBookmark(bm);
 
             // Show confirmation via Builder Design Pattern
