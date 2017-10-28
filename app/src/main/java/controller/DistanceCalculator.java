@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * This class used the Google Maps API to calculate the distance by car between two post codes.
+ * This class used the Google Distance Matrix API to calculate the distance by car between two post codes.
  *
  * @author Minions
  * @version 1.0
@@ -18,8 +18,12 @@ import java.net.URL;
  */
 
 public class DistanceCalculator extends AsyncTask<String, Void, Double> {
+
     /**
-     * Takes a string array of pin-codes and asynchronously calculates the distance between them
+     * Takes a string array of pin-codes and asynchronously calls the Google distance matric api
+     * to calculate the distance between them
+     * @param strings (array of strings, consisting the pincode of two address for which the distance is to be determined)
+     * @return Distance between the two input pincodes
      */
     @Override
     protected Double doInBackground(String... strings) {

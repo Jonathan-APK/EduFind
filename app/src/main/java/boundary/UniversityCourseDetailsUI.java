@@ -238,6 +238,12 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
         actionBarDrawerToggle.syncState();
     }
 
+    /**
+     * This function is called when the map has been fetched and is ready to be altered
+     * The function first centers and zooms the map on Singapore, and then places two pins with markers specifying
+     * the user location and the location of the university being viewed
+     * @param googleMap an instance of GoogleMap class
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;

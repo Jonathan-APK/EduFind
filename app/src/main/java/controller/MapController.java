@@ -9,7 +9,21 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
+/**
+ * This class used the Google Maps API to find the latitude and longitude for a given address.
+ *
+ * @author Minions
+ * @version 1.0
+ * @since 2017-10-24
+ */
+
 public class MapController extends AsyncTask<String, Void, double[]> {
+
+    /**
+     * Takes a pincode and calls the Google maps api to find the latitude and longitude for that address
+     * @param strings (pincode of the address)
+     * @return double array consisting of the latitude and longitude of the address specified by the input pincode
+     */
     @Override
     protected double[] doInBackground(String... strings) {
         String address = strings[0];
@@ -35,7 +49,7 @@ public class MapController extends AsyncTask<String, Void, double[]> {
                 return loglat;
             }
         } catch (Exception e) {
-            Log.e("DistanceError", "Error ", e);
+            Log.e("LocationError", "Error ", e);
             return null;
         }
         return null;
