@@ -133,8 +133,7 @@ public class SearchResultsUI extends AppCompatActivity {
     }
 
     /**
-     * This method retrieves all the search results from the course search controller class
-     * and puts them in an ArrayList of Course objects consisting of only university courses.
+     * This method sets and displays the layout of the recycler view with the user's input parameters
      */
     private void initializeAdapter(){
         CoursesRVAdapter adapter = new CoursesRVAdapter(courseList, interest, specialisation, postalCode);

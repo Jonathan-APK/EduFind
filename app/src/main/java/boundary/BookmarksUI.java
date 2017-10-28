@@ -107,8 +107,8 @@ public class BookmarksUI extends AppCompatActivity {
     }
 
     /**
-     * This method retrieves all the search results from the course search controller class
-     * and puts them in an ArrayList of Course objects consisting of only polytechnic courses.
+     * This method retrieves all the search results from the data store interface class
+     * and puts them in an ArrayList of Bookmark objects consisting of the saved search parameters.
      */
     private void initializeData(){
         bookmarkList = new ArrayList<>();
@@ -117,8 +117,7 @@ public class BookmarksUI extends AppCompatActivity {
     }
 
     /**
-     * This method retrieves all the search results from the course search controller class
-     * and puts them in an ArrayList of Course objects consisting of only university courses.
+     *  This method sets and displays the layout of the recycler view with the bookmarked path.
      */
     private void initializeAdapter(){
         adapter = new BookmarksRVAdapter(bookmarkList);
@@ -209,7 +208,7 @@ public class BookmarksUI extends AppCompatActivity {
 
         //Setting the actionbarToggle to drawer layout
         mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
-        //calling sync state is necessay or else your hamburger icon wont show up
+        //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
     }
 }
