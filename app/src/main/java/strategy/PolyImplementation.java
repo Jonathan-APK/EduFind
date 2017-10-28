@@ -15,6 +15,13 @@ import entity.Course;
 import entity.Institution;
 import entity.PolytechnicCourse;
 
+/**
+ * This class is use to manage the I/O operation of the Polytechnic csv file
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-29
+ */
 public class PolyImplementation implements DataStoreInterface{
 
     private static BufferedReader br = null;
@@ -28,6 +35,10 @@ public class PolyImplementation implements DataStoreInterface{
         this.context = context;
     }
 
+    /**
+     * Retrieve all polytechnic information from csv and store in a Arraylist of object type
+     * @return ArrayList<Object> Arraylist containing all information from the polytechnic csv file
+     */
     @Override
     public ArrayList<Object> retrieveList() {
         ArrayList<Object> polyList = new ArrayList<>();

@@ -14,6 +14,13 @@ import java.util.ArrayList;
 
 import entity.Bookmark;
 
+/**
+ * This class is use to manage the I/O operation of the Bookmark csv file
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-29
+ */
 public class BookmarkImplementation implements DataStoreInterface {
 
     private static String delimiter = "\\^";
@@ -23,6 +30,11 @@ public class BookmarkImplementation implements DataStoreInterface {
         this.context = context;
     }
 
+
+    /**
+     * Retrieve all bookmark information from csv and store in a Arraylist of object type
+     * @return ArrayList<Object> Arraylist containing all information of user's bookmark
+     */
     @Override
     public ArrayList<Object> retrieveList() {
         ArrayList<Object> bookmarkList = new ArrayList<>();
@@ -62,6 +74,11 @@ public class BookmarkImplementation implements DataStoreInterface {
         return bookmarkList;    
     }
 
+    /**
+     * Add bookmark information into the bookmark csv file
+     * @param bm Bookmark object containing information of the bookmark to be added
+     * @return boolean result of adding the booking  (true/false)
+     */
     public boolean addBookmark(Bookmark bm){
         String path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
         boolean rt = false;
@@ -93,6 +110,11 @@ public class BookmarkImplementation implements DataStoreInterface {
         return rt;
     }
 
+    /**
+     * Update bookmark information after user have delete a record
+     * @param newList Arraylist of Bookmark object containing information of the bookmark to be updated
+     * @return boolean result of updating the booking  (true/false)
+     */
     public boolean updateBookmark(ArrayList<Bookmark> newList) {
         String path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
         FileOutputStream outputStream = null;
@@ -140,6 +162,10 @@ public class BookmarkImplementation implements DataStoreInterface {
         return rt;
     }
 
+    /**
+     * Check if the bookmark csv file exist in the interal storage of the android phone
+     * @return boolean result of the check (true/false)
+     */
     private boolean checkBookmarkFileExists(){
         String path=context.getFilesDir().getAbsolutePath()+"/bookmark/bookmark.csv";
         boolean exist = false;
@@ -151,6 +177,9 @@ public class BookmarkImplementation implements DataStoreInterface {
         return exist;
     }
 
+    /**
+     * Create the bookmark csv file in the internal storage
+     */
     private void createBookmarkFile() {
         String path = context.getFilesDir().getAbsolutePath() + "/bookmark";
         File file = new File(path);

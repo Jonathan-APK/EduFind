@@ -15,6 +15,13 @@ import entity.Course;
 import entity.Institution;
 import entity.UniversityCourse;
 
+/**
+ * This class is use to manage the I/O operation of the University csv file
+ *
+ * @author  Minions
+ * @version 1.0
+ * @since   2017-10-29
+ */
 public class UniImplementation implements DataStoreInterface{
 
     private static BufferedReader br = null;
@@ -28,6 +35,10 @@ public class UniImplementation implements DataStoreInterface{
         this.context = context;
     }
 
+    /**
+     * Retrieve all university information from csv and store in a Arraylist of object type
+     * @return ArrayList<Object> Arraylist containing all information from the university csv file
+     */
     @Override
     public ArrayList<Object> retrieveList() {
         ArrayList<Object> uniList = new ArrayList<>();
@@ -37,7 +48,7 @@ public class UniImplementation implements DataStoreInterface{
             while ((line = br.readLine()) != null) {
                 Course uni = CourseFactory.createCourse("uni");
                 tempArray = line.split(delimiter);
-                Institution institute = new Institution(tempArray[0], tempArray[11], Integer.parseInt(tempArray[5].replaceAll("\\s+","")));
+                Institution institute = new Institution(tempArray[0], tempArray[12], Integer.parseInt(tempArray[5].replaceAll("\\s+","")));
                 uni.setInstitution(institute);
                 uni.setCourseName(tempArray[2]);
                 uni.setInterest(tempArray[3]);
