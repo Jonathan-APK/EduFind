@@ -17,8 +17,8 @@ import java.util.List;
 import entity.Bookmark;
 
 /**
- * This class sets the course information in their respective View elements and populates the card view
- * of each course dynamically based on the size of the Course objects.
+ * This class sets the bookmarked paths in their respective View elements and populates the card view
+ * of each path dynamically based on the size of the Bookmark objects.
  *
  * @author  Minions
  * @version 1.0
@@ -76,14 +76,10 @@ public class BookmarksRVAdapter extends RecyclerView.Adapter<BookmarksRVAdapter.
     }
 
     /**
-     * This method checks the name of the polytechnic or university and sets the respective institution image
-     * to its CourseViewHolder widget.
-     * This method also dynamically sets the external link(URL) on the clickable website icon which redirects the user
-     * to an external browser when clicked on.
-     * This method also dynamically sets the course details on the clickable card view which redirects the user
-     * to the respective course information page.
-     * @param BookmarkViewHolder Holds all the View widgets in the SearchResultsUI page
-     * @param i Allows accessibility from it inner onClick method to retrieve the correct course URL
+     * This method dynamically sets the bookmarked paths on the clickable card view which redirects the user
+     * to the search results page based on the parameters of the path.
+     * @param BookmarkViewHolder Holds all the View widgets in the BookmarksUI page
+     * @param i Allows accessibility from it inner classes
      */
     @Override
     public void onBindViewHolder(BookmarkViewHolder BookmarkViewHolder, final int i) {
