@@ -1,7 +1,9 @@
 package boundary;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -53,10 +55,51 @@ public class SearchResultsUI extends AppCompatActivity {
     private String specialisation;
     private int L1R4;
     private int postalCode;
+    private ProgressDialog dialog;
+
+    private class ProgressTask extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            initializeData();
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    initializeAdapter();
+
+                }
+            });
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            dialog.dismiss();
+        }
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Get data from previous activity
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.search_results_ui);
+
+       dialog = ProgressDialog.show(this, "",
+                "Loading. Please wait...", true);
+
         Intent i = getIntent();
         interest = i.getExtras().getString("interest", "No interest found");
         specialisation = i.getExtras().getString("specialisation", "No specialisation found");
@@ -67,8 +110,6 @@ public class SearchResultsUI extends AppCompatActivity {
             postalCode = 000000;
         }
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_results_ui);
 
         initializeToolbar("Search Results");
 
@@ -77,8 +118,12 @@ public class SearchResultsUI extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
-        initializeData();
-        initializeAdapter();
+
+
+        new ProgressTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+       /* initializeData();
+        initializeAdapter();*/
     }
 
     @Override
@@ -125,7 +170,7 @@ public class SearchResultsUI extends AppCompatActivity {
      * This method retrieves all the search results from the course search controller class
      * and puts them in an ArrayList of Course objects consisting of only polytechnic courses.
      */
-    private void initializeData(){
+    public void initializeData(){
         SearchController c1 = new SearchController(this);
         courseList = c1.search(interest, specialisation, L1R4, postalCode);
 

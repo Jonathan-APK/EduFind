@@ -94,6 +94,7 @@ public class SearchController {
             DistanceCalculator d1 = new DistanceCalculator();
             d1.execute(String.valueOf(postalCode), String.valueOf(institutionList.get(i).getPostalCode()));
             try {
+               // Thread.currentThread().sleep(10000);
                 double distance = d1.get();
                 sortedDistanceList.add(distance);
             } catch (Exception e) {
