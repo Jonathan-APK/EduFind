@@ -129,6 +129,14 @@ public class SearchResultsUI extends AppCompatActivity {
     }
 
     @Override
+    public void onResume()
+    {   // If user clicks back
+        super.onResume();
+        //Refresh
+        initializeToolbar("Search Results");
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -141,8 +149,8 @@ public class SearchResultsUI extends AppCompatActivity {
             if(bookmarkList.get(j).getInterest().equals(interest) && bookmarkList.get(j).getspecialisation().equals(specialisation) && bookmarkList.get(j).getL1R4() == L1R4 && bookmarkList.get(j).getPostalCode() == postalCode)
             {
                menu.getItem(0).setIcon(R.drawable.heart);
-               click=false;
-                break;
+               click = false;
+               break;
             }
         }
 
@@ -184,32 +192,23 @@ public class SearchResultsUI extends AppCompatActivity {
                 alert.show();
 
                 return true;
-            }}
+            }
+        }
         else {
             //Remove a Bookmark
             click=true;
+            item.setIcon(R.drawable.heartunchecked);
             bookmarkList = new ArrayList<>();
             bookmarkList = (ArrayList<Bookmark>)(Object)di.retrieveList();
+            bookmarkList.remove(bookmarkList.size() - 1);
+            ((BookmarkImplementation)di).updateBookmark(bookmarkList);
 
-
-            for(int j =0; j<bookmarkList.size(); j++)
-            {
-                if(bookmarkList.get(j).getInterest().equals(interest) && bookmarkList.get(j).getspecialisation().equals(specialisation) && bookmarkList.get(j).getL1R4() == L1R4 && bookmarkList.get(j).getPostalCode() == postalCode)
-                {
-                    item.setIcon(R.drawable.heartunchecked);
-                    bookmarkList.remove(bookmarkList.get(j));
-                    ((BookmarkImplementation)di).updateBookmark(bookmarkList);
-                    // Show confirmation via Builder Design Pattern
-                    AlertDialog.Builder builder= new AlertDialog.Builder(SearchResultsUI.this);
-                    builder.setMessage("Bookmark removed!");
-                    builder.setPositiveButton("OK", null);
-                    AlertDialog alert = builder.create();
-                    alert.show();
-                    break;
-                }
-            }
-
-
+            // Show confirmation via Builder Design Pattern
+            AlertDialog.Builder builder= new AlertDialog.Builder(SearchResultsUI.this);
+            builder.setMessage("Bookmark removed!");
+            builder.setPositiveButton("OK", null);
+            AlertDialog alert = builder.create();
+            alert.show();
         }
         return super.onOptionsItemSelected(item);
     }
