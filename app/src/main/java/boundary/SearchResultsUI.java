@@ -141,6 +141,7 @@ public class SearchResultsUI extends AppCompatActivity {
             if(bookmarkList.get(j).getInterest().equals(interest) && bookmarkList.get(j).getspecialisation().equals(specialisation) && bookmarkList.get(j).getL1R4() == L1R4 && bookmarkList.get(j).getPostalCode() == postalCode)
             {
                menu.getItem(0).setIcon(R.drawable.heart);
+               click=false;
                 break;
             }
         }
@@ -187,18 +188,28 @@ public class SearchResultsUI extends AppCompatActivity {
         else {
             //Remove Bookmark
             click=true;
-            item.setIcon(R.drawable.heartunchecked);
             bookmarkList = new ArrayList<>();
             bookmarkList = (ArrayList<Bookmark>)(Object)di.retrieveList();
-            bookmarkList.remove(bookmarkList.size() - 1);
-            ((BookmarkImplementation)di).updateBookmark(bookmarkList);
 
-            // Show confirmation via Builder Design Pattern
-            AlertDialog.Builder builder= new AlertDialog.Builder(SearchResultsUI.this);
-            builder.setMessage("Bookmark removed!");
-            builder.setPositiveButton("OK", null);
-            AlertDialog alert = builder.create();
-            alert.show();
+
+            for(int j =0; j<bookmarkList.size(); j++)
+            {
+                if(bookmarkList.get(j).getInterest().equals(interest) && bookmarkList.get(j).getspecialisation().equals(specialisation) && bookmarkList.get(j).getL1R4() == L1R4 && bookmarkList.get(j).getPostalCode() == postalCode)
+                {
+                    item.setIcon(R.drawable.heartunchecked);
+                    bookmarkList.remove(bookmarkList.get(j));
+                    ((BookmarkImplementation)di).updateBookmark(bookmarkList);
+                    // Show confirmation via Builder Design Pattern
+                    AlertDialog.Builder builder= new AlertDialog.Builder(SearchResultsUI.this);
+                    builder.setMessage("Bookmark removed!");
+                    builder.setPositiveButton("OK", null);
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                    break;
+                }
+            }
+
+
         }
         return super.onOptionsItemSelected(item);
     }
