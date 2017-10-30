@@ -171,7 +171,7 @@ public class SearchResultsUI extends AppCompatActivity {
 
         if (click) {
             if (id == R.id.bookmarkSearchParametersBtn) {
-                //Add bookmark
+                //Add a bookmark
                 click=false;
                 item.setIcon(R.drawable.heart);
                 ((BookmarkImplementation)di).addBookmark(bm);
@@ -186,7 +186,7 @@ public class SearchResultsUI extends AppCompatActivity {
                 return true;
             }}
         else {
-            //Remove Bookmark
+            //Remove a Bookmark
             click=true;
             bookmarkList = new ArrayList<>();
             bookmarkList = (ArrayList<Bookmark>)(Object)di.retrieveList();
