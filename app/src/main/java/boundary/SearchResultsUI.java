@@ -3,10 +3,12 @@ package boundary;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
@@ -17,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.utsav.edufind.MainAppUI;
 import com.example.utsav.edufind.R;
@@ -56,6 +59,9 @@ public class SearchResultsUI extends AppCompatActivity {
     private int L1R4;
     private int postalCode;
     private ProgressDialog dialog;
+    private boolean click = true;
+    private ArrayList<Bookmark> bookmarkList;
+    private Menu menu;
 
     private class ProgressTask extends AsyncTask<String, String, String> {
 
@@ -119,7 +125,6 @@ public class SearchResultsUI extends AppCompatActivity {
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
-
         new ProgressTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
        /* initializeData();
@@ -130,6 +135,19 @@ public class SearchResultsUI extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        DataStoreInterface di = DataStoreFactory.createDatastore("bookmark",this);
+        bookmarkList = new ArrayList<>();
+        bookmarkList = (ArrayList<Bookmark>)(Object)di.retrieveList();
+        for(int j =0; j<bookmarkList.size(); j++)
+        {
+            if(bookmarkList.get(j).getInterest() == interest && bookmarkList.get(j).getspecialisation() == specialisation && bookmarkList.get(j).getL1R4() == L1R4 && bookmarkList.get(j).getPostalCode() == postalCode)
+            {
+                //cant set icon!!!!!! Help!!!
+               menu.getItem(0).setIcon(R.drawable.heart);
+                break;
+            }
+        }
 
         // Make bookmark icon visible
         menu.getItem(0).setVisible(true);
@@ -143,25 +161,47 @@ public class SearchResultsUI extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.bookmarkSearchParametersBtn) {
-            Calendar c = Calendar.getInstance();
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");
-            String date = df.format(c.getTime());
-            String time = df2.format(c.getTime());
-            Bookmark bm = new Bookmark(interest, specialisation, L1R4, postalCode, date, time);
 
-            DataStoreInterface di = DataStoreFactory.createDatastore("bookmark",this);
-            ((BookmarkImplementation)di).addBookmark(bm);
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");
+        String date = df.format(c.getTime());
+        String time = df2.format(c.getTime());
+        Bookmark bm = new Bookmark(interest, specialisation, L1R4, postalCode, date, time);
+
+        DataStoreInterface di = DataStoreFactory.createDatastore("bookmark",this);
+
+        if (click) {
+            if (id == R.id.bookmarkSearchParametersBtn) {
+                //Add bookmark
+                click=false;
+                item.setIcon(R.drawable.heart);
+                ((BookmarkImplementation)di).addBookmark(bm);
+
+                // Show confirmation via Builder Design Pattern
+                AlertDialog.Builder builder= new AlertDialog.Builder(SearchResultsUI.this);
+                builder.setMessage("Search parameters are bookmarked!");
+                builder.setPositiveButton("OK", null);
+                AlertDialog alert = builder.create();
+                alert.show();
+
+                return true;
+            }}
+        else {
+            //Remove Bookmark
+            click=true;
+            item.setIcon(R.drawable.heartunchecked);
+            bookmarkList = new ArrayList<>();
+            bookmarkList = (ArrayList<Bookmark>)(Object)di.retrieveList();
+            bookmarkList.remove(bookmarkList.size() - 1);
+            ((BookmarkImplementation)di).updateBookmark(bookmarkList);
 
             // Show confirmation via Builder Design Pattern
             AlertDialog.Builder builder= new AlertDialog.Builder(SearchResultsUI.this);
-            builder.setMessage("Search parameters are bookmarked!");
+            builder.setMessage("Bookmark removed!");
             builder.setPositiveButton("OK", null);
             AlertDialog alert = builder.create();
             alert.show();
-
-            return true;
         }
         return super.onOptionsItemSelected(item);
     }

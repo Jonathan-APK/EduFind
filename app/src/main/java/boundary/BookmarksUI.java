@@ -75,7 +75,7 @@ public class BookmarksUI extends AppCompatActivity {
                 builder.setPositiveButton("REMOVE", new DialogInterface.OnClickListener() { //when click on DELETE
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        adapter.notifyItemRemoved(position);    //item removed from recylcerview
+                        adapter.notifyItemRemoved(position);    //item removed from recyclerview
                         bookmarkList.remove(position);  //then remove item
                         DataStoreInterface di = DataStoreFactory.createDatastore("bookmark",getApplicationContext());
                         ((BookmarkImplementation)di).updateBookmark(bookmarkList);

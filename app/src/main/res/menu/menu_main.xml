@@ -6,7 +6,7 @@
 
     <item
         android:id="@+id/bookmarkSearchParametersBtn"
-        android:icon="@drawable/heart"
+        android:icon="@drawable/heartunchecked"
         android:menuCategory="secondary"
         android:orderInCategory="1"
         android:title="@string/BookmarkSearchParameters"
