@@ -3,12 +3,10 @@ package boundary;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
@@ -19,7 +17,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.example.utsav.edufind.MainAppUI;
 import com.example.utsav.edufind.R;
@@ -141,9 +138,8 @@ public class SearchResultsUI extends AppCompatActivity {
         bookmarkList = (ArrayList<Bookmark>)(Object)di.retrieveList();
         for(int j =0; j<bookmarkList.size(); j++)
         {
-            if(bookmarkList.get(j).getInterest() == interest && bookmarkList.get(j).getspecialisation() == specialisation && bookmarkList.get(j).getL1R4() == L1R4 && bookmarkList.get(j).getPostalCode() == postalCode)
+            if(bookmarkList.get(j).getInterest().equals(interest) && bookmarkList.get(j).getspecialisation().equals(specialisation) && bookmarkList.get(j).getL1R4() == L1R4 && bookmarkList.get(j).getPostalCode() == postalCode)
             {
-                //cant set icon!!!!!! Help!!!
                menu.getItem(0).setIcon(R.drawable.heart);
                 break;
             }
