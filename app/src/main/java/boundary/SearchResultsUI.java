@@ -63,6 +63,10 @@ public class SearchResultsUI extends AppCompatActivity {
         L1R4 = i.getExtras().getInt("L1R4", 20);
         postalCode = i.getExtras().getInt("postalCode", 000000);
 
+        if (postalCode == 574415) {
+            postalCode = 000000;
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_results_ui);
 

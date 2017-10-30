@@ -88,6 +88,9 @@ public class BookmarksRVAdapter extends RecyclerView.Adapter<BookmarksRVAdapter.
         BookmarkViewHolder.AoiTV.setText(bookmarks.get(i).getInterest());
         BookmarkViewHolder.SpecTV.setText(bookmarks.get(i).getspecialisation());
         BookmarkViewHolder.PostalTV.setText(String.valueOf(bookmarks.get(i).getPostalCode()));
+        if (bookmarks.get(i).getPostalCode() == 000000) {
+            BookmarkViewHolder.PostalTV.setText("Not specified");
+        }
         BookmarkViewHolder.L1R4TV.setText(String.valueOf(bookmarks.get(i).getL1R4()));
 
         final String interest = bookmarks.get(i).getInterest();
