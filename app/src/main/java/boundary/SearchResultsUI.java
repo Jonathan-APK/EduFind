@@ -57,7 +57,7 @@ public class SearchResultsUI extends AppCompatActivity {
     private int L1R4;
     private int postalCode;
     private ProgressDialog dialog;
-    private boolean click = true;
+    private boolean click;
     private ArrayList<Bookmark> bookmarkList;
 
     private class ProgressTask extends AsyncTask<String, String, String> {
@@ -113,7 +113,6 @@ public class SearchResultsUI extends AppCompatActivity {
             postalCode = 000000;
         }
 
-
         initializeToolbar("Search Results");
 
         rv= (RecyclerView) findViewById(R.id.rv);
@@ -130,10 +129,12 @@ public class SearchResultsUI extends AppCompatActivity {
 
     @Override
     public void onResume()
-    {   // If user clicks back
+    {   //If user clicks back
         super.onResume();
         //Refresh
         initializeToolbar("Search Results");
+        initializeData();
+        initializeAdapter();
     }
 
     @Override
@@ -218,6 +219,8 @@ public class SearchResultsUI extends AppCompatActivity {
      * and puts them in an ArrayList of Course objects consisting of only polytechnic courses.
      */
     public void initializeData(){
+        click = true;
+
         SearchController c1 = new SearchController(this);
         courseList = c1.search(interest, specialisation, L1R4, postalCode);
 

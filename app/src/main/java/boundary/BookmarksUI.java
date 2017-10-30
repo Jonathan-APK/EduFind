@@ -79,6 +79,8 @@ public class BookmarksUI extends AppCompatActivity {
                         bookmarkList.remove(position);  //then remove item
                         DataStoreInterface di = DataStoreFactory.createDatastore("bookmark",getApplicationContext());
                         ((BookmarkImplementation)di).updateBookmark(bookmarkList);
+                        initializeData();
+                        initializeAdapter();
                     }
                 }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {  //not removing items if cancel is done
                     @Override
@@ -92,6 +94,15 @@ public class BookmarksUI extends AppCompatActivity {
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(rv);
+    }
+
+    @Override
+    public void onResume()
+    {   //If user clicks back
+        super.onResume();
+        //Refresh
+        initializeData();
+        initializeAdapter();
     }
 
     /**
