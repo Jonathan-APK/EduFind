@@ -27,6 +27,7 @@ import com.example.utsav.edufind.R;
 import java.util.Calendar;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 import strategy.BookmarkImplementation;
 import factory.DataStoreFactory;
@@ -61,7 +62,6 @@ public class SearchResultsUI extends AppCompatActivity {
     private ProgressDialog dialog;
     private boolean click = true;
     private ArrayList<Bookmark> bookmarkList;
-    private Menu menu;
 
     private class ProgressTask extends AsyncTask<String, String, String> {
 
@@ -165,6 +165,7 @@ public class SearchResultsUI extends AppCompatActivity {
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");
+        df2.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
         String date = df.format(c.getTime());
         String time = df2.format(c.getTime());
         Bookmark bm = new Bookmark(interest, specialisation, L1R4, postalCode, date, time);
