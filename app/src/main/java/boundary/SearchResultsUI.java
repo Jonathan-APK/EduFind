@@ -78,11 +78,6 @@ public class SearchResultsUI extends AppCompatActivity {
             return null;
         }
 
-        @Override
-        protected void onProgressUpdate(String... values) {
-            super.onProgressUpdate(values);
-
-        }
 
         @Override
         protected void onPostExecute(String s) {
@@ -101,8 +96,7 @@ public class SearchResultsUI extends AppCompatActivity {
         setContentView(R.layout.search_results_ui);
 
        dialog = ProgressDialog.show(this, "",
-                "Loading. Please wait...", true);
-
+                "Loading. Please wait....", true);
         Intent i = getIntent();
         interest = i.getExtras().getString("interest", "No interest found");
         specialisation = i.getExtras().getString("specialisation", "No specialisation found");
@@ -122,9 +116,10 @@ public class SearchResultsUI extends AppCompatActivity {
         rv.setHasFixedSize(true);
 
         new ProgressTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-
-       /* initializeData();
+      /*  initializeData();
         initializeAdapter();*/
+
+
     }
 
     @Override
@@ -133,8 +128,10 @@ public class SearchResultsUI extends AppCompatActivity {
         super.onResume();
         //Refresh
         initializeToolbar("Search Results");
-        initializeData();
-        initializeAdapter();
+        /*initializeData();
+        initializeAdapter();*/
+        new ProgressTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
     }
 
     @Override
