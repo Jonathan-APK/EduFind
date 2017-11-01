@@ -60,13 +60,21 @@ public class SearchResultsUI extends AppCompatActivity {
     private boolean click;
     private ArrayList<Bookmark> bookmarkList;
 
-    private class ProgressTask extends AsyncTask<String, String, String> {
+    /*private class ProgressTask extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... strings) {
 
             initializeData();
 
+
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -75,18 +83,10 @@ public class SearchResultsUI extends AppCompatActivity {
 
                 }
             });
-            return null;
-        }
-
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-
             dialog.dismiss();
         }
 
-    }
+    }*/
 
 
     @Override
@@ -95,8 +95,8 @@ public class SearchResultsUI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_results_ui);
 
-       dialog = ProgressDialog.show(this, "",
-                "Loading. Please wait....", true);
+     /*  dialog = ProgressDialog.show(this, "",
+                "Loading. Please wait....", true);*/
         Intent i = getIntent();
         interest = i.getExtras().getString("interest", "No interest found");
         specialisation = i.getExtras().getString("specialisation", "No specialisation found");
@@ -115,9 +115,9 @@ public class SearchResultsUI extends AppCompatActivity {
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
-        new ProgressTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-      /*  initializeData();
-        initializeAdapter();*/
+       // new ProgressTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        initializeData();
+        initializeAdapter();
 
 
     }
@@ -128,9 +128,9 @@ public class SearchResultsUI extends AppCompatActivity {
         super.onResume();
         //Refresh
         initializeToolbar("Search Results");
-        /*initializeData();
-        initializeAdapter();*/
-        new ProgressTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        initializeData();
+        initializeAdapter();
+   //     new ProgressTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
     }
 
