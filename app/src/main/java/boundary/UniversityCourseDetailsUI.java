@@ -123,6 +123,11 @@ public class UniversityCourseDetailsUI extends AppCompatActivity implements OnMa
                 imageView.setImageResource(R.drawable.digipen);
                 break;
             }
+            case "National Institute of Education": {
+                InstitutionLogo.setImageResource(R.mipmap.nie_round);
+                imageView.setImageResource(R.drawable.nie);
+                break;
+            }
             default:
         }
 

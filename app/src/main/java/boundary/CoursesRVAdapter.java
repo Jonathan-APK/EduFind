@@ -192,6 +192,10 @@ public class CoursesRVAdapter extends RecyclerView.Adapter<CoursesRVAdapter.Cour
                     CourseViewHolder.InstitutionLogo.setImageResource(R.mipmap.digipen);
                     break;
                 }
+                case "National Institute of Education": {
+                    CourseViewHolder.InstitutionLogo.setImageResource(R.mipmap.nie_round);
+                    break;
+                }
                 default:
             }
             CourseViewHolder.InstitutionName.setText(courses.get(i).getInstitution().getInstitution());
