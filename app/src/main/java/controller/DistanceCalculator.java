@@ -17,21 +17,23 @@ import java.net.URL;
  * @since 2017-09-27
  */
 
-public class DistanceCalculator extends AsyncTask<String, Void, Double> {
 
+public class DistanceCalculator {
+    private String pincode_1;
+    private String pincode_2;
     /**
      * Takes a string array of pin-codes and asynchronously calls the Google distance matric api
      * to calculate the distance between them
-     * @param strings (array of strings, consisting the pincode of two address for which the distance is to be determined)
+     * @param pincode_1, pincode_2 (array of strings, consisting the pincode of two address for which the distance is to be determined)
      * @return Distance between the two input pincodes
      */
-    @Override
-    protected Double doInBackground(String... strings) {
-        String pincode_1 = strings[0];
-        String pincode_2 = strings[1];
+
+    protected Double doSmth(String pincode_1, String pincode_2) {
+        this.pincode_1 = pincode_1;
+        this. pincode_2 = pincode_2;
 
         try {
-            String key = "AIzaSyDiXqTp4fWIukVwioPxPsg-wDag-c1Cd2U";
+            String key = "AIzaSyAd81VI92KDi51lFTJy1GfHfDMKaxW4wgw";
             String s = String.format("https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=%s&destinations=%s&key=%s", pincode_1, pincode_2, key);
             URL url = new URL(s);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -45,6 +47,7 @@ public class DistanceCalculator extends AsyncTask<String, Void, Double> {
                     sb.append(sc.next());
                 String json = sb.toString();
                 JSONObject obj = new JSONObject(json);
+                Log.d("TAG", obj.toString());
                 double distance = obj.getJSONArray("rows").getJSONObject(0).getJSONArray("elements").getJSONObject(0).getJSONObject("distance").getDouble("value");
                 urlConnection.disconnect();
                 sc.close();
