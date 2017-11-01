@@ -84,8 +84,10 @@ public class SearchController {
         //Get list of unique institutions after filter
         for (int i = 0; i < filteredCourseList.size(); i++) {
             temp = filteredCourseList.get(i);
-            if (!(institutionList.contains(temp.getInstitution()))) {
-                institutionList.add(temp.getInstitution());
+            for (int j = 0; j < institutionList.size(); j++) {
+                if (!(institutionList.get(j).getInstitution().equals(temp.getInstitution().getInstitution()))) {
+                    institutionList.add(temp.getInstitution());
+                }
             }
         }
 

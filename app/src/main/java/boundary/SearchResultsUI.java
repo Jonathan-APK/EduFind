@@ -121,8 +121,6 @@ public class SearchResultsUI extends AppCompatActivity {
        // new ProgressTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         initializeData();
         initializeAdapter();
-
-
     }
 
     @Override
@@ -237,18 +235,23 @@ public class SearchResultsUI extends AppCompatActivity {
     private void initializeAdapter(){
         CoursesRVAdapter adapter = new CoursesRVAdapter(courseList, interest, specialisation, postalCode);
         rv.setAdapter(adapter);
-
         if (adapter.getItemCount() == 0) {
             // Show no results
             AlertDialog.Builder builder = new AlertDialog.Builder(SearchResultsUI.this);
             builder.setMessage("Your search returned no results!");
-            builder.setPositiveButton("Return", new DialogInterface.OnClickListener() { //when click on DELETE
+            builder.setPositiveButton("Return", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
                     finish();
                 }
             }).show();  //show alert dialog
         }
+    }
+
+    public void onClick(DialogInterface dialog, int which) {
+        dialog.dismiss();
+        finish();
     }
 
     public void initializeToolbar(@NonNull String toolbarTitle){
