@@ -92,10 +92,9 @@ public class SearchController {
         //Get list of distances from the institutions
         for (int i = 0; i < institutionList.size(); i++) {
             DistanceCalculator d1 = new DistanceCalculator();
-
             try {
                // Thread.currentThread().sleep(10000);
-                double distance = d1.doSmth(String.valueOf(postalCode), String.valueOf(institutionList.get(i).getPostalCode()));
+                double distance = d1.doInBackground(String.valueOf(postalCode), String.valueOf(institutionList.get(i).getPostalCode()));
                 sortedDistanceList.add(distance);
             } catch (Exception e) {
             }
@@ -110,9 +109,9 @@ public class SearchController {
             for (int i = 0; i < sortedDistanceList.size(); i++) {
                 for (int j = 0; j < institutionList.size(); j++) {
                     DistanceCalculator d1 = new DistanceCalculator();
-
                     try {
-                        double distance = d1.doSmth(String.valueOf(postalCode), String.valueOf(institutionList.get(i).getPostalCode()));                        if (distance == sortedDistanceList.get(i)) {
+                        double distance = d1.doInBackground(String.valueOf(postalCode), String.valueOf(institutionList.get(j).getPostalCode()));
+                        if (distance == sortedDistanceList.get(i)) {
                             sortedInstitutionList.add(institutionList.get(j));
                         }
                     } catch (Exception e) {
