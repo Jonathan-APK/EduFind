@@ -76,7 +76,7 @@ public class SearchController {
                         filteredCourseList.add(courseList.get(i));
                     }
                 } else if (temp instanceof UniversityCourse) {
-                        filteredCourseList.add(courseList.get(i));
+                    filteredCourseList.add(courseList.get(i));
                 }
             }
         }
@@ -84,8 +84,22 @@ public class SearchController {
         //Get list of unique institutions after filter
         for (int i = 0; i < filteredCourseList.size(); i++) {
             temp = filteredCourseList.get(i);
-            for (int j = 0; j < institutionList.size(); j++) {
-                if (!(institutionList.get(j).getInstitution().equals(temp.getInstitution().getInstitution()))) {
+
+            //institutionList.add(temp.getInstitution());
+            int size = institutionList.size();
+
+            if (size == 0) {
+                institutionList.add(temp.getInstitution());
+            }
+            else {
+                boolean exists = false;
+                for (int j = 0; j < size; j++) {
+                    if (institutionList.get(j).getInstitution().equals(temp.getInstitution().getInstitution())) {
+                        exists = true;
+                    }
+                }
+
+                if (exists == false) {
                     institutionList.add(temp.getInstitution());
                 }
             }
@@ -96,7 +110,7 @@ public class SearchController {
             DistanceCalculator d1 = new DistanceCalculator();
             d1.execute(String.valueOf(postalCode), String.valueOf(institutionList.get(i).getPostalCode()));
             try {
-               // Thread.currentThread().sleep(10000);
+                // Thread.currentThread().sleep(10000);
                 double distance = d1.get();
                 sortedDistanceList.add(distance);
             } catch (Exception e) {
@@ -134,7 +148,7 @@ public class SearchController {
         for (int i = 0; i < sortedInstitutionList.size(); i++) {
             for (int j = 0; j < filteredCourseList.size(); j++) {
                 temp = filteredCourseList.get(j);
-                if (temp.getInstitution().equals(sortedInstitutionList.get(i))) {
+                if (temp.getInstitution().getInstitution().equals(sortedInstitutionList.get(i).getInstitution())) {
                     sortedCourseList.add(temp);
                 }
             }

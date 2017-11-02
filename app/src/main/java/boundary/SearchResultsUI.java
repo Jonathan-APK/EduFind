@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -62,38 +61,27 @@ public class SearchResultsUI extends AppCompatActivity {
     private ArrayList<Bookmark> bookmarkList;
 
     /*private class ProgressTask extends AsyncTask<String, String, String> {
-
         @Override
         protected String doInBackground(String... strings) {
-
             initializeData();
-
-
             return null;
         }
-
-
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-
                     initializeAdapter();
-
                 }
             });
             dialog.dismiss();
         }
-
     }*/
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
         //Get data from previous activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_results_ui);
@@ -118,9 +106,11 @@ public class SearchResultsUI extends AppCompatActivity {
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
-       // new ProgressTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        // new ProgressTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         initializeData();
         initializeAdapter();
+
+
     }
 
     @Override
@@ -131,7 +121,7 @@ public class SearchResultsUI extends AppCompatActivity {
         initializeToolbar("Search Results");
         initializeData();
         initializeAdapter();
-   //     new ProgressTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        //     new ProgressTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
     }
 
@@ -147,9 +137,9 @@ public class SearchResultsUI extends AppCompatActivity {
         {
             if(bookmarkList.get(j).getInterest().equals(interest) && bookmarkList.get(j).getspecialisation().equals(specialisation) && bookmarkList.get(j).getL1R4() == L1R4 && bookmarkList.get(j).getPostalCode() == postalCode)
             {
-               menu.getItem(0).setIcon(R.drawable.heart);
-               click = false;
-               break;
+                menu.getItem(0).setIcon(R.drawable.heart);
+                click = false;
+                break;
             }
         }
 
@@ -235,23 +225,18 @@ public class SearchResultsUI extends AppCompatActivity {
     private void initializeAdapter(){
         CoursesRVAdapter adapter = new CoursesRVAdapter(courseList, interest, specialisation, postalCode);
         rv.setAdapter(adapter);
+
         if (adapter.getItemCount() == 0) {
             // Show no results
             AlertDialog.Builder builder = new AlertDialog.Builder(SearchResultsUI.this);
             builder.setMessage("Your search returned no results!");
-            builder.setPositiveButton("Return", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton("Return", new DialogInterface.OnClickListener() { //when click on DELETE
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
                     finish();
                 }
             }).show();  //show alert dialog
         }
-    }
-
-    public void onClick(DialogInterface dialog, int which) {
-        dialog.dismiss();
-        finish();
     }
 
     public void initializeToolbar(@NonNull String toolbarTitle){
@@ -262,7 +247,7 @@ public class SearchResultsUI extends AppCompatActivity {
         //Initializing NavigationView
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
-            navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             // This method will trigger on item Click of navigation menu
             @Override
@@ -315,8 +300,8 @@ public class SearchResultsUI extends AppCompatActivity {
         };
 
         //Setting the actionbarToggle to drawer layout
-            mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
+        mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
         //calling sync state is necessary or else your hamburger icon wont show up
-            actionBarDrawerToggle.syncState();
+        actionBarDrawerToggle.syncState();
     }
 }
