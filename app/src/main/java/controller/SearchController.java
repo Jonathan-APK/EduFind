@@ -11,6 +11,7 @@ import strategy.DataStoreInterface;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.TimeUnit;
 
 /**
  * This class takes in the search parameters entered by the user to do search, filtering and sorting on the data
@@ -111,7 +112,7 @@ public class SearchController {
             d1.execute(String.valueOf(postalCode), String.valueOf(institutionList.get(i).getPostalCode()));
             try {
                 // Thread.currentThread().sleep(10000);
-                double distance = d1.get();
+                double distance = d1.get(500, TimeUnit.MILLISECONDS);
                 sortedDistanceList.add(distance);
             } catch (Exception e) {
             }
@@ -128,7 +129,7 @@ public class SearchController {
                     DistanceCalculator d1 = new DistanceCalculator();
                     d1.execute(String.valueOf(postalCode), String.valueOf(institutionList.get(j).getPostalCode()));
                     try {
-                        double distance = d1.get();
+                        double distance = d1.get(500, TimeUnit.MILLISECONDS);
                         if (distance == sortedDistanceList.get(i)) {
                             sortedInstitutionList.add(institutionList.get(j));
                         }
